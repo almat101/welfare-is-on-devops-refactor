@@ -1,0 +1,31 @@
+# Node modules
+node_modules
+
+# Output di build Angular
+/dist
+/dist-ssr
+
+# File temporanei e cache
+npm-debug.log
+.yarn-debug.log
+.yarn-error.log
+
+# File di sistema/editor
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.swp
+
+# File di test/coverage
+/coverage
+
+# File di configurazione locali
+.env
+.env.*
+
+# Altri file inutili
+*.tgz
+*.log
+
+/documentation

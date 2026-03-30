@@ -46,9 +46,9 @@ services:
       - spring-demo
 
   frontend:
-    container_name: angular-app
+    container_name: frontend
     build:
-      context: ./frontend
+      context: ./frontend/ANGULAR
       dockerfile: Dockerfile
     env_file: .env
     ports:

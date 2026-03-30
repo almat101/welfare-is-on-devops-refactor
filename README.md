@@ -43,6 +43,13 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
 		- Ho aggiornato tutte le dipendenze vulnerabili (sia OS che Java) e documentato ogni CVE rilevante e la relativa soluzione in `trivy.md`.
 		- Ho evitato di ignorare vulnerabilità critiche/high: tutte le CVE critiche sono state risolte, e le high sono state analizzate e, dove possibile, mitigate o documentate.
 		- Ho adottato la policy di non "silenziare" le vulnerabilità con ignore o suppression file, ma di risolverle alla radice (aggiornamento, override ecc.).
+
+	- Ho creato il Dockerfile del frontend Angular utilizzando una multistage build ottimizzata, partendo da un Dockerfile Nginx esistente e migliorandolo secondo le best practice moderne.
+		- Ho adottato tutte le best practice: uso di utente non-root per la sicurezza, healthcheck per la robustezza, e multistage build per ottenere un'immagine finale leggera e sicura.
+		- Ho eseguito la scansione dell'immagine finale Nginx con Trivy, risolvendo tutte le vulnerabilità critiche e high rilevate sull'OS Alpine e sulle dipendenze di sistema.
+		- Ho documentato il processo di build e di scansione, specificando la differenza tra ambiente di sviluppo (dove i certificati possono essere generati e inclusi per comodità) e ambiente di produzione (dove i certificati vanno sempre gestiti tramite volume o secret manager, mai inclusi nell'immagine).
+		- Ho aggiunto esempi pratici di esclusione di file/directory sensibili dalla scansione Trivy e di esportazione dei risultati in vari formati (JSON/HTML) per una migliore integrazione in pipeline CI/CD.
+	
 	
 - **Prossimi step e automazione (trivy in pipeline):**
 	- In futuro potrei inserire la scansione Trivy come step automatico nella pipeline CI/CD (es. GitHub Actions, jenkins) per garantire che ogni build venga controllata prima del deploy.
@@ -54,13 +61,14 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
 	- Continuerò a documentare ogni CVE rilevante e la relativa soluzione in `trivy.md` per mantenere traccia delle vulnerabilità gestite e delle scelte tecniche.
 
 
+
 ### Obiettivi e roadmap ottimizzazione
 
 - [x] **Rimozione variabili hardcodate**: Ho eliminato tutte le variabili di ambiente hardcodate nei Dockerfile e nel docker-compose, centralizzandole in file `.env` non tracciati da git.
 - [x] **Gestione secrets e sicurezza**: Migliorerò la gestione dei secrets e delle variabili sensibili.
 - [x] **Ottimizzazione immagini Docker**: Ottimizzerò le immagini tramite build multistage e best practice per ridurre peso, aumentare sicurezza e velocità di build.
 - [ ] **Documentazione delle principali scelte**: Le motivazioni e le best practice adottate saranno spiegate e tracciate nel repository.
-- [ ] **Pulizia e refactoring**: Riorganizzazione della struttura del progetto, rimozione di codice legacy e miglioramento della manutenibilità.
+- [x] **Pulizia e refactoring**: Riorganizzazione della struttura del progetto, rimozione di codice legacy e miglioramento della manutenibilità.
 - [ ] **Testing e quality gate**: Introduzione di test automatici e strumenti di code quality.
 
 ### Best practice utilizzate per la creazione dei Dockerfile
@@ -204,3 +212,25 @@ CMD ["java", "-jar", "/app/hug-0.0.1-SNAPSHOT.jar"]
 Queste pratiche rendono la build ripetibile, sicura, facilmente manutenibile e pronta per ambienti di produzione.
 
 
+## Analisi: Vecchio approccio frontend vs nuovo approccio DevOps
+
+### Vecchio approccio (OLD_Dockerfile)
+- **Base Debian**: L'immagine partiva da Debian, risultando più pesante e meno ottimizzata rispetto ad Alpine o immagini ufficiali Nginx.
+- **Copia manuale dei file statici**: Era necessario copiare manualmente la cartella `browser` (contenente i file buildati del frontend) nella directory `/var/www/html`.
+- **Nessuna ottimizzazione DevOps**: Mancavano multistage build, healthcheck, uso di utente non-root, gestione automatica delle vulnerabilità e delle dipendenze.
+- **Processo manuale**: L'utente doveva buildare il frontend Angular separatamente e copiare i file nella posizione corretta prima di buildare l'immagine Docker.
+
+### Nuovo approccio (moderno, DevOps-oriented)
+- **Multistage build**: Utilizzo di build multistage per separare la fase di build (Node.js/Angular) dalla fase di runtime (Nginx), ottenendo immagini finali molto più leggere e sicure.
+- **Immagine base ottimizzata**: Uso di `nginx:alpine` come base per il runtime, riducendo drasticamente il peso dell'immagine e migliorando la sicurezza.
+- **Automazione completa**: La build del frontend Angular viene eseguita automaticamente all'interno del Dockerfile, senza passaggi manuali.
+- **Copia automatica dei file statici**: I file generati dal build Angular vengono copiati direttamente nella root servita da Nginx (`/usr/share/nginx/html`), eliminando errori manuali.
+**Gestione certificati migliorata**: I certificati vengono generati automaticamente solo per lo sviluppo, mentre in produzione si consiglia sempre l'uso di volumi o secret manager.
+
+> **Nota:** Anche nel nuovo approccio, in ambiente di sviluppo viene installato OpenSSL (ad esempio con `apk add openssl` su Alpine) per generare certificati self-signed utili ai test locali. In produzione, invece, è fondamentale montare i certificati tramite volume Docker o secret manager, evitando di includerli nell’immagine per motivi di sicurezza.
+- **Best practice Docker**: Uso di utente non-root, healthcheck, layer caching, `.dockerignore`, e logging su stdout/stderr per integrazione con sistemi di log centralizzati.
+- **Sicurezza e compliance**: Scansione automatica delle immagini con Trivy, aggiornamento delle dipendenze vulnerabili, documentazione delle CVE e policy di non inclusione di segreti nell'immagine.
+- **Pronto per CI/CD**: Il nuovo approccio è facilmente integrabile in pipeline CI/CD, garantendo build ripetibili, sicure e automatizzate.
+
+### In sintesi
+Il nuovo approccio elimina la necessità di operazioni manuali, riduce i rischi di errore umano, migliora la sicurezza e rende il processo di build e deploy del frontend completamente automatizzato e conforme alle best practice DevOps moderne. Questo consente maggiore velocità, affidabilità e tracciabilità nelle release, oltre a una migliore gestione della sicurezza e della qualità del software.
