@@ -1,0 +1,74 @@
+services:
+  postgres:
+    container_name: postgres-sql-leo
+    # image: postgres 
+    image: postgres:17-alpine3.22
+    env_file: .env
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    # ports:
+    #   - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s 
+    networks:
+      - spring-demo
+    restart: always
+
+  mail-dev:
+    container_name: mail-dev-leo
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+    networks:
+      - spring-demo
+    restart: always
+
+  backend:
+    container_name: spring-boot-app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file: .env
+    secrets: 
+      - firebase-creds 
+    ports:
+      - 8088:8088
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    networks:
+      - spring-demo
+
+  frontend:
+    container_name: angular-app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - 443:443
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: always
+    networks:
+      - spring-demo
+
+networks:
+  spring-demo:
+    driver: bridge
+
+secrets:
+  firebase-creds:
+    file: ./backend/creds/leonardo-7abf7-firebase-adminsdk-rtfdb-c22e0f1580.json
+
+volumes:
+  postgres:
+    driver: local
+

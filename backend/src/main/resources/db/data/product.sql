@@ -1,0 +1,10 @@
+INSERT INTO Product (id, name, description, price, category, discount, image_url, link, created_date) VALUES
+(85, 'WellHub', 'Un app innovativa per gestire tutte le palestre a tua disposizione.', 2.99, 'FITNESS', 5.0, 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e9/30/99/e9309944-5625-89f0-c44a-dabc33cb3eae/AppIcon-1x_U007emarketing-0-10-0-0-85-220-0.png/512x512bb.jpg', 'https://wellhub.com', '2023-02-01T10:00:00'),
+(86, 'Jojob', 'Un app innovativa per muoversi grazie al carpooling!', 2.99, 'SERVIZI', 5.0, 'https://www.e-gazette.it/sites/default/files/images/2017/feb/16/logo-jojob.png', 'https://www.jojobrt.com', '2023-02-01T10:00:00'),
+(87, '4Books', 'Un app innovativa per gestire tutti i tuoi libri', 2.99, 'MOTIVAZIONE', 5.0, 'https://play-lh.googleusercontent.com/Ze7aITja-y2KoBQa-WVqltt0Pg8yYRYNfgoB_Wo3w_H1Ned-2VwgTUHnSmEi12krXK0=w240-h480-rw', 'https://4books.com', '2023-02-01T10:00:00'),
+(88, 'Leonardo Summer Camp', 'Un Summercamp per i tuoi figli dove apprenderanno molte esperienze notevoli!', 2.99, 'EDUCAZIONE', 5.0, '', 'https://Leonardo-summerCamp.com', '2023-02-01T10:00:00'),
+(89, 'Leonardo Care', 'Un app innovativa per gestire tutte le palestre a tua disposizione.', 2.99, 'PARENTALCARE', 5.0, '', 'https://wellhub.com', '2023-02-01T10:00:00'),
+(90, 'Stimulus platform ', 'Un app innovativa per gestire tutte le palestre a tua disposizione.', 2.99, 'BENESSERE_MENTALE', 5.0, '', '', '2023-02-01T10:00:00'),
+(91, ' Flexible Benefits platform', 'Un app innovativa per gestire tutte le palestre a tua disposizione.', 2.99, 'FINANZE', 5.0, '', '', '2023-02-01T10:00:00'),
+(3, 'Vacanza al Mare', 'Pacchetto vacanza per una settimana in una splendida località marina.', 499.99, 'VACANZE', 15.0, '', '', '2023-03-01T10:00:00'),
+(4, 'Smartphone Pro', 'Uno smartphone di ultima generazione con caratteristiche avanzate.', 799.99, 'ELETTRONICA', 10.0, '', '', '2023-04-01T10:00:00');

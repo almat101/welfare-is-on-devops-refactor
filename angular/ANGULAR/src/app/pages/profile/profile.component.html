@@ -1,0 +1,111 @@
+<!-- <div class="container mt-5 d-flex flex-column align-items-center">
+	<div class="card profile-card text-center mb-4">
+	  <div class="card-inner">
+		<div class="card-front">
+		  <div *ngIf="user$ | async as user; else loading">
+			<h2 class="mb-3">
+			  <span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold">{{ user.lastname }}</span>
+			</h2>
+			<p class="email">{{ user.email }}</p>
+		</div>
+		<ng-template #loading>
+			<div class="text-center">
+				<div class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</ng-template>
+	</div>
+	<div class="card-back">
+		<div *ngIf="user$ | async as user; else loading">
+			<p>Continua ad utilizzare Leonardo Hug</p>
+			<p>fino ad ora hai gia risparmiato</p>
+			<h2>{{user.saved}}<span> euro</span></h2>
+
+		</div>
+		</div>
+	  </div>
+	</div>
+	<div class="card personal-data-card">
+	  <div class="card-body">
+		<app-personal-data></app-personal-data>
+	  </div>
+	</div>
+  </div> -->
+
+<div class="container mt-5 d-flex flex-column align-items-center">
+	<div class="card profile-card text-center mb-4">
+	  <div class="card-body">
+		<div *ngIf="user$ | async as user; else loading">
+		  <h2 class="mb-3">
+			<span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold"> {{ user.lastname }}</span>
+		  </h2>
+		  <!-- <p class="email">{{ user.email }}</p> -->
+		  <p>Grazie a Leonardo Hug hai risparmiato</p>
+		   <h3>{{user.saved}} euro</h3>
+		   <!-- <p>continua ad acquistare</p> -->
+		</div>
+		<ng-template #loading>
+		  <div class="text-center">
+			<div class="spinner-border text-primary" role="status">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		  </div>
+		</ng-template>
+	  </div>
+	</div>
+	<div class="card">
+
+
+	</div>
+</div>
+
+
+
+<!--<div class="container mt-5 d-flex flex-column align-items-center">
+	<div class="card text-center mb-4">
+	  <div class="card-body">
+		<div *ngIf="user$ | async as user; else loading">
+		  <h2 class="mb-3">
+			<span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold"> {{ user.lastname }}</span>
+		  </h2>
+		  <p class="email">{{ user.email }}</p>
+		  <p >Complimenti grazie a Leonardo Hug hai risparmiato {{user.saved}} euro </p>
+		</div>
+		<ng-template #loading>
+		  <div class="text-center">
+			<div class="spinner-border text-primary" role="status">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		  </div>
+		</ng-template>
+	  </div>
+	</div>
+	<div class="card">
+
+		<app-personal-data></app-personal-data>
+	  </div>
+  </div> -->
+
+
+<!-- <div class="container mt-5 d-flex justify-content-center">
+	<div class="card text-center">
+	  <div class="card-body">
+		<div *ngIf="user$ | async as user; else loading">
+		  <h2 class="mb-3">
+			<span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold"> {{ user.lastname }}</span>
+		  </h2>
+		  <p class="email">{{ user.email }}</p>
+		</div>
+		<ng-template #loading>
+		  <div class="text-center">
+			<div class="spinner-border text-primary" role="status">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		  </div>
+		</ng-template>
+	  </div>
+	</div>
+	<app-personal-data></app-personal-data>
+
+  </div> -->

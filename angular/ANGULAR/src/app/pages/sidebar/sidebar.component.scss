@@ -1,0 +1,328 @@
+// @import '../../../styles/colors.scss';
+
+// .sidebar {
+//   background-color: white;
+//   width: 100%; // Ensure it takes the full width of the offcanvas
+//   padding: 1rem; // Adjust padding as needed
+//   flex-shrink: 0;
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh; // Ensure the sidebar takes the full height of the viewport
+
+//   .sidebar-content {
+//     a {
+//       color: black;
+//       text-decoration: none;
+//       display: block;
+//       padding-bottom: 1rem;
+//       margin-bottom: 1rem;
+//     //   transition: transform 0.5s ease;
+
+//     //   &:hover {
+//     //     transform: translateX(15px);
+//     //   }
+
+//       span {
+//         font-size: 1.25rem;
+//         font-weight: 600;
+//       }
+//     }
+
+//     .separator {
+//       margin: 10px 0;
+
+//       i {
+//         font-size: 30px; // Adjust size as needed
+//         color: white; // Adjust color as needed
+//       }
+//     }
+//   }
+
+//   .user-info {
+//     .container {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       width: 100%; // Make sure the container takes the full width of the sidebar
+
+//       .card {
+//         border: none;
+//         border-radius: 0.5rem;
+//         width: 100%; // Ensure the card takes the full width of the container
+//         max-width: none; // Remove any maximum width constraints
+//         margin-bottom: 1rem;
+//         transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+//         &:hover {
+//           transform: translate(10px);
+//           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+//         }
+
+//         &.profile-card {
+//           background-color: $leonardo-orange;
+//           color: white;
+
+//           &:hover {
+//             background-color: $leonardo-darkorange;
+//           }
+
+//           .card-body {
+//             h2 {
+//               font-size: 1.75rem;
+//               margin-bottom: 1rem;
+
+//               .fw-bold {
+//                 font-weight: bold;
+//               }
+//             }
+
+//             .email {
+//               font-size: 1.25rem;
+//               color: #e9ecef;
+//             }
+//           }
+//         }
+
+//         &.personal-data-card {
+//           background-color: #f8f9fa;
+
+//           &:hover {
+//             background-color: #e2e6ea;
+//           }
+
+//           .card-body {
+//             h2 {
+//               font-size: 1.75rem;
+//               margin-bottom: 1rem;
+//               color: #333;
+//             }
+//           }
+//         }
+//       }
+
+//       .spinner-border {
+//         width: 3rem;
+//         height: 3rem;
+//       }
+//     }
+//   }
+// }
+
+
+// @import '../../../styles/colors.scss';
+
+// .sidebar {
+//   background-color: white;
+//   width: 100%; // Ensure it takes the full width of the offcanvas
+//   padding: 1rem; // Adjust padding as needed
+//   flex-shrink: 0;
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh; // Ensure the sidebar takes the full height of the viewport
+
+//   .sidebar-content {
+//     a {
+//       color: black;
+//       text-decoration: none;
+//       display: block;
+//       padding-bottom: 1rem;
+//       margin-bottom: 1rem;
+//       transition: transform 0.5s ease;
+
+//       &:hover {
+//         transform: translateX(15px);
+//       }
+
+//       span {
+//         font-size: 1.25rem;
+//         font-weight: 600;
+//       }
+//     }
+
+//     .separator {
+//       margin: 10px 0;
+
+//       i {
+//         font-size: 30px; // Adjust size as needed
+//         color: white; // Adjust color as needed
+//       }
+//     }
+//   }
+
+//   .user-info {
+//     .container {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+
+//       .card {
+//         border: none;
+//         border-radius: 0.5rem;
+//         width: 100%;
+//         // max-width: 600px;
+//         margin-bottom: 1rem;
+//         // transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+//         // &:hover {
+//         //   transform: translate(10px);
+//         //   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+//         // }
+
+//         &.profile-card {
+//           background-color: $leonardo-orange;
+//           color: white;
+
+//           &:hover {
+//             background-color: $leonardo-darkorange;
+//           }
+
+//           .card-body {
+//             h2 {
+//               font-size: 1.75rem;
+//               margin-bottom: 1rem;
+
+//               .fw-bold {
+//                 font-weight: bold;
+//               }
+//             }
+
+//             .email {
+//               font-size: 1.25rem;
+//               color: #e9ecef;
+//             }
+//           }
+//         }
+
+//         &.personal-data-card {
+//           background-color: #f8f9fa;
+
+//           &:hover {
+//             background-color: #e2e6ea;
+//           }
+
+//           .card-body {
+//             h2 {
+//               font-size: 1.75rem;
+//               margin-bottom: 1rem;
+//               color: #333;
+//             }
+//           }
+//         }
+//       }
+
+//       .spinner-border {
+//         width: 3rem;
+//         height: 3rem;
+//       }
+//     }
+//   }
+// }
+
+
+@import '../../../styles/colors.scss';
+
+.sidebar {
+    background-color: white;
+    width: 100%; // Ensure it takes the full width of the offcanvas
+    padding: 1rem; // Adjust padding as needed
+    flex-shrink: 0;
+
+    a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        transition: transform 0.5s ease;
+
+        &:hover {
+            transform: translateX(15px);
+        }
+
+        span {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    }
+
+    .separator {
+		margin : 10px 0;
+        i {
+            font-size: 30px; // Adjust size as needed
+            color: white; // Adjust color as needed
+        }
+    }
+
+
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.card {
+	  border: none;
+	  border-radius: 0.5rem;
+	  width: 100%;
+	  max-width: 600px;
+	  margin-bottom: 1rem;
+	  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+	  &:hover {
+		transform: translate(10px);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+	  }
+
+	  &.profile-card {
+		background-color: $leonardo-orange;
+		color: white;
+
+		&:hover {
+		  background-color: $leonardo-darkorange;
+		}
+
+		.card-body {
+		  h2 {
+			font-size: 1.75rem;
+			margin-bottom: 1rem;
+
+			.fw-bold {
+			  font-weight: bold;
+			}
+		  }
+
+		  .email {
+			font-size: 1.25rem;
+			color: #e9ecef;
+		  }
+		}
+	  }
+
+	  &.personal-data-card {
+		background-color: #f8f9fa;
+
+		&:hover {
+		  background-color: #e2e6ea;
+		}
+
+		.card-body {
+		  h2 {
+			font-size: 1.75rem;
+			margin-bottom: 1rem;
+			color: #333;
+		  }
+		}
+	  }
+	}
+
+	.spinner-border {
+	  width: 3rem;
+	  height: 3rem;
+	}
+  }
+
+  .active-link {
+	font-weight: bold;
+	color: blue; // Or any style you prefer for the active link
+  }

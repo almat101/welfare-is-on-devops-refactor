@@ -1,0 +1,240 @@
+// .container {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+
+// 	.card {
+// 	  position: relative;
+// 	  width: 100%;
+// 	  max-width: 600px;
+// 	  height: 300px; // Adjust based on your content
+// 	  margin-bottom: 1rem;
+// 	  perspective: 1000px; // Adds perspective for the flip effect
+
+// 	  .card-inner {
+// 		position: absolute;
+// 		width: 100%;
+// 		height: 100%;
+// 		transition: transform 0.6s ease;
+// 		transform-style: preserve-3d;
+// 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+// 		&:hover {
+// 		  transform: rotateY(180deg);
+// 		}
+
+// 		.card-front, .card-back {
+// 		  position: absolute;
+// 		  width: 100%;
+// 		  height: 100%;
+// 		  backface-visibility: hidden;
+// 		  display: flex;
+// 		  align-items: center;
+// 		  justify-content: center;
+// 		  border-radius: 0.5rem;
+// 		}
+
+// 		.card-front {
+// 		  background-color: #52baa0;
+// 		  color: white;
+
+// 		  h2 {
+// 			font-size: 1.75rem;
+// 			margin-bottom: 1rem;
+// 		  }
+
+// 		  .email {
+// 			font-size: 1.25rem;
+// 		  }
+// 		}
+
+// 		.card-back {
+// 		  background-color: #f8f9fa;
+// 		  color: #333;
+// 		  display: flex;
+// 		  flex-direction: column;
+// 		  align-items: center;
+// 		  justify-content: center;
+// 		  transform: rotateY(180deg);
+
+// 		  h2 {
+// 			font-size: 1.75rem;
+// 			margin-bottom: 1rem;
+// 		  }
+// 		}
+// 	  }
+// 	}
+
+// 	.spinner-border {
+// 	  width: 3rem;
+// 	  height: 3rem;
+// 	}
+//   }
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.card {
+	  border: none;
+	  border-radius: 0.5rem;
+	  width: 100%;
+	  max-width: 600px;
+	  margin-bottom: 1rem;
+	//   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+	//   &:hover {
+	// 	transform: translate(10px);
+	// 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+	//   }
+
+	  &.profile-card {
+		background-color: #52baa0;
+		color: white;
+
+		// &:hover {
+		// //   background-color: #469980;
+		// }
+
+		.card-body {
+		  h2 {
+			font-size: 1.75rem;
+			margin-bottom: 1rem;
+
+			.fw-bold {
+			  font-weight: bold;
+			}
+		h3 {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+			color: rgb(13, 176, 40);
+			font-weight: bold;
+		}
+		  }
+
+		  .email {
+			font-size: 1.25rem;
+			color: #e9ecef;
+		  }
+		}
+	  }
+
+	  &.personal-data-card {
+		background-color: #f8f9fa;
+
+		&:hover {
+		  background-color: #e2e6ea;
+		}
+
+		.card-body {
+		  h2 {
+			font-size: 1.75rem;
+			margin-bottom: 1rem;
+			color: #333;
+		  }
+		}
+	  }
+	}
+
+	.spinner-border {
+	  width: 3rem;
+	  height: 3rem;
+	}
+  }
+
+
+// .container {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+
+// 	.card {
+// 	  border: none;
+// 	  border-radius: 0.5rem;
+// 	  width: 100%;
+// 	  max-width: 600px;
+// 	  margin-bottom: 1rem;
+// 	  transition: transform 0.3s, box-shadow 0.3s;
+
+// 	  &:hover {
+// 		transform: translateY(-5px);
+// 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+// 	  }
+
+// 	  &.profile-card {
+// 		background-color: #52baa0;
+// 		color: white;
+
+// 		.card-body {
+// 		  h2 {
+// 			font-size: 1.75rem;
+// 			margin-bottom: 1rem;
+
+// 			.fw-bold {
+// 			  font-weight: bold;
+// 			}
+// 		  }
+
+// 		  .email {
+// 			font-size: 1.25rem;
+// 			color: #e9ecef;
+// 		  }
+// 		}
+// 	  }
+
+// 	  &.personal-data-card {
+// 		background-color: #f8f9fa;
+
+// 		.card-body {
+// 		  h2 {
+// 			font-size: 1.75rem;
+// 			margin-bottom: 1rem;
+// 			color: #333;
+// 		  }
+// 		}
+// 	  }
+// 	}
+
+// 	.spinner-border {
+// 	  width: 3rem;
+// 	  height: 3rem;
+// 	}
+//   }
+
+
+// .container {
+// 	margin-top: 2rem;
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+
+// 	.card {
+// 	  border: 1px solid #ddd;
+// 	  border-radius: 0.5rem;
+// 	  width: 100%;
+// 	  max-width: 600px;
+// 	  margin-bottom: 1rem;
+
+// 	  .card-body {
+// 		h2 {
+// 		  font-size: 1.75rem;
+// 		  margin-bottom: 1rem;
+
+// 		  .fw-bold {
+// 			font-weight: bold;
+// 		  }
+// 		}
+
+// 		.email {
+// 		  font-size: 1.25rem;
+// 		  color: #555;
+// 		}
+// 	  }
+// 	}
+
+// 	.spinner-border {
+// 	  width: 3rem;
+// 	  height: 3rem;
+// 	}
+//   }

@@ -1,0 +1,385 @@
+<div class="container">
+	<h2>Dati personali</h2>
+	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
+	  <div class="form-group">
+		<hr>
+			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+				<p *ngFor="let msg of errorMsg">{{msg}}</p>
+			</div>
+		<label for="gender">Genere</label>
+		<select id="gender" class="form-control" formControlName="gender">
+		  <option value="">Seleziona</option>
+		  <option value="UOMO">Uomo</option>
+		  <option value="DONNA">Donna</option>
+		  <option value="ALTRO">Altro</option>
+		  <option value="NON_SPECIFICATO">Non specificato</option>
+		</select>
+	  </div>
+
+	  <!-- Birthdate Input -->
+	  <div class="form-group">
+		<label for="birthdate">Data di nascita</label>
+		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">
+	  </div>
+	  <!-- <div *ngIf="personalDataForm.get('birthdate')?.touched && personalDataForm.get('birthdate')?.invalid" class="text-danger">
+		Data di nascita non valida. L'anno deve essere di 4 cifre.
+	</div> -->
+
+	  <!-- Mobile Number Input -->
+	  <div class="form-group">
+		<label for="mobileNumber">Numero di cellulare</label>
+		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">
+		<div *ngIf="personalDataForm.get('mobileNumber')?.touched && personalDataForm.get('mobileNumber')?.invalid" class="text-danger">
+		  Numero di cellulare non valido.
+		</div>
+	  </div>
+
+	  <!-- Sede Input -->
+	  <div class="form-group">
+		<label for="sede">Sede</label>
+		<select id="sede" class="form-control" formControlName="sede">
+		  <option value="">Seleziona</option>
+		  <option value="Anagni">Anagni</option>
+		  <option value="Aprilia">Aprilia</option>
+		  <option value="Brindisi">Brindisi</option>
+		  <option value="Foggia">Foggia</option>
+		  <option value="Frosinone">Frosinone</option>
+		  <option value="Livorno">Livorno</option>
+		  <option value="Roma-Laurentina">Roma-Laurentina</option>
+		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>
+		  <option value="Pomezia">Pomezia</option>
+		  <option value="Torino">Torino</option>
+		</select>
+		<div *ngIf="personalDataForm.get('sede')?.touched && personalDataForm.get('sede')?.invalid" class="text-danger">
+		  La selezione della sede è obbligatoria.
+		</div>
+	  </div>
+
+	  <!-- Reparto Input -->
+	  <div class="form-group">
+		<label for="reparto">Reparto</label>
+		<select id="reparto" class="form-control" formControlName="reparto">
+		  <option value="">Seleziona</option>
+		  <option value="Elettronica">Elettronica</option>
+		  <option value="Elicotteri">Elicotteri</option>
+		  <option value="Aerei">Aerei</option>
+		  <option value="Cyber & Security">Cyber & Security</option>
+		  <option value="Spazio">Spazio</option>
+		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>
+		  <option value="Aerostrutture">Aerostrutture</option>
+		  <option value="Automazione">Automazione</option>
+		</select>
+	  </div>
+
+	  <!-- Married Checkbox -->
+	  <div class="form-check">
+		<input type="checkbox" id="married" class="form-check-input" formControlName="married">
+		<label class="form-check-label" for="married">Sposato/a</label>
+	  </div>
+
+	  <!-- Children Checkbox -->
+	  <div class="form-check">
+		<input type="checkbox" id="children" class="form-check-input" formControlName="children">
+		<label class="form-check-label" for="children">Figli</label>
+	  </div>
+
+	  <!-- Elderly Parents Checkbox -->
+	  <div class="form-check">
+		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">
+		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>
+	  </div>
+
+	  <div class="form-group">
+		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Modifica</button>
+	  </div>
+	</form>
+
+</div>
+
+
+
+<!-- <div class="container">
+	<h2>Dati personali</h2>
+	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
+	  <div class="form-group">
+		<hr>
+			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+				<p *ngFor="let msg of errorMsg">{{msg}}</p>
+			</div>
+		<label for="gender">Gender</label>
+		<select id="gender" class="form-control" formControlName="gender">
+		  <option value="">Seleziona</option>
+		  <option value="UOMO">Uomo</option>
+		  <option value="DONNA">Donna</option>
+		  <option value="ALTRO">Altro</option>
+		  <option value="NON_SPECIFICATO">Non specificato</option>
+		</select>
+		<div *ngIf="personalDataForm.get('gender')?.touched && personalDataForm.get('gender')?.invalid" class="text-danger">
+		  La selezione del genere è obbligatoria.
+		</div>
+	  </div>
+
+	  <div class="form-group">
+		<label for="birthdate">Data di nascita</label>
+		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">
+	  </div>
+
+	  <div class="form-group">
+		<label for="mobileNumber">Numero di cellulare</label>
+		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">
+		<div *ngIf="personalDataForm.get('mobileNumber')?.touched && personalDataForm.get('mobileNumber')?.invalid" class="text-danger">
+		  Numero di cellulare non valido.
+		</div>
+	  </div>
+
+
+	  <div class="form-group">
+		<label for="sede">Sede</label>
+		<select id="sede" class="form-control" formControlName="sede">
+		  <option value="">Seleziona</option>
+		  <option value="Anagni">Anagni</option>
+		  <option value="Aprilia">Aprilia</option>
+		  <option value="Brindisi">Brindisi</option>
+		  <option value="Foggia">Foggia</option>
+		  <option value="Frosinone">Frosinone</option>
+		  <option value="Livorno">Livorno</option>
+		  <option value="Roma-Laurentina">Roma-Laurentina</option>
+		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>
+		  <option value="Pomezia">Pomezia</option>
+		  <option value="Torino">Torino</option>
+		</select>
+		<div *ngIf="personalDataForm.get('sede')?.touched && personalDataForm.get('sede')?.invalid" class="text-danger">
+		  La selezione della sede è obbligatoria.
+		</div>
+	  </div>
+
+	  <div class="form-group">
+		<label for="reparto">reparto</label>
+		<select id="reparto" class="form-control" formControlName="reparto">
+		  <option value="">Seleziona</option>
+		  <option value="Elettronica">Elettronica</option>
+		  <option value="Elicotteri">Elicotteri</option>
+		  <option value="Aerei">Aerei</option>
+		  <option value="Cyber & Security">Cyber & Security</option>
+		  <option value="Spazio">Spazio</option>
+		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>
+		  <option value="Aerostrutture">Aerostrutture</option>
+		  <option value="Automazione">Automazione</option>
+		</select>
+
+	  </div>
+
+	  <div class="form-check">
+		<input type="checkbox" id="married" class="form-check-input" formControlName="married">
+		<label class="form-check-label" for="married">Sposato</label>
+	  </div>
+
+
+	  <div class="form-check">
+		<input type="checkbox" id="children" class="form-check-input" formControlName="children">
+		<label class="form-check-label" for="children">Figli</label>
+	  </div>
+
+	  <div class="form-check">
+		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">
+		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>
+	  </div>
+
+	  <div class="form-group">
+		<button class="btn btn-dark mt-3" type="submit" >Modifica</button>
+
+	  </div>
+
+	</form>
+  </div> -->
+
+<!-- <div class="container">
+	<h2>Dati personali</h2>
+	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
+
+
+	  <div class="form-group">
+		<label for="birthdate">Data di nascita</label>
+		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">
+		<div *ngIf="personalDataForm.get('birthdate')?.touched && personalDataForm.get('birthdate')?.invalid" class="text-danger">
+		  <div *ngIf="personalDataForm.get('birthdate')?.errors?.['required']">
+			La data di nascita è obbligatoria.
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="form-group">
+		<label for="gender">Genere</label>
+		<select id="gender" class="form-control" formControlName="gender">
+		  <option value="">Seleziona</option>
+		  <option value="UOMO">Uomo</option>
+		  <option value="DONNA">Donna</option>
+		  <option value="ALTRO">Altro</option>
+		  <option value="NON_SPECIFICATO">Non specificato</option>
+		</select>
+		<div *ngIf="personalDataForm.get('gender')?.touched && personalDataForm.get('gender')?.invalid" class="text-danger">
+		  La selezione del genere è obbligatoria.
+		</div>
+	  </div>
+
+
+	  <div class="form-check">
+		<input type="checkbox" id="married" class="form-check-input" formControlName="married">
+		<label class="form-check-label" for="married">Sposato</label>
+	  </div>
+
+
+	  <div class="form-check">
+		<input type="checkbox" id="children" class="form-check-input" formControlName="children">
+		<label class="form-check-label" for="children">Figli</label>
+	  </div>
+
+
+	  <div class="form-check">
+		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">
+		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>
+	  </div>
+
+
+	  <div class="form-group">
+		<label for="mobileNumber">Numero di Telefono</label>
+		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber" />
+		<div *ngIf="personalDataForm.get('mobileNumber')?.touched && personalDataForm.get('mobileNumber')?.invalid" class="text-danger">
+		  <div *ngIf="personalDataForm.get('mobileNumber')?.errors?.['required']">
+			Il numero di telefono è obbligatorio.
+		  </div>
+		  <div *ngIf="personalDataForm.get('mobileNumber')?.errors?.['pattern']">
+			Il numero di telefono non è valido.
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="form-group">
+		<label for="sede">Sede</label>
+		<select id="sede" class="form-control" formControlName="sede">
+		  <option value="">Seleziona</option>
+		  <option value="Anagni">Anagni</option>
+		  <option value="Aprilia">Aprilia</option>
+		  <option value="Brindisi">Brindisi</option>
+		  <option value="Foggia">Foggia</option>
+		  <option value="Frosinone">Frosinone</option>
+		  <option value="Livorno">Livorno</option>
+		  <option value="Roma-Laurentina">Roma-Laurentina</option>
+		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>
+		  <option value="Pomezia">Pomezia</option>
+		</select>
+		<div *ngIf="personalDataForm.get('sede')?.touched && personalDataForm.get('sede')?.invalid" class="text-danger">
+		  La selezione della sede è obbligatoria.
+		</div>
+	  </div>
+
+
+	  <div class="form-group">
+		<label for="reparto">reparto</label>
+		<select id="reparto" class="form-control" formControlName="reparto">
+		  <option value="">Seleziona</option>
+		  <option value="Elettronica">Elettronica</option>
+		  <option value="Elicotteri">Elicotteri</option>
+		  <option value="Aerei">Aerei</option>
+		  <option value="Cyber & Security">Cyber & Security</option>
+		  <option value="Spazio">Spazio</option>
+		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>
+		  <option value="Aerostrutture">Aerostrutture</option>
+		  <option value="Automazione">Automazione</option>
+		  <option value="Torino">Torino</option>
+		</select>
+		<div *ngIf="personalDataForm.get('reparto')?.touched && personalDataForm.get('reparto')?.invalid" class="text-danger">
+		  La selezione del reparto è obbligatoria.
+		</div>
+	  </div>
+
+	  <div class="form-group">
+		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Invia</button>
+	  </div>
+
+	</form>
+  </div> -->
+
+
+<!-- <div class="container">
+	<h2>Dati personali</h2>
+	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">
+
+	 <div class="form-group">
+		<div class="row">
+			<div class="col">
+				<label for="day">Giorno</label>
+				<input type="number" id="day" class="form-control" placeholder="GG" formControlName="day" min="1" max="31">
+				<div *ngIf="personalDataForm.get('day')?.touched && personalDataForm.get('day')?.invalid" class="text-danger">
+					<div *ngIf="personalDataForm.get('day')?.errors?.['required'] || personalDataForm.get('day')?.errors?.['min'] || personalDataForm.get('day')?.errors?.['max']"   >
+						Errore nell'inserimento del giorno.
+					</div>
+				</div>
+			</div>
+		  <div class="col">
+			<label for="day">Mese</label>
+			<input type="number" id="month" class="form-control" placeholder="MM" formControlName="month" min="1" max="12">
+			<div *ngIf="personalDataForm.get('month')?.touched && personalDataForm.get('month')?.invalid" class="text-danger">
+				<div *ngIf="personalDataForm.get('month')?.errors?.['required'] || personalDataForm.get('month')?.errors?.['min'] || personalDataForm.get('month')?.errors?.['max']"   >
+					Erorre nell'inserimento del mese.
+				</div>
+			</div>
+		  </div>
+		  <div class="col">
+			<label for="day">Anno</label>
+			<input type="number" id="year" class="form-control" placeholder="AAAA" formControlName="year" min="1900" [max]="currentYear">
+			<div *ngIf="personalDataForm.get('year')?.touched && personalDataForm.get('year')?.invalid" class="text-danger">
+				<div *ngIf="personalDataForm.get('year')?.errors?.['required'] || personalDataForm.get('year')?.errors?.['min'] || personalDataForm.get('year')?.errors?.['max']"   >
+					Errore nell'inserimento dell'anno.
+				</div>
+			</div>
+		  </div>
+		</div>
+
+	  </div>
+
+
+    <div class="form-group">
+		<label for="gender">Gender</label>
+		<select id="gender" class="form-control" formControlName="gender">
+		<option value="">Seleziona</option>
+		<option value="male">Uomo</option>
+		<option value="married">Donna</option>
+		<option value="altro">altro</option>
+		<option value="altro">non specificato</option>
+
+
+		</select>
+		<div *ngIf="personalDataForm.get('gender')?.touched && personalDataForm.get('gender')?.invalid" class="text-danger">
+		La selezione del genere è obbligatoria.
+	  </div>
+	</div>
+
+
+
+
+    <div class="form-check">
+		<input type="checkbox" id="children" class="form-check-input" formControlName="married">
+		<label class="form-check-label" for="married">sposato</label>
+	  </div>
+
+	  <div class="form-check">
+		<input type="checkbox" id="children" class="form-check-input" formControlName="children">
+		<label class="form-check-label" for="children">Figli</label>
+	  </div>
+
+	  <div class="form-check">
+		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">
+		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>
+	  </div>
+
+
+	<div class="form-group">
+		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Invia</button>
+	  </div>
+
+	</form>
+</div>
+ -->

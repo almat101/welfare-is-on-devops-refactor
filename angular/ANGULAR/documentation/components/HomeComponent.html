@@ -1,0 +1,1391 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/home/home.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for the home page functionality.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categories" >categories</a>
+                            </li>
+                            <li>
+                                <a href="#pillars" >pillars</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                            <li>
+                                <a href="#visibleCategoriesCount" >visibleCategoriesCount</a>
+                            </li>
+                            <li>
+                                <a href="#visibleTrendingCategoriesCount" >visibleTrendingCategoriesCount</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#goTo" >goTo</a>
+                            </li>
+                            <li>
+                                <a href="#goToCategory" >goToCategory</a>
+                            </li>
+                            <li>
+                                <a href="#goToPillar" >goToPillar</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#showMoreCategories" >showMoreCategories</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#showToast" >showToast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: HttpClient, router: Router, pillar: <a href="../injectables/PillarService.html" target="_self">PillarService</a>, category: <a href="../injectables/CategoryService.html" target="_self">CategoryService</a>, userInfoService: <a href="../injectables/UserInfoService.html" target="_self">UserInfoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/home/home.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for HomeComponent.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>HttpClient for making HTTP requests</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Router for navigation</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>pillar</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PillarService.html" target="_self" >PillarService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>PillarService for pillar-related operations</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>category</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CategoryService.html" target="_self" >CategoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>CategoryService for category-related operations</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>userInfoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserInfoService.html" target="_self" >UserInfoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>UserInfoService for user-related operations</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goTo"></a>
+                    <span class="name">
+                        <span ><b>goTo</b></span>
+                        <a href="#goTo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goTo(route: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to a specific route.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>route</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Route to navigate to</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToCategory"></a>
+                    <span class="name">
+                        <span ><b>goToCategory</b></span>
+                        <a href="#goToCategory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToCategory(pillar: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to a specific category page.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pillar</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Pillar of the category</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>category</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Category name</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Category ID</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToPillar"></a>
+                    <span class="name">
+                        <span ><b>goToPillar</b></span>
+                        <a href="#goToPillar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToPillar(pillar: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to a specific pillar page.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pillar</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Pillar name</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Pillar ID</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called after data-bound properties of a directive are initialized.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showMoreCategories"></a>
+                    <span class="name">
+                        <span ><b>showMoreCategories</b></span>
+                        <a href="#showMoreCategories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showMoreCategories(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Increases the number of visible categories.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Type of categories to show more of (&#39;trending&#39; or undefined)</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showToast"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>showToast</b></span>
+                        <a href="#showToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showToast(savedAmount: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Displays a toast notification with the user&#39;s saved amount.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>savedAmount</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The amount saved by the user</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categories"></a>
+                    <span class="name">
+                        <span ><b>categories</b></span>
+                        <a href="#categories"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/home/home.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>All categories</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pillars"></a>
+                    <span class="name">
+                        <span ><b>pillars</b></span>
+                        <a href="#pillars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/home/home.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>All pillars</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UserResponse.html" target="_self" >UserResponse | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/home/home.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Current user information</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visibleCategoriesCount"></a>
+                    <span class="name">
+                        <span ><b>visibleCategoriesCount</b></span>
+                        <a href="#visibleCategoriesCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/home/home.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Number of visible categories</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visibleTrendingCategoriesCount"></a>
+                    <span class="name">
+                        <span ><b>visibleTrendingCategoriesCount</b></span>
+                        <a href="#visibleTrendingCategoriesCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/home/home.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Number of visible trending categories</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { PillarService } from &#x27;../../services/services&#x27;;
+import { CategoryService } from &#x27;../../services/services&#x27;;
+import { UserInfoService } from &#x27;../../services/userInfo/user-info.service&#x27;;
+import { UserResponse } from &#x27;../../services/models/user-response&#x27;;
+
+declare var bootstrap: any;
+
+/**
+ * Component for the home page functionality.
+ */
+@Component({
+  selector: &#x27;app-home&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./home.component.html&#x27;,
+  styleUrl: &#x27;./home.component.scss&#x27;
+})
+
+export class HomeComponent {
+  /** All categories */
+  categories: any;
+  /** All pillars */
+  pillars: any;
+  /** Number of visible categories */
+  visibleCategoriesCount &#x3D; 10;
+  /** Number of visible trending categories */
+  visibleTrendingCategoriesCount &#x3D; 10;
+  /** Current user information */
+  user: UserResponse | null &#x3D; null;
+
+  /**
+   * Constructor for HomeComponent.
+   * @param http - HttpClient for making HTTP requests
+   * @param router - Router for navigation
+   * @param pillar - PillarService for pillar-related operations
+   * @param category - CategoryService for category-related operations
+   * @param userInfoService - UserInfoService for user-related operations
+   */
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private pillar: PillarService,
+    private category: CategoryService,
+    private userInfoService: UserInfoService
+  ) { }
+
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   */
+  ngOnInit():void {
+    this.categories &#x3D; [];
+    this.pillar.getPillar().subscribe((pillarOBJ) &#x3D;&gt; {
+      this.pillars &#x3D; pillarOBJ;
+      this.pillars[0].image &#x3D; &quot;/assets/img/LEONARDO-PHYSICAL-WELLBEING-BANNER.png&quot;;
+      this.pillars[1].image &#x3D; &quot;/assets/img/LEONARDO-ECONOMIC-WELLBEING-BANNER.png&quot;;
+      this.pillars[2].image &#x3D; &quot;/assets/img/LEONARDO-PSYCHOLOGICAL-WELLBEING-BANNER.png&quot;;
+      this.pillars[3].image &#x3D; &quot;/assets/img/LEONARDO_BF_News_451x363_02.jpg&quot;;
+    });
+    this.category.getCategories().subscribe((categoriesOBJ) &#x3D;&gt; {
+      this.categories &#x3D; categoriesOBJ;
+    });
+
+    this.userInfoService.user$.subscribe(user &#x3D;&gt; {
+      this.user &#x3D; user;
+      if (this.user) {
+        this.showToast(this.user.saved!);
+      }
+    });
+  }
+
+  /**
+   * Increases the number of visible categories.
+   * @param type - Type of categories to show more of (&#x27;trending&#x27; or undefined)
+   */
+  showMoreCategories(type: string) {
+    if (!type)
+      this.visibleCategoriesCount +&#x3D; 5;
+    else if (type &#x3D;&#x3D; &quot;trending&quot;)
+      this.visibleTrendingCategoriesCount +&#x3D; 5;
+  }
+
+  /**
+   * Navigates to a specific pillar page.
+   * @param pillar - Pillar name
+   * @param id - Pillar ID
+   */
+  goToPillar(pillar: string, id: string) {
+    this.router.navigate([&#x27;home&#x27;, pillar, id]);
+  }
+
+  /**
+   * Navigates to a specific category page.
+   * @param pillar - Pillar of the category
+   * @param category - Category name
+   * @param id - Category ID
+   */
+  goToCategory(pillar: string, category: string, id: string) {
+    this.router.navigate([&#x27;home&#x27;, pillar, category, id]);
+  }
+
+  /**
+   * Navigates to a specific route.
+   * @param route - Route to navigate to
+   */
+  goTo(route: string) {
+    this.router.navigate([route]);
+  }
+
+  /**
+   * Displays a toast notification with the user&#x27;s saved amount.
+   * @param savedAmount - The amount saved by the user
+   * @private
+   */
+  private showToast(savedAmount: number) {
+    const savedAmountElement &#x3D; document.getElementById(&#x27;savedAmount&#x27;);
+    if (savedAmountElement) {
+      savedAmountElement.textContent &#x3D; savedAmount.toString();
+    }
+
+    const toastElement &#x3D; document.getElementById(&#x27;savedToast&#x27;);
+    if (toastElement) {
+      const toast &#x3D; new bootstrap.Toast(toastElement);
+      toast.show();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;simil-body&quot;&gt;
+    &lt;main&gt;
+		 &lt;!-- Toast Notification --&gt;
+		 &lt;div class&#x3D;&quot;toast-container position-fixed bottom-0 end-0 p-3&quot; style&#x3D;&quot;z-index: 1050;&quot;&gt;
+			&lt;div class&#x3D;&quot;toast align-items-center text-bg-primary border-0&quot; id&#x3D;&quot;savedToast&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot; aria-atomic&#x3D;&quot;true&quot;&gt;
+				&lt;div class&#x3D;&quot;d-flex&quot;&gt;
+				  &lt;div class&#x3D;&quot;toast-body&quot;&gt;
+					&lt;div class&#x3D;&quot;toast-body&quot;&gt;
+						Grazie a Leonardo Hug hai risparmiato &lt;span id&#x3D;&quot;savedAmount&quot;&gt;&lt;/span&gt; euro
+					&lt;/div&gt;
+				  &lt;/div&gt;
+				  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close btn-close-white me-2 m-auto&quot; data-bs-dismiss&#x3D;&quot;toast&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+				&lt;/div&gt;
+			  &lt;/div&gt;
+			&lt;!-- &lt;div class&#x3D;&quot;toast&quot; id&#x3D;&quot;savedToast&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot; aria-atomic&#x3D;&quot;true&quot;&gt;
+			  &lt;div class&#x3D;&quot;toast-header&quot;&gt;
+				&lt;strong class&#x3D;&quot;me-auto&quot;&gt;Notifica&lt;/strong&gt;
+				&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; data-bs-dismiss&#x3D;&quot;toast&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+			  &lt;/div&gt;
+			  &lt;div class&#x3D;&quot;toast-body&quot;&gt;
+				Grazie a Leonardo Hug hai risparmiato &lt;span id&#x3D;&quot;savedAmount&quot;&gt;&lt;/span&gt; euro
+			  &lt;/div&gt;
+			&lt;/div&gt; --&gt;
+		  &lt;/div&gt;
+
+
+		  &lt;!-- &lt;div class&#x3D;&quot;toast align-items-center text-bg-primary border-0&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot; aria-atomic&#x3D;&quot;true&quot;&gt;
+			&lt;div class&#x3D;&quot;d-flex&quot;&gt;
+			  &lt;div class&#x3D;&quot;toast-body&quot;&gt;
+				Hello, world! This is a toast message.
+			  &lt;/div&gt;
+			  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close btn-close-white me-2 m-auto&quot; data-bs-dismiss&#x3D;&quot;toast&quot; aria-label&#x3D;&quot;Close&quot;&gt;&lt;/button&gt;
+			&lt;/div&gt;
+		  &lt;/div&gt; --&gt;
+
+      &lt;section class&#x3D;&quot;explore-section&quot;&gt;
+        &lt;div class&#x3D;&quot;elementor-widget-container&quot;&gt;
+          &lt;h3&gt;Esplora il meglio di LeonardoHug&lt;/h3&gt;
+        &lt;/div&gt;
+          &lt;div class&#x3D;&quot;explore-cards&quot;&gt;
+              &lt;div class&#x3D;&quot;card&quot; (click)&#x3D;&quot;goToPillar(pillarOBJ.name, pillarOBJ.id)&quot; *ngFor&#x3D;&quot;let pillarOBJ of pillars&quot;&gt;
+                  &lt;img [src]&#x3D;&quot;pillarOBJ.image&quot; [alt]&#x3D;&quot;pillarOBJ.name&quot;&gt;
+                  &lt;!-- &lt;div class&#x3D;&quot;card-info&quot;&gt;
+                      &lt;h2&gt;{{pillarOBJ.name}}&lt;/h2&gt;
+                      &lt;p&gt;{{pillarOBJ.description}}&lt;/p&gt;
+                  &lt;/div&gt; --&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+      &lt;/section&gt;
+      &lt;section class&#x3D;&quot;category-section&quot;&gt;
+        &lt;div class&#x3D;&quot;elementor-widget-container&quot;&gt;
+			&lt;h3&gt;Sfoglia Categorie&lt;/h3&gt;
+        &lt;/div&gt;
+          &lt;div class&#x3D;&quot;category-cards&quot;&gt;
+            &lt;div class&#x3D;&quot;category-card&quot; (click)&#x3D;&quot;goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)&quot; *ngFor&#x3D;&quot;let categoriesOBJ of categories.slice(0, visibleCategoriesCount)&quot;&gt;
+                &lt;img [src]&#x3D;&quot;categoriesOBJ.cover&quot; [alt]&#x3D;&quot;categoriesOBJ.name&quot;&gt;
+                &lt;h3&gt;{{categoriesOBJ.name}}&lt;/h3&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;see-more&quot; *ngIf&#x3D;&quot;visibleCategoriesCount &lt; categories.length&quot; (click)&#x3D;&quot;showMoreCategories(&#x27;&#x27;)&quot;&gt;Vedi di più&lt;/button&gt;
+          &lt;div class&#x3D;&quot;elementor-widget-container&quot;&gt;
+            &lt;h3&gt;Sfoglia Categorie più visitate&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;category-cards&quot;&gt;
+            &lt;div class&#x3D;&quot;category-card&quot; (click)&#x3D;&quot;goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)&quot; *ngFor&#x3D;&quot;let categoriesOBJ of categories.slice(0, visibleTrendingCategoriesCount)&quot;&gt;
+                &lt;img [src]&#x3D;&quot;categoriesOBJ.cover&quot; [alt]&#x3D;&quot;categoriesOBJ.name&quot;&gt;
+                &lt;h3&gt;{{categoriesOBJ.name}}&lt;/h3&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;see-more&quot; *ngIf&#x3D;&quot;visibleTrendingCategoriesCount &lt; categories.length&quot; (click)&#x3D;&quot;showMoreCategories(&#x27;trending&#x27;)&quot;&gt;Vedi di più&lt;/button&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="simil-body">    <main>		 <!-- Toast Notification -->		 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">			<div class="toast align-items-center text-bg-primary border-0" id="savedToast" role="alert" aria-live="assertive" aria-atomic="true">				<div class="d-flex">				  <div class="toast-body">					<div class="toast-body">						Grazie a Leonardo Hug hai risparmiato <span id="savedAmount"></span> euro					</div>				  </div>				  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>				</div>			  </div>			<!-- <div class="toast" id="savedToast" role="alert" aria-live="assertive" aria-atomic="true">			  <div class="toast-header">				<strong class="me-auto">Notifica</strong>				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>			  </div>			  <div class="toast-body">				Grazie a Leonardo Hug hai risparmiato <span id="savedAmount"></span> euro			  </div>			</div> -->		  </div>		  <!-- <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">			<div class="d-flex">			  <div class="toast-body">				Hello, world! This is a toast message.			  </div>			  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>			</div>		  </div> -->      <section class="explore-section">        <div class="elementor-widget-container">          <h3>Esplora il meglio di LeonardoHug</h3>        </div>          <div class="explore-cards">              <div class="card" (click)="goToPillar(pillarOBJ.name, pillarOBJ.id)" *ngFor="let pillarOBJ of pillars">                  <img [src]="pillarOBJ.image" [alt]="pillarOBJ.name">                  <!-- <div class="card-info">                      <h2>{{pillarOBJ.name}}</h2>                      <p>{{pillarOBJ.description}}</p>                  </div> -->              </div>            </div>      </section>      <section class="category-section">        <div class="elementor-widget-container">			<h3>Sfoglia Categorie</h3>        </div>          <div class="category-cards">            <div class="category-card" (click)="goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)" *ngFor="let categoriesOBJ of categories.slice(0, visibleCategoriesCount)">                <img [src]="categoriesOBJ.cover" [alt]="categoriesOBJ.name">                <h3>{{categoriesOBJ.name}}</h3>            </div>          </div>          <button class="see-more" *ngIf="visibleCategoriesCount < categories.length" (click)="showMoreCategories(\'\')">Vedi di più</button>          <div class="elementor-widget-container">            <h3>Sfoglia Categorie più visitate</h3>          </div>          <div class="category-cards">            <div class="category-card" (click)="goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)" *ngFor="let categoriesOBJ of categories.slice(0, visibleTrendingCategoriesCount)">                <img [src]="categoriesOBJ.cover" [alt]="categoriesOBJ.name">                <h3>{{categoriesOBJ.name}}</h3>            </div>          </div>          <button class="see-more" *ngIf="visibleTrendingCategoriesCount < categories.length" (click)="showMoreCategories(\'trending\')">Vedi di più</button>      </section>    </main>  </div></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

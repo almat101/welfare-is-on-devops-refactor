@@ -1,0 +1,188 @@
+.ECONOMIC {
+    background: linear-gradient(to bottom, #39414c, rgb(255, 115, 0), white);
+  }
+  
+  .PHYSICAL {
+    background: linear-gradient(to bottom, #39414c, #ae03c5, white); /* Replace with your desired gradient */
+  }
+  
+  .PSYCHOLOGICAL {
+    background: linear-gradient(to bottom, #39414c, #00c7b6, white); /* Replace with your desired gradient */
+  }
+  
+  .FAMILY {
+    background: linear-gradient(to bottom, #39414c, orange, white); /* Replace with your desired gradient */
+  }
+
+.test{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+
+}
+
+:host-context(body) .basic-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.hero img.hero-image {
+    width: 90%; 
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+
+    /* clip-path: ellipse(60% 40% at 50% 50%); */
+    /* clip-path: inset(40% 40% 40% 40%); */
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+}
+
+.hero-content {
+    position: relative;
+}
+
+.hero h1, .hero p {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+
+}
+
+.hero h1 {
+    top: 20%;
+    font-size: 2.5rem;
+}
+
+.hero p {
+    top: 40%;
+    font-size: 1.25rem;
+}
+
+.explore-section {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.explore-section h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* CARD */
+
+.card {
+    margin-bottom: 30px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.card-text {
+    color: #666;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.custom-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 18px;
+}

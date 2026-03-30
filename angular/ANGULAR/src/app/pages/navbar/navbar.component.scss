@@ -1,0 +1,227 @@
+@import '../../../styles/colors.scss';
+
+
+.navbar {
+	background-color: $leonardo-grey;
+	z-index: 10;
+
+	.container-fluid {
+	  display: flex;
+	  align-items: center;
+
+	  .btn-outline-light {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		padding: 0.25rem;
+		border-radius: 1rem;
+		font-size: 1rem;
+
+		&:focus {
+		  outline: none;
+		  box-shadow: none;
+		}
+
+		&:hover {
+		  color: #cccccc;
+		}
+
+		&:active {
+		  color: darkgray;
+		}
+
+		.bi {
+		  font-size: 1.5rem;
+		}
+	  }
+
+	  .navbar-brand {
+		color: #ffffff;
+		font-size: 1.25rem;
+		font-weight: bold;
+
+		&:hover {
+		  color: #cccccc;
+		}
+	  }
+
+	  .btn {
+		padding: 5px 10px;
+		border: none;
+		border-radius: 1rem;
+		font-size: 16px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&-register, &-logout {
+		  background-color: $light-grey;
+		  color: black;
+
+		  &:hover {
+			background-color: $darker-grey;
+		  }
+		}
+
+		&-login {
+		  background-color: $leonardo-orange;
+		  color: white;
+		  margin-right: 10px; // Adjust the value as needed
+
+		  &:hover {
+			background-color: $leonardo-darkorange;
+		  }
+		}
+
+		&-welfare-coach {
+		  background-color: $leonardo-orange; // Green color
+		  color: white;
+		  margin-right: 1.5rem; // Adjust the value as needed
+		  font-weight: bold;
+
+		  &:hover {
+			background-color: $leonardo-darkorange; // Darker green
+		  }
+		}
+	  }
+	}
+  }
+
+  .offcanvas {
+	@media (max-width: 768px) {
+	  width: 100%;
+	}
+	background-color: white;
+	.offcanvas-header {
+	  .btn-custom-close {
+		color: black;
+		border: none;
+		position: absolute;
+		top: 2px;
+		right: 5px;
+		z-index: 1051;
+
+		.bi {
+		  font-size: 2rem;
+		}
+
+		&:hover {
+		  color: #cccccc;
+		}
+
+		&:active {
+		  color: darkgray;
+		}
+	  }
+	}
+  }
+
+
+// .navbar {
+//   background-color: $leonardo-grey;
+//   z-index: 10;
+
+//   .container-fluid {
+//     display: flex;
+//     align-items: center;
+
+//     .btn-outline-light {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       background: none;
+//       padding: 0.25rem;
+//       border-radius: 1rem;
+//       font-size: 1rem;
+
+//       &:focus {
+//         outline: none;
+//         box-shadow: none;
+//       }
+
+//       &:hover {
+//         color: #cccccc;
+//       }
+
+//       &:active {
+//         color: darkgray;
+//       }
+
+//       .bi {
+//         font-size: 1.5rem;
+//       }
+//     }
+
+//     .navbar-brand {
+//       color: #ffffff;
+//       font-size: 1.25rem;
+//       font-weight: bold;
+
+//       &:hover {
+//         color: #cccccc;
+//       }
+//     }
+
+//     .btn {
+//       padding: 5px 10px;
+//       border: none;
+//       border-radius: 1rem;
+//       font-size: 16px;
+//       cursor: pointer;
+//       transition: background-color 0.3s;
+
+//       &-register, &-logout {
+//         background-color: $light-grey;
+//         color: black;
+
+//         &:hover {
+//           background-color: $darker-grey;
+//         }
+//       }
+
+//       &-login {
+//         background-color: $primary-red;
+//         color: white;
+//         margin-right: 10px; // Adjust the value as needed
+
+//         &:hover {
+//           background-color: $darker-red;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .offcanvas {
+
+// //   width:100%; //offcanvas totale\width: 80%; // Example: 80% width on larger screens
+
+//   @media (max-width: 768px) { // Adjust this breakpoint as needed
+//     // Width for small screens (mobile devices)
+//     width: 100%;
+//   }
+//   background-color: white;
+//   .offcanvas-header {
+//     // background-color: white;
+//     .btn-custom-close {
+//       color: black; // Custom icon color
+//       border: none; // Remove border
+//       position: absolute;
+//       top: 2px;
+//       right: 5px;
+//       z-index: 1051;
+
+//       .bi {
+//         font-size: 2rem; // Adjust icon size
+//       }
+//       &:hover {
+//         color: #cccccc;
+//       }
+
+//       &:active {
+//         color: darkgray;
+//       }
+//     }
+//   }
+// }
+

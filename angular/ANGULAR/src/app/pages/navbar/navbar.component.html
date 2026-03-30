@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand" aria-label="Main navigation">
+	<div class="container-fluid">
+	  <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+		<i class="bi bi-list"></i>
+	  </button>
+	  <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Leonardo Hug</a>
+	  <ul class="navbar-nav ms-auto">
+		<li class="nav-item mt-1">
+		  <button *ngIf="!(isLoggedIn$ | async)" class="btn btn-login" (click)="openLoginModal()">Accedi</button>
+		</li>
+		<li class="nav-item mt-1">
+		  <button *ngIf="!(isLoggedIn$ | async)" class="btn btn-register" (click)="openRegisterModal()">Registrati</button>
+		</li>
+		<li class="nav-item mt-1" *ngIf="isLoggedIn$ | async">
+			<button class="btn btn-welfare-coach" (click)="goToCoach()">Welfare Coach</button>
+		</li>
+		<li class="nav-item ">
+		  <app-user-dropdown *ngIf="isLoggedIn$ | async"></app-user-dropdown>
+		</li>
+	  </ul>
+	</div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+	<div class="offcanvas-header">
+	  <button type="button" class="btn btn-custom-close" data-bs-dismiss="offcanvas" aria-label="Close">
+		<i class="bi bi-x"></i>
+	  </button>
+	</div>
+	<div class="offcanvas-body">
+	  <app-sidebar></app-sidebar>
+	</div>
+  </div>
+
+
+<!-- <nav class="navbar navbar-expand" aria-label="Main navigation">
+	<div class="container-fluid">
+	  <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Leonardo App</a>
+	  <ul class="navbar-nav ms-auto">
+
+		<li class="nav-item mt-1">
+		  <button *ngIf="!(isLoggedIn$ | async)" class="btn btn-login" (click)="openLoginModal()">Accedi</button>
+		</li>
+
+		<li class="nav-item mt-1">
+		  <button *ngIf="!(isLoggedIn$ | async)" class="btn btn-register" (click)="openRegisterModal()">Registrati</button>
+		</li>
+
+		<li class="nav-item mt-1">
+			<app-user-dropdown *ngIf="isLoggedIn$ | async"></app-user-dropdown>
+		</li>
+		<li class="nav-item">
+		  <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+			<i class="bi bi-list"></i>
+		  </button>
+		</li>
+
+	  </ul>
+	</div>
+  </nav>
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+	<div class="offcanvas-header">
+		<button type="button" class="btn btn-custom-close" data-bs-dismiss="offcanvas" aria-label="Close">
+		<i class="bi bi-x"></i>
+	</button>
+</div>
+<div class="offcanvas-body">
+	 <app-sidebar></app-sidebar>
+</div>
+</div> -->
+
+<!-- <nav class="navbar navbar-expand navbar-dark" aria-label="Main navigation">
+	<div class="container-fluid">
+	<a class="navbar-brand" routerLink="/home" routerLinkActive="active">Leonardo App</a>
+
+	<ul class="navbar-nav ms-auto">
+
+		<li class = "nav-item mt-1">
+			<button *ngIf="!(isLoggedIn$ | async)" class="btn btn-login" routerLink="/login">Accedi</button>
+		</li>
+
+		<li class = "nav-item mt-1">
+			<button *ngIf="isLoggedIn$ | async" class="btn btn-logout" (click)="logout()">Logout</button>
+		</li>
+
+		<li class = "nav-item mt-1">
+			<button *ngIf="!(isLoggedIn$ | async)" class="btn btn-register" routerLink="/register">Registrati</button>
+		</li>
+
+		<li class="nav-item">
+		<button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+			<i class="bi bi-list"></i>
+		</button>
+		</li>
+
+	</ul>
+	</div>
+</nav> -->

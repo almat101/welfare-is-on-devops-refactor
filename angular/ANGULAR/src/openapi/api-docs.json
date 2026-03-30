@@ -1,0 +1,1328 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "OpenApi specification",
+		"description": "OpenApi documentation for LeonardoHug API",
+		"termsOfService": "Terms of service",
+		"contact": {
+			"name": "Daniele Filiaggi",
+			"url": "https://github.com/dfiliagg",
+			"email": "daniele.omn@gmail.com"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		},
+		"version": "1.0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8088/api/v1",
+			"description": "Local ENV"
+		},
+		{
+			"url": "https://leonardohug.com",
+			"description": "PROD ENV"
+		}
+	],
+	"security": [
+		{
+			"bearerAuth": []
+		}
+	],
+	"paths": {
+		"/sale": {
+			"post": {
+				"tags": [
+					"Sale"
+				],
+				"operationId": "registerSale",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaleRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaleResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/personal-data": {
+			"get": {
+				"tags": [
+					"Personal Data"
+				],
+				"operationId": "getPersonalData",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PersonalDataResponse"
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Personal Data"
+				],
+				"operationId": "savePersonalData",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PersonalDataRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/location": {
+			"post": {
+				"tags": [
+					"User"
+				],
+				"operationId": "updateLocation",
+				"parameters": [
+					{
+						"name": "latitude",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "number",
+							"format": "double"
+						}
+					},
+					{
+						"name": "longitude",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "number",
+							"format": "double"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/interaction": {
+			"post": {
+				"tags": [
+					"Interaction"
+				],
+				"operationId": "saveInteraction",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/InteractionRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/interaction/favorite": {
+			"post": {
+				"tags": [
+					"Interaction"
+				],
+				"operationId": "like",
+				"parameters": [
+					{
+						"name": "productId",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "int32"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"operationId": "register",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegistrationRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"202": {
+						"description": "Accepted",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/authenticate": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"operationId": "authenticate",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AuthenticationRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AuthenticationResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/userinfo": {
+			"get": {
+				"tags": [
+					"User"
+				],
+				"operationId": "getUser",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{product-id}": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getProduct",
+				"parameters": [
+					{
+						"name": "product-id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{category}/top-selling": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getTopSelling",
+				"parameters": [
+					{
+						"name": "category",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{category}/random": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getRandomProduct",
+				"parameters": [
+					{
+						"name": "category",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{category}/popular": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getPopular",
+				"parameters": [
+					{
+						"name": "category",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{category}/new": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getNewArrival",
+				"parameters": [
+					{
+						"name": "category",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/{category}/discount": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getDiscount",
+				"parameters": [
+					{
+						"name": "category",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/product/related-product": {
+			"get": {
+				"tags": [
+					"Product"
+				],
+				"operationId": "getRelatedProduct",
+				"parameters": [
+					{
+						"name": "product-id",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/pillar": {
+			"get": {
+				"tags": [
+					"Pillar"
+				],
+				"operationId": "getPillar",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/PillarResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/interaction/myfavorites": {
+			"get": {
+				"tags": [
+					"Interaction"
+				],
+				"operationId": "getFavorites",
+				"parameters": [
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageProductResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/gym/nearest": {
+			"get": {
+				"tags": [
+					"Gym"
+				],
+				"operationId": "getNearestGym",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/GymResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/coachinfo": {
+			"get": {
+				"tags": [
+					"User"
+				],
+				"operationId": "getCoach",
+				"parameters": [
+					{
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 0
+						}
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "integer",
+							"format": "int32",
+							"default": 10
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PageCoachResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/categoriesbypillar": {
+			"get": {
+				"tags": [
+					"Category"
+				],
+				"operationId": "getCategoriesByPillar",
+				"parameters": [
+					{
+						"name": "pillar",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/CategoryResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/activate-account": {
+			"get": {
+				"tags": [
+					"Authentication"
+				],
+				"operationId": "confirm",
+				"parameters": [
+					{
+						"name": "token",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/allcategories": {
+			"get": {
+				"tags": [
+					"Category"
+				],
+				"operationId": "getCategories",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/CategoryResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"SaleRequest": {
+				"type": "object",
+				"properties": {
+					"productId": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"quantity": {
+						"type": "integer",
+						"format": "int32"
+					}
+				}
+			},
+			"SaleResponse": {
+				"type": "object",
+				"properties": {
+					"saleId": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				}
+			},
+			"PersonalDataRequest": {
+				"type": "object",
+				"properties": {
+					"gender": {
+						"type": "string",
+						"enum": [
+							"UOMO",
+							"DONNA",
+							"ALTRO",
+							"NON_SPECIFICATO"
+						]
+					},
+					"married": {
+						"type": "boolean"
+					},
+					"birthdate": {
+						"type": "string",
+						"format": "date"
+					},
+					"elderlyParents": {
+						"type": "boolean"
+					},
+					"children": {
+						"type": "boolean"
+					},
+					"mobileNumber": {
+						"pattern": "\\d+",
+						"type": "string"
+					},
+					"sede": {
+						"type": "string"
+					},
+					"reparto": {
+						"type": "string"
+					}
+				}
+			},
+			"InteractionRequest": {
+				"type": "object",
+				"properties": {
+					"productId": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"interactionType": {
+						"type": "string",
+						"enum": [
+							"CLICK",
+							"VIEW",
+							"SALE",
+							"LIKE",
+							"SHARE"
+						]
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"RegistrationRequest": {
+				"required": [
+					"email",
+					"firstname",
+					"lastname",
+					"password"
+				],
+				"type": "object",
+				"properties": {
+					"firstname": {
+						"type": "string"
+					},
+					"lastname": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"maxLength": 2147483647,
+						"minLength": 8,
+						"type": "string"
+					}
+				}
+			},
+			"AuthenticationRequest": {
+				"required": [
+					"email",
+					"password"
+				],
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"maxLength": 2147483647,
+						"minLength": 8,
+						"type": "string"
+					}
+				}
+			},
+			"AuthenticationResponse": {
+				"type": "object",
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				}
+			},
+			"UserResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"email": {
+						"type": "string"
+					},
+					"firsname": {
+						"type": "string"
+					},
+					"lastname": {
+						"type": "string"
+					},
+					"saved": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"ProductResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"category": {
+						"type": "string",
+						"enum": [
+							"ELETTRONICA",
+							"FINANZE",
+							"INVESTIMENTI",
+							"ASSICURAZIONI",
+							"IMMOBILIARE",
+							"LAVORO",
+							"ECOMMERCE",
+							"SERVIZI",
+							"STARTUP",
+							"CONTABILITA",
+							"VIAGGI",
+							"SPORT",
+							"FITNESS",
+							"SALUTE",
+							"BELLEZZA",
+							"MODA",
+							"ALIMENTAZIONE",
+							"AUTOMOTIVE",
+							"CASA",
+							"GIOIELLI",
+							"LIBRI",
+							"MUSICA",
+							"FILM",
+							"ARTE",
+							"MEDITAZIONE",
+							"TERAPIA",
+							"MOTIVAZIONE",
+							"SVILUPPO_PERSONALE",
+							"BENESSERE_MENTALE",
+							"SCRITTURA",
+							"APP",
+							"GIOCHI_BAMBINI",
+							"EDUCAZIONE",
+							"FAMIGLIA",
+							"VACANZE",
+							"CASA_FAMIGLIA",
+							"SALUTE_FAMIGLIA",
+							"TEMPO_LIBERO",
+							"CUCINA",
+							"FESTE"
+						]
+					},
+					"discount": {
+						"type": "number",
+						"format": "double"
+					},
+					"image_url": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string"
+					},
+					"finalPrice": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"PageProductResponse": {
+				"type": "object",
+				"properties": {
+					"totalPages": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"totalElements": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"pageable": {
+						"$ref": "#/components/schemas/PageableObject"
+					},
+					"size": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"content": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/ProductResponse"
+						}
+					},
+					"number": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"sort": {
+						"$ref": "#/components/schemas/SortObject"
+					},
+					"numberOfElements": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"first": {
+						"type": "boolean"
+					},
+					"last": {
+						"type": "boolean"
+					},
+					"empty": {
+						"type": "boolean"
+					}
+				}
+			},
+			"PageableObject": {
+				"type": "object",
+				"properties": {
+					"paged": {
+						"type": "boolean"
+					},
+					"pageNumber": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"pageSize": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"offset": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"sort": {
+						"$ref": "#/components/schemas/SortObject"
+					},
+					"unpaged": {
+						"type": "boolean"
+					}
+				}
+			},
+			"SortObject": {
+				"type": "object",
+				"properties": {
+					"sorted": {
+						"type": "boolean"
+					},
+					"empty": {
+						"type": "boolean"
+					},
+					"unsorted": {
+						"type": "boolean"
+					}
+				}
+			},
+			"PillarResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					}
+				}
+			},
+			"PersonalDataResponse": {
+				"type": "object",
+				"properties": {
+					"gender": {
+						"type": "string",
+						"enum": [
+							"UOMO",
+							"DONNA",
+							"ALTRO",
+							"NON_SPECIFICATO"
+						]
+					},
+					"married": {
+						"type": "boolean"
+					},
+					"birthdate": {
+						"type": "string",
+						"format": "date"
+					},
+					"elderlyParents": {
+						"type": "boolean"
+					},
+					"children": {
+						"type": "boolean"
+					},
+					"mobileNumber": {
+						"type": "string"
+					},
+					"sede": {
+						"type": "string"
+					},
+					"reparto": {
+						"type": "string"
+					}
+				}
+			},
+			"GymResponse": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image_url": {
+						"type": "string"
+					},
+					"link": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"distance": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"CoachResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"email": {
+						"type": "string"
+					},
+					"firsname": {
+						"type": "string"
+					},
+					"lastname": {
+						"type": "string"
+					},
+					"sede": {
+						"type": "string"
+					},
+					"reparto": {
+						"type": "string"
+					}
+				}
+			},
+			"PageCoachResponse": {
+				"type": "object",
+				"properties": {
+					"totalPages": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"totalElements": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"pageable": {
+						"$ref": "#/components/schemas/PageableObject"
+					},
+					"size": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"content": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/CoachResponse"
+						}
+					},
+					"number": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"sort": {
+						"$ref": "#/components/schemas/SortObject"
+					},
+					"numberOfElements": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"first": {
+						"type": "boolean"
+					},
+					"last": {
+						"type": "boolean"
+					},
+					"empty": {
+						"type": "boolean"
+					}
+				}
+			},
+			"CategoryResponse": {
+				"type": "object",
+				"properties": {
+					"pillar": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"cover": {
+						"type": "string"
+					},
+					"id": {
+						"type": "integer",
+						"format": "int32"
+					}
+				}
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"description": "JWT auth description",
+				"in": "header",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	}
+}

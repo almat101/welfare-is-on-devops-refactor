@@ -1,0 +1,71 @@
+<div class="sidebar">
+	<hr>
+	<div class="d-flex align-items-start separator">
+        <i class="bi bi-dash"></i>
+    </div>
+	<a *ngIf="!(isLoggedIn$ | async)" class="d-flex align-items-center" data-bs-dismiss="offcanvas" routerLink="/preview" routerLinkActive="active-link">
+        <span>Preview</span>
+    </a>
+	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToHome()"  routerLinkActive="active-link">
+        <span>Home</span>
+    </a>
+
+	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToFav()"  routerLinkActive="active-link">
+        <span>Preferiti</span>
+    </a>
+
+	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToGym()"  routerLinkActive="active-link">
+        <span>Palestre</span>
+    </a>
+
+	 <div *ngIf="(isLoggedIn$ | async)" class="pillars-links" >
+	   <a *ngFor="let pillarOBJ of pillars" (click)="goToPillar(pillarOBJ.name, pillarOBJ.id)" routerLinkActive="active-link" class="d-flex align-items-center" data-bs-dismiss="offcanvas">
+		 <span>{{ pillarOBJ.name }}</span>
+	   </a>
+	 </div>
+
+	<a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="logout()" >
+		<span>Esci</span>
+	  </a>
+  </div>
+
+
+  <!-- <div class="sidebar d-flex flex-column">
+	<div class="sidebar-content">
+	  <hr>
+	  <a *ngIf="!(isLoggedIn$ | async)" data-bs-dismiss="offcanvas" class="d-flex align-items-center" routerLink="/preview" routerLinkActive="active">
+		<span>Preview</span>
+	  </a>
+	  <a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="goToHome()">
+		<span>Home</span>
+	  </a>
+	  <a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="logout()">
+		<span>Esci</span>
+	  </a>
+	</div> -->
+
+	<!-- <app-profile *ngIf="(isLoggedIn$ | async)"></app-profile> -->
+
+	<!-- <div *ngIf="isLoggedIn$ | async" class="user-info mt-auto">
+	  <div class="container mt-5 d-flex flex-column align-items-center">
+		<div class="card profile-card text-center mb-4">
+		  <div class="card-body">
+			<div *ngIf="user$ | async as user; else loading">
+			  <h2 class="mb-3">
+				<span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold">{{ user.lastname }}</span>
+			  </h2>
+			  <p class="email">{{ user.email }}</p>
+			  <p>Complimenti grazie a Leonardo Hug hai risparmiato {{ user.saved }} euro</p>
+			</div>
+			<ng-template #loading>
+			  <div class="text-center">
+				<div class="spinner-border text-primary" role="status">
+				  <span class="visually-hidden">Loading...</span>
+				</div>
+			  </div>
+			</ng-template>
+		  </div>
+		</div>
+	  </div>
+	</div> -->
+  <!-- </div> -->

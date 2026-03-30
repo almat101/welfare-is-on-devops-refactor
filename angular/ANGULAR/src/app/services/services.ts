@@ -1,0 +1,9 @@
+export { SaleService } from './services/sale.service';
+export { PersonalDataService } from './services/personal-data.service';
+export { UserService } from './services/user.service';
+export { InteractionService } from './services/interaction.service';
+export { AuthenticationService } from './services/authentication.service';
+export { ProductService } from './services/product.service';
+export { PillarService } from './services/pillar.service';
+export { GymService } from './services/gym.service';
+export { CategoryService } from './services/category.service';

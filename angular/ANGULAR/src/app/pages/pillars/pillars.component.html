@@ -1,0 +1,40 @@
+<!-- <h1>{{pillar?.name}}</h1>
+<p>{{pillar?.description}}</p> -->
+<div class="basic-container">
+
+    <main>
+            <section class="hero"  [ngClass]="pillarClass">
+                <div class="hero-content">
+                    <img [src]="pillarImage" alt="Immagine della categoria" class="hero-image image">
+                </div>
+            </section>
+        
+        <section class="explore-section">
+            <h2>Esplora</h2>
+        </section>
+        
+        <section class="articles container">
+            <div class="row">
+                <ng-container *ngFor="let category of categories">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img [src]="category.cover" class="card-img-top" alt="image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{category.name}}</h5>
+                                <p class="card-text">{{category.link}}</p>
+                                <button class="btn btn-primary" (click)="goToCategory(category.pillar, category.name, category.id)">Vai alla categoria</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </section>
+    </main>
+    
+    
+    
+    
+    
+    
+    
+</div>

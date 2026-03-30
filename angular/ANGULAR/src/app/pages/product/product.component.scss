@@ -1,0 +1,112 @@
+:host-context(body) .basic-container {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: linen;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+	width: 300px;
+	margin: 0 auto;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.prodotto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    width: calc(100% - 500px);
+}
+
+.immagine-prodotto {
+    width: 35%;
+    padding: 20px;
+}
+
+.immagine-prodotto img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.informazioni-prodotto {
+    width: 55%;
+    padding: 20px;
+}
+
+h2 {
+    font-size: xx-large;
+    margin-top: 0;
+    color: #333;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.caratteristiche {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.caratteristiche li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.prezzo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.prezzo-corrente {
+    font-size: 18px;
+    margin-right: 10px;
+    text-decoration: line-through;
+    color: #999;
+}
+
+.prezzo-scontato {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(30, 135, 255);
+}
+
+.pulsante-acquista {
+    background-color: rgb(30, 135, 255);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}

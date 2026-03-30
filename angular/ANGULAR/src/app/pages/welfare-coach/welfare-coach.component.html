@@ -1,0 +1,31 @@
+<div class="basic-container">
+  <main>
+      <section class="hero WELFARE-COACH">
+          <div class="hero-content">
+              <img src="/assets/img/LEONARDO_WELFARE_Campagna_Banner_WelfareCoach.jpg" alt="Immagine della categoria" class="hero-image">
+          </div>
+      </section>
+    <main class="container mt-5">
+      <p>Qui Troverai I tuoi coach</p>
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Sede</th>
+            <th>Reparto</th>
+            <th>Telephone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let coach of coachinfo?.content">
+            <tr *ngIf="coach.sede === personalinfo?.sede && coach.reparto === personalinfo?.reparto || showall == true">
+              <td>{{ coach.firsname + ' ' + coach.lastname }}</td>
+              <td>{{ coach.sede }}</td>
+              <td>{{ coach.reparto }}</td>
+              <td>{{ coach.telephone}}</td>
+            </tr>
+          </ng-container>
+          <button type="button" class="btn btn-primary" data-bs-toggle="button" (click)="filtersTab()" style="margin-top: 15px;"> {{buttonText}}</button>
+      </tbody>
+    </table>
+  </main>

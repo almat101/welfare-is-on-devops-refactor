@@ -1,0 +1,613 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PreviewComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/preview/preview.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The PreviewComponent serves as a dynamic showcase for the well-being pillars within the application,
+offering users a glimpse into various health and wellness categories.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-preview</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./preview.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./preview.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#pillars" >pillars</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/preview/preview.component.ts:52</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>The constructor for the PreviewComponent.
+Currently, it does not perform any specific function.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/pages/preview/preview.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+This method is empty and can be used for initialization logic.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pillars"></a>
+                    <span class="name">
+                        <span ><b>pillars</b></span>
+                        <a href="#pillars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+		{
+		  title: &#x27;Benessere Fisico&#x27;,
+		  description: &#x27;Collegati a WellHub ed altro&#x27;,
+		  link: &#x27;URL_WELLHUB_APP&#x27;,
+		  image: &#x27;../../../assets/img/fis.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Economico&#x27;,
+		  description: &#x27;Accedi a convenzioni, piattaforma Flexible Benefits, App JoJob ed altro.&#x27;,
+		  link: &#x27;URL_ECONOMIC_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/eco.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Psicologico&#x27;,
+		  description: &#x27;Collegati alla piattaforma Stimulus e all\&#x27;App B4ooks.&#x27;,
+		  link: &#x27;URL_PSYCHOLOGICAL_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/psi.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Familiare&#x27;,
+		  description: &#x27;Collegati a Leonardo Care e Leonardo Summer Camp.&#x27;,
+		  link: &#x27;URL_FAMILY_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/fam.jpg&#x27;
+		}
+	  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/preview/preview.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An array of objects representing different pillars of well-being.
+Each pillar includes a title, description, link to more information, and an image.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component , OnInit} from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+
+/**
+ * The PreviewComponent serves as a dynamic showcase for the well-being pillars within the application,
+ * offering users a glimpse into various health and wellness categories.
+ */
+
+@Component({
+  selector: &#x27;app-preview&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./preview.component.html&#x27;,
+  styleUrl: &#x27;./preview.component.scss&#x27;
+})
+export class PreviewComponent implements OnInit{
+
+	/**
+   * An array of objects representing different pillars of well-being.
+   * Each pillar includes a title, description, link to more information, and an image.
+   */
+	pillars &#x3D; [
+		{
+		  title: &#x27;Benessere Fisico&#x27;,
+		  description: &#x27;Collegati a WellHub ed altro&#x27;,
+		  link: &#x27;URL_WELLHUB_APP&#x27;,
+		  image: &#x27;../../../assets/img/fis.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Economico&#x27;,
+		  description: &#x27;Accedi a convenzioni, piattaforma Flexible Benefits, App JoJob ed altro.&#x27;,
+		  link: &#x27;URL_ECONOMIC_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/eco.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Psicologico&#x27;,
+		  description: &#x27;Collegati alla piattaforma Stimulus e all\&#x27;App B4ooks.&#x27;,
+		  link: &#x27;URL_PSYCHOLOGICAL_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/psi.jpg&#x27;
+		},
+		{
+		  title: &#x27;Benessere Familiare&#x27;,
+		  description: &#x27;Collegati a Leonardo Care e Leonardo Summer Camp.&#x27;,
+		  link: &#x27;URL_FAMILY_WELL_BEING&#x27;,
+		  image: &#x27;../../../assets/img/fam.jpg&#x27;
+		}
+	  ];
+
+	/**
+   * The constructor for the PreviewComponent.
+   * Currently, it does not perform any specific function.
+   */
+	constructor() { }
+
+	/**
+   * A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+   * This method is empty and can be used for initialization logic.
+   */
+  ngOnInit(): void {
+
+  }
+
+
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container mt-5&quot;&gt;
+	&lt;!-- &lt;h1 class&#x3D;&quot;text-center mb-4&quot;&gt;Benvenuti su Leonardo Hug&lt;/h1&gt; --&gt;
+
+	&lt;div id&#x3D;&quot;welfareCarousel&quot; class&#x3D;&quot;carousel slide&quot; data-bs-ride&#x3D;&quot;carousel&quot;&gt;
+	  &lt;div class&#x3D;&quot;carousel-indicators&quot;&gt;
+		&lt;button type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide-to&#x3D;&quot;0&quot; class&#x3D;&quot;active&quot; aria-current&#x3D;&quot;true&quot; aria-label&#x3D;&quot;Benessere Fisico&quot;&gt;&lt;/button&gt;
+		&lt;button type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide-to&#x3D;&quot;1&quot; aria-label&#x3D;&quot;Benessere Economico&quot;&gt;&lt;/button&gt;
+		&lt;button type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide-to&#x3D;&quot;2&quot; aria-label&#x3D;&quot;Benessere Psicologico&quot;&gt;&lt;/button&gt;
+		&lt;button type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide-to&#x3D;&quot;3&quot; aria-label&#x3D;&quot;Benessere Familiare&quot;&gt;&lt;/button&gt;
+	  &lt;/div&gt;
+	  &lt;div class&#x3D;&quot;carousel-inner&quot;&gt;
+		&lt;div *ngFor&#x3D;&quot;let pillar of pillars; let i &#x3D; index&quot; class&#x3D;&quot;carousel-item&quot; [class.active]&#x3D;&quot;i &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+		  &lt;img [src]&#x3D;&quot;pillar.image&quot; class&#x3D;&quot;d-block w-100&quot; [alt]&#x3D;&quot;pillar.title&quot;&gt;
+		  &lt;div class&#x3D;&quot;carousel-caption d-none d-md-block&quot;&gt;
+			&lt;h5&gt;{{ pillar.title }}&lt;/h5&gt;
+			&lt;p&gt;{{ pillar.description }}&lt;/p&gt;
+			&lt;!-- &lt;a [href]&#x3D;&quot;pillar.link&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Scopri di più&lt;/a&gt; --&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;button class&#x3D;&quot;carousel-control-prev&quot; type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide&#x3D;&quot;prev&quot;&gt;
+		&lt;span class&#x3D;&quot;carousel-control-prev-icon&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;span class&#x3D;&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+	  &lt;/button&gt;
+	  &lt;button class&#x3D;&quot;carousel-control-next&quot; type&#x3D;&quot;button&quot; data-bs-target&#x3D;&quot;#welfareCarousel&quot; data-bs-slide&#x3D;&quot;next&quot;&gt;
+		&lt;span class&#x3D;&quot;carousel-control-next-icon&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/span&gt;
+		&lt;span class&#x3D;&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+	  &lt;/button&gt;
+	&lt;/div&gt;
+  &lt;/div&gt;
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container mt-5">	<!-- <h1 class="text-center mb-4">Benvenuti su Leonardo Hug</h1> -->	<div id="welfareCarousel" class="carousel slide" data-bs-ride="carousel">	  <div class="carousel-indicators">		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Benessere Fisico"></button>		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="1" aria-label="Benessere Economico"></button>		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="2" aria-label="Benessere Psicologico"></button>		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="3" aria-label="Benessere Familiare"></button>	  </div>	  <div class="carousel-inner">		<div *ngFor="let pillar of pillars; let i = index" class="carousel-item" [class.active]="i === 0">		  <img [src]="pillar.image" class="d-block w-100" [alt]="pillar.title">		  <div class="carousel-caption d-none d-md-block">			<h5>{{ pillar.title }}</h5>			<p>{{ pillar.description }}</p>			<!-- <a [href]="pillar.link" class="btn btn-primary">Scopri di più</a> -->		  </div>		</div>	  </div>	  <button class="carousel-control-prev" type="button" data-bs-target="#welfareCarousel" data-bs-slide="prev">		<span class="carousel-control-prev-icon" aria-hidden="true"></span>		<span class="visually-hidden">Previous</span>	  </button>	  <button class="carousel-control-next" type="button" data-bs-target="#welfareCarousel" data-bs-slide="next">		<span class="carousel-control-next-icon" aria-hidden="true"></span>		<span class="visually-hidden">Next</span>	  </button>	</div>  </div></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PreviewComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PreviewComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

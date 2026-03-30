@@ -1,0 +1,140 @@
+<!-- <div class="modal-header">
+	<button type="button" class="btn-close" aria-label="Close" (click)="closeRegisterModal()"></button>
+  </div>
+  <div class="modal-body">
+
+		<form [formGroup]="registerForm" (ngSubmit)="register()">
+			<h1 class="h3 mb-3 fw-normal">Crea un account</h1>
+			<hr>
+			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+				<p *ngFor="let msg of errorMsg">{{msg}}</p>
+			</div>
+
+			<div class="form-floating mb-3">
+			<input
+				type="text"
+				class="form-control"
+				id="firstname"
+				placeholder="Firstname"
+				formControlName="firstname"
+				#firstnameInput
+				(blur)="nameBlurred()">
+			<label for="firstname">Nome</label>
+			<div *ngIf="isNameBlurred ?? (registerForm.get('firstname')?.invalid)">
+				<div *ngIf="registerForm.get('firstname')?.hasError('required')" class="text-danger">Il nome è obbligatorio.</div>
+			</div>
+			</div>
+
+			<div class="form-floating mb-3">
+			<input type="text" class="form-control" id="lastname" placeholder="Lastname" formControlName="lastname">
+			<label for="lastname">Cognome</label>
+			<div *ngIf="registerForm.get('lastname')?.touched && (registerForm.get('lastname')?.invalid)">
+				<div *ngIf="registerForm.get('lastname')?.hasError('required')" class="text-danger">Il cognome è obbligatorio</div>
+			</div>
+			</div>
+
+			<div class="form-floating mb-3">
+			<input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" formControlName="email">
+			<label for="registerEmail">Indirizzo email</label>
+			<div *ngIf="registerForm.get('email')?.touched && (registerForm.get('email')?.invalid)">
+				<div *ngIf="registerForm.get('email')?.hasError('required')" class="text-danger">L'idirizzo email è richiesto.</div>
+				<div *ngIf="registerForm.get('email')?.hasError('pattern')" class="text-danger">Per favore inserisci un indizzo email valido.</div>
+			</div>
+			</div>
+
+			<div class="form-floating mb-3 position-relative">
+			<input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="registerPassword" placeholder="Password" formControlName="password">
+			<label for="registerPassword">Password</label>
+			<button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">
+				<i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+			</button>
+			<div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+				<div *ngIf="registerForm.get('password')?.hasError('required')" class="text-danger">La password è richiesta.</div>
+				<div *ngIf="registerForm.get('password')?.hasError('minlength')" class="text-danger">Password must be at least 8 characters long.</div>
+				<div *ngIf="hasPatternError('password', specialCharPattern)" class="text-danger">Password must contain at least one special character.</div>
+				<div *ngIf="hasPatternError('password', digitPattern)" class="text-danger">Password must contain at least one digit.</div>
+				<div *ngIf="hasPatternError('password', lowerCasePattern)" class="text-danger">Password must contain at least one lowercase letter.</div>
+				<div *ngIf="hasPatternError('password', upperCasePattern)" class="text-danger">Password must contain at least one uppercase letter.</div>
+			</div>
+			</div>
+			<button class="btn btn-dark w-100 py-2 mb-3" type="submit" [disabled]="registerForm.invalid">
+				<em class="fas fa-sign-in-alt">&nbsp;Crea un account</em>
+			</button>
+			<hr>
+			<div>
+				Hai già un account?&nbsp;
+				<button (click)="openLoginModal()" type="button" class="btn btn-link">
+				Accedi qui!
+				</button>
+			</div>
+		</form>
+
+	</div> -->
+
+	<div class="modal-header">
+		<button type="button" class="btn-close" aria-label="Close" (click)="closeRegisterModal()"></button>
+	  </div>
+	  <div class="modal-body">
+		<form [formGroup]="registerForm" (ngSubmit)="register()">
+		  <h1 class="h3 mb-3 fw-normal">Crea un account</h1>
+		  <hr>
+		  <div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+			<p *ngFor="let msg of errorMsg">{{msg}}</p>
+		  </div>
+
+		  <div class="form-floating mb-3">
+			<input type="text" class="form-control" id="firstname" placeholder="Firstname" formControlName="firstname" #firstnameInput (focus)="onFocus('firstname')" (blur)="onBlur('firstname')">
+			<label for="firstname">Nome</label>
+			<div *ngIf="controlState['firstname']?.blurred && controlState['firstname']?.interacted &&  registerForm.get('firstname')?.invalid">
+			  <div *ngIf="registerForm.get('firstname')?.hasError('required')" class="text-danger">Il nome è obbligatorio.</div>
+			</div>
+		  </div>
+
+		  <div class="form-floating mb-3">
+			<input type="text" class="form-control" id="lastname" placeholder="Lastname" formControlName="lastname" (focus)="onFocus('lastname')" (blur)="onBlur('lastname')">
+			<label for="lastname">Cognome</label>
+			<div *ngIf="controlState['lastname']?.blurred  && controlState['lastname']?.interacted && registerForm.get('lastname')?.invalid">
+			  <div *ngIf="registerForm.get('lastname')?.hasError('required')" class="text-danger">Il cognome è obbligatorio.</div>
+			</div>
+		  </div>
+
+		  <div class="form-floating mb-3">
+			<input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" formControlName="email" (focus)="onFocus('email')" (blur)="onBlur('email')">
+			<label for="registerEmail">Indirizzo email</label>
+			<div *ngIf="controlState['email']?.blurred  && controlState['email']?.interacted &&  registerForm.get('email')?.invalid">
+			  <div *ngIf="registerForm.get('email')?.hasError('required')" class="text-danger">L'indirizzo email è richiesto.</div>
+			  <div *ngIf="registerForm.get('email')?.hasError('pattern')" class="text-danger">Per favore inserisci un indirizzo email valido.</div>
+			</div>
+		  </div>
+
+		  <div class="form-floating mb-3 position-relative">
+			<input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="registerPassword" placeholder="Password" formControlName="password" (focus)="onFocus('password')" (blur)="onBlur('password')">
+			<label for="registerPassword">Password</label>
+			<button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">
+			  <i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+			</button>
+			<div *ngIf="controlState['password']?.blurred  && controlState['password']?.interacted &&  registerForm.get('password')?.invalid">
+			  <div *ngIf="registerForm.get('password')?.hasError('required')" class="text-danger">La password è richiesta.</div>
+			  <div *ngIf="registerForm.get('password')?.hasError('minlength')" class="text-danger">La password deve essere lunga almeno 8 caratteri.</div>
+			</div>
+		  </div>
+
+
+		  <button class="btn btn-dark w-100 py-2 mb-3" type="submit" [disabled]="registerForm.invalid">
+			<!-- <em class="fas fa-sign-in-alt">&nbsp;Registrati</em> -->
+			&nbsp;Registrati
+		  </button>
+
+		  <!-- <div>
+			Hai già un account?&nbsp;
+			<button (click)="openLoginModal()" type="button" class="btn btn-link">
+			Accedi qui!
+			</button>
+		</div> -->
+
+		  <!-- <button class="w-100 btn btn-lg btn-primary" type="submit">Registrati</button> -->
+		  <hr class="my-4">
+		  <small class="text-muted">Hai già un account? <button type="button" class="btn btn-link p-1 mb-1" (click)="openLoginModal()">Accedi</button></small>
+		</form>
+	  </div>
+

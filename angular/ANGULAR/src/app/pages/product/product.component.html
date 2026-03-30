@@ -1,0 +1,75 @@
+<!-- <div class="basic-container">
+    <main>
+        <section class="prodotto">
+            <div class="immagine-prodotto">
+                <img src="https://static1.squarespace.com/static/530cd931e4b0e49b19b254ec/t/63c6068bcdde5a79958619df/1673922187854/final+logo++copy-1+%281%29.png?format=1500w" alt="foto prodotto">
+            </div>
+            <div class="informazioni-prodotto">
+                <h2>{{product?.name}}</h2>
+                <p>{{product?.description}}</p>
+                <ul class="caratteristiche">
+                    <li>{{product?.description}}</li>
+                    <li>{{product?.description}}</li>
+                    <li>{{product?.description}}</li>
+                    <li>{{product?.description}}</li>
+                </ul>
+                <div class="prezzo">
+                    <span class="prezzo-corrente">€{{product?.price}}</span>
+                    <span class="prezzo-scontato">€{{product?.finalPrice}}</span>
+                </div>
+                <button class="pulsante-acquista" *ngIf="product" (click)="purchase(product.id!, 1)">Acquista ora</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Esempio sito web</p>
+    </footer>
+</div> -->
+
+<div class="container mt-5">
+	<div *ngIf="products.length > 0; else loading">
+		<div class="card mb-4" *ngFor="let product of products">
+			<div class="card-body">
+        <img [src]="product.image_url ? product.image_url : 'https://static1.squarespace.com/static/530cd931e4b0e49b19b254ec/t/63c6068bcdde5a79958619df/1673922187854/final+logo++copy-1+%281%29.png?format=1500w'" class="card-img-top" alt="Product Image">
+				<h5 class="card-title">{{ product.name }}</h5>
+				<p class="card-text">{{ product.description }}</p>
+        <a *ngIf="product.link" [href]="product.link">Vai all'app!</a>
+				<p class="card-text prezzo-corrente"><strong>Price:</strong> {{ product.price | currency }}</p>
+				<p class="prezzo-scontato">€{{product?.finalPrice}}</p>
+				<button class="btn btn-primary m-2" *ngIf="product"  (click)="purchase(product.id!, 1)">Acquista</button>
+				<button class="btn btn-secondary"  data-bs-toggle="button" (click)="favourite(product.id!)">
+					<i class="bi bi-bookmark-star"></i>
+				</button>
+				</div>
+		</div>
+	</div>
+	<ng-template #loading>
+	  <div class="text-center">
+		<div class="spinner-border text-primary" role="status">
+		  <span class="visually-hidden">Loading...</span>
+		</div>
+	  </div>
+	</ng-template>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1200;">
+	<div class="toast align-items-center text-bg-primary border-0" id="purchaseToast" role="alert" aria-live="assertive" aria-atomic="true">
+		<div class="d-flex">
+		  <div class="toast-body">
+			<div class="toast-body">
+				Acquisto avvenuto!
+			</div>
+		  </div>
+		  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+	  </div>
+  <!-- <div id="purchaseToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Notification</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Acquisto avvenuto!
+    </div>
+  </div> -->
+</div>

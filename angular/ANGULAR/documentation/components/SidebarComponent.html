@@ -1,0 +1,1168 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SidebarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/sidebar/sidebar.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The SidebarComponent is a crucial navigational element in the Angular application, designed to enhance user experience by providing easy access to key sections such as Home, Profile, Pillars, Favourites, and Gym.
+It dynamically adjusts its content and visibility of certain links based on the user&#39;s authentication status, leveraging the TokenService to determine if a user is logged in.
+The component employs Angular&#39;s Router for seamless navigation across different views without reloading the page.
+The inclusion of the PillarService enables the sidebar to fetch and display data related to various wellness pillars, making it not just a navigation tool but also a means to engage users with content relevant to their interests.
+Its standalone nature, combined with the use of CommonModule and RouterLink directives, underscores its modular design, facilitating easy integration into any part of the application.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sidebar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterLink</code>
+                            <code>RouterLinkActive</code>
+                                <code><a href="../components/ProfileComponent.html" target="_self" >ProfileComponent</a></code>
+                                <code><a href="../components/FavouritesComponent.html" target="_self" >FavouritesComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sidebar.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./sidebar.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isLoggedIn$" >isLoggedIn$</a>
+                            </li>
+                            <li>
+                                <a href="#pillars" >pillars</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#goToFav" >goToFav</a>
+                            </li>
+                            <li>
+                                <a href="#goToGym" >goToGym</a>
+                            </li>
+                            <li>
+                                <a href="#goToHome" >goToHome</a>
+                            </li>
+                            <li>
+                                <a href="#goToPillar" >goToPillar</a>
+                            </li>
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openLoginModal" >openLoginModal</a>
+                            </li>
+                            <li>
+                                <a href="#openRegisterModal" >openRegisterModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>, modalService: NgbModal, pillar: <a href="../injectables/PillarService.html" target="_self">PillarService</a>, rerouter: RouteReuseStrategy)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructs the SidebarComponent with necessary dependencies for navigation, authentication, modal dialogs, and pillar data management.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The Angular Router for navigation.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tokenService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The service for managing authentication tokens.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The service for managing modal dialogs.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>pillar</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PillarService.html" target="_self" >PillarService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>rerouter</td>
+                                                  
+                                                        <td>
+                                                                    <code>RouteReuseStrategy</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The strategy for reusing routes or reloading components on navigation.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToFav"></a>
+                    <span class="name">
+                        <span ><b>goToFav</b></span>
+                        <a href="#goToFav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToFav()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the favourites page.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToGym"></a>
+                    <span class="name">
+                        <span ><b>goToGym</b></span>
+                        <a href="#goToGym"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToGym()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the gym page.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToHome"></a>
+                    <span class="name">
+                        <span ><b>goToHome</b></span>
+                        <a href="#goToHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToHome()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the home page.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToPillar"></a>
+                    <span class="name">
+                        <span ><b>goToPillar</b></span>
+                        <a href="#goToPillar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToPillar(pillar: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to a specific pillar page.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pillar</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The name of the pillar to navigate to.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The ID of the pillar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Logs out the user and navigates to the preview page.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initializes the component by setting up the isLoggedIn$ observable and fetching the pillars.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openLoginModal"></a>
+                    <span class="name">
+                        <span ><b>openLoginModal</b></span>
+                        <a href="#openLoginModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openLoginModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Opens the login modal dialog. Not used in the current implementation.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openRegisterModal"></a>
+                    <span class="name">
+                        <span ><b>openRegisterModal</b></span>
+                        <a href="#openRegisterModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openRegisterModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:117</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Opens the register modal dialog.Not used in the current implementation.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoggedIn$"></a>
+                    <span class="name">
+                        <span ><b>isLoggedIn$</b></span>
+                        <a href="#isLoggedIn$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An Observable that emits the user&#39;s login status.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pillars"></a>
+                    <span class="name">
+                        <span ><b>pillars</b></span>
+                        <a href="#pillars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/sidebar/sidebar.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Holds the list of pillars fetched from the PillarService.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component ,OnInit} from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { TokenService } from &#x27;../../services/token/token.service&#x27;;
+import { Router, RouteReuseStrategy } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { LoginComponent } from &#x27;../login/login.component&#x27;;
+import { RegisterComponent } from &#x27;../register/register.component&#x27;;
+import { RouterLink,RouterLinkActive } from &#x27;@angular/router&#x27;;
+import { ProfileComponent } from &#x27;../profile/profile.component&#x27;;
+import { FavouritesComponent } from &#x27;../favourites/favourites.component&#x27;;
+import { PillarService } from &#x27;../../services/services&#x27;;
+
+/**
+ * The SidebarComponent is a crucial navigational element in the Angular application, designed to enhance user experience by providing easy access to key sections such as Home, Profile, Pillars, Favourites, and Gym.
+ * It dynamically adjusts its content and visibility of certain links based on the user&#x27;s authentication status, leveraging the TokenService to determine if a user is logged in.
+ * The component employs Angular&#x27;s Router for seamless navigation across different views without reloading the page.
+ * The inclusion of the PillarService enables the sidebar to fetch and display data related to various wellness pillars, making it not just a navigation tool but also a means to engage users with content relevant to their interests.
+ * Its standalone nature, combined with the use of CommonModule and RouterLink directives, underscores its modular design, facilitating easy integration into any part of the application.
+ */
+
+@Component({
+  selector: &#x27;app-sidebar&#x27;,
+  standalone: true,
+  imports: [CommonModule,RouterLink,RouterLinkActive,ProfileComponent,FavouritesComponent],
+  templateUrl: &#x27;./sidebar.component.html&#x27;,
+  styleUrl: &#x27;./sidebar.component.scss&#x27;
+})
+export class SidebarComponent implements OnInit{
+
+   /**
+   * Holds the list of pillars fetched from the PillarService.
+   */
+	pillars: any;
+
+	/**
+   * An Observable that emits the user&#x27;s login status.
+   */
+	isLoggedIn$!: Observable&lt;boolean&gt;;
+
+	/**
+	 * Constructs the SidebarComponent with necessary dependencies for navigation, authentication, modal dialogs, and pillar data management.
+	 * @param router - The Angular Router for navigation.
+	 * @param tokenService - The service for managing authentication tokens.
+	 * @param modalService - The service for managing modal dialogs.
+	 * @param pillarService - The service for fetching pillar data.
+	 * @param rerouter - The strategy for reusing routes or reloading components on navigation.
+	 */
+	constructor(
+		private router : Router,
+		private tokenService: TokenService,
+		private modalService: NgbModal,
+		private pillar: PillarService,
+		private rerouter: RouteReuseStrategy,
+	){ }
+
+
+   /**
+   * Initializes the component by setting up the isLoggedIn$ observable and fetching the pillars.
+   */
+	ngOnInit() {
+
+		this.isLoggedIn$ &#x3D; this.tokenService.isLoggedIn;
+		this.pillar.getPillar().subscribe((pillarOBJ) &#x3D;&gt; {
+			this.pillars &#x3D; pillarOBJ;
+			// console.log(this.pillars);
+		  });
+	}
+
+   /**
+   * Navigates to a specific pillar page.
+   * @param pillar The name of the pillar to navigate to.
+   * @param id The ID of the pillar.
+   */
+	goToPillar(pillar: string, id: string) {
+		this.rerouter.shouldReuseRoute &#x3D; function() {
+			return false;
+		};
+		this.router.navigate([&#x27;home&#x27;, pillar, id]);
+	}
+
+   /**
+   * Logs out the user and navigates to the preview page.
+   */
+	logout() {
+		this.tokenService.removeToken();
+		this.router.navigate([&#x27;preview&#x27;]);
+	}
+
+   /**
+   * Navigates to the home page.
+   */
+	goToHome(){
+		console.log(&#x27;go to home&#x27;);
+		this.router.navigate([&#x27;home&#x27;]);
+	}
+
+
+   /**
+   * Opens the login modal dialog. Not used in the current implementation.
+   */
+	openLoginModal() {
+		this.modalService.open(LoginComponent, { centered: true });
+	}
+
+   /**
+   * Opens the register modal dialog.Not used in the current implementation.
+   */
+	openRegisterModal() {
+	this.modalService.open(RegisterComponent, { centered: true });
+	}
+
+   /**
+   * Navigates to the favourites page.
+   */
+	goToFav(){
+		this.router.navigate([&#x27;home/favourites&#x27;]);
+	}
+
+   /**
+   * Navigates to the gym page.
+   */
+	goToGym(){
+		this.router.navigate([&#x27;home/gym&#x27;]);
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;sidebar&quot;&gt;
+	&lt;hr&gt;
+	&lt;div class&#x3D;&quot;d-flex align-items-start separator&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-dash&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+	&lt;a *ngIf&#x3D;&quot;!(isLoggedIn$ | async)&quot; class&#x3D;&quot;d-flex align-items-center&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; routerLink&#x3D;&quot;/preview&quot; routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+        &lt;span&gt;Preview&lt;/span&gt;
+    &lt;/a&gt;
+	&lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; class&#x3D;&quot;d-flex align-items-center&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; (click)&#x3D;&quot;goToHome()&quot;  routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+        &lt;span&gt;Home&lt;/span&gt;
+    &lt;/a&gt;
+
+	&lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; class&#x3D;&quot;d-flex align-items-center&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; (click)&#x3D;&quot;goToFav()&quot;  routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+        &lt;span&gt;Preferiti&lt;/span&gt;
+    &lt;/a&gt;
+
+	&lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; class&#x3D;&quot;d-flex align-items-center&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; (click)&#x3D;&quot;goToGym()&quot;  routerLinkActive&#x3D;&quot;active-link&quot;&gt;
+        &lt;span&gt;Palestre&lt;/span&gt;
+    &lt;/a&gt;
+
+	 &lt;div *ngIf&#x3D;&quot;(isLoggedIn$ | async)&quot; class&#x3D;&quot;pillars-links&quot; &gt;
+	   &lt;a *ngFor&#x3D;&quot;let pillarOBJ of pillars&quot; (click)&#x3D;&quot;goToPillar(pillarOBJ.name, pillarOBJ.id)&quot; routerLinkActive&#x3D;&quot;active-link&quot; class&#x3D;&quot;d-flex align-items-center&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot;&gt;
+		 &lt;span&gt;{{ pillarOBJ.name }}&lt;/span&gt;
+	   &lt;/a&gt;
+	 &lt;/div&gt;
+
+	&lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; class&#x3D;&quot;d-flex align-items-center&quot; (click)&#x3D;&quot;logout()&quot; &gt;
+		&lt;span&gt;Esci&lt;/span&gt;
+	  &lt;/a&gt;
+  &lt;/div&gt;
+
+
+  &lt;!-- &lt;div class&#x3D;&quot;sidebar d-flex flex-column&quot;&gt;
+	&lt;div class&#x3D;&quot;sidebar-content&quot;&gt;
+	  &lt;hr&gt;
+	  &lt;a *ngIf&#x3D;&quot;!(isLoggedIn$ | async)&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; class&#x3D;&quot;d-flex align-items-center&quot; routerLink&#x3D;&quot;/preview&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+		&lt;span&gt;Preview&lt;/span&gt;
+	  &lt;/a&gt;
+	  &lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; class&#x3D;&quot;d-flex align-items-center&quot; (click)&#x3D;&quot;goToHome()&quot;&gt;
+		&lt;span&gt;Home&lt;/span&gt;
+	  &lt;/a&gt;
+	  &lt;a *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; data-bs-dismiss&#x3D;&quot;offcanvas&quot; class&#x3D;&quot;d-flex align-items-center&quot; (click)&#x3D;&quot;logout()&quot;&gt;
+		&lt;span&gt;Esci&lt;/span&gt;
+	  &lt;/a&gt;
+	&lt;/div&gt; --&gt;
+
+	&lt;!-- &lt;app-profile *ngIf&#x3D;&quot;(isLoggedIn$ | async)&quot;&gt;&lt;/app-profile&gt; --&gt;
+
+	&lt;!-- &lt;div *ngIf&#x3D;&quot;isLoggedIn$ | async&quot; class&#x3D;&quot;user-info mt-auto&quot;&gt;
+	  &lt;div class&#x3D;&quot;container mt-5 d-flex flex-column align-items-center&quot;&gt;
+		&lt;div class&#x3D;&quot;card profile-card text-center mb-4&quot;&gt;
+		  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+			&lt;div *ngIf&#x3D;&quot;user$ | async as user; else loading&quot;&gt;
+			  &lt;h2 class&#x3D;&quot;mb-3&quot;&gt;
+				&lt;span class&#x3D;&quot;fw-bold&quot;&gt;{{ user.firsname }}&lt;/span&gt; &lt;span class&#x3D;&quot;fw-bold&quot;&gt;{{ user.lastname }}&lt;/span&gt;
+			  &lt;/h2&gt;
+			  &lt;p class&#x3D;&quot;email&quot;&gt;{{ user.email }}&lt;/p&gt;
+			  &lt;p&gt;Complimenti grazie a Leonardo Hug hai risparmiato {{ user.saved }} euro&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;ng-template #loading&gt;
+			  &lt;div class&#x3D;&quot;text-center&quot;&gt;
+				&lt;div class&#x3D;&quot;spinner-border text-primary&quot; role&#x3D;&quot;status&quot;&gt;
+				  &lt;span class&#x3D;&quot;visually-hidden&quot;&gt;Loading...&lt;/span&gt;
+				&lt;/div&gt;
+			  &lt;/div&gt;
+			&lt;/ng-template&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;/div&gt; --&gt;
+  &lt;!-- &lt;/div&gt; --&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="sidebar">	<hr>	<div class="d-flex align-items-start separator">        <i class="bi bi-dash"></i>    </div>	<a *ngIf="!(isLoggedIn$ | async)" class="d-flex align-items-center" data-bs-dismiss="offcanvas" routerLink="/preview" routerLinkActive="active-link">        <span>Preview</span>    </a>	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToHome()"  routerLinkActive="active-link">        <span>Home</span>    </a>	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToFav()"  routerLinkActive="active-link">        <span>Preferiti</span>    </a>	<a *ngIf="isLoggedIn$ | async" class="d-flex align-items-center" data-bs-dismiss="offcanvas" (click)="goToGym()"  routerLinkActive="active-link">        <span>Palestre</span>    </a>	 <div *ngIf="(isLoggedIn$ | async)" class="pillars-links" >	   <a *ngFor="let pillarOBJ of pillars" (click)="goToPillar(pillarOBJ.name, pillarOBJ.id)" routerLinkActive="active-link" class="d-flex align-items-center" data-bs-dismiss="offcanvas">		 <span>{{ pillarOBJ.name }}</span>	   </a>	 </div>	<a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="logout()" >		<span>Esci</span>	  </a>  </div>  <!-- <div class="sidebar d-flex flex-column">	<div class="sidebar-content">	  <hr>	  <a *ngIf="!(isLoggedIn$ | async)" data-bs-dismiss="offcanvas" class="d-flex align-items-center" routerLink="/preview" routerLinkActive="active">		<span>Preview</span>	  </a>	  <a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="goToHome()">		<span>Home</span>	  </a>	  <a *ngIf="isLoggedIn$ | async" data-bs-dismiss="offcanvas" class="d-flex align-items-center" (click)="logout()">		<span>Esci</span>	  </a>	</div> -->	<!-- <app-profile *ngIf="(isLoggedIn$ | async)"></app-profile> -->	<!-- <div *ngIf="isLoggedIn$ | async" class="user-info mt-auto">	  <div class="container mt-5 d-flex flex-column align-items-center">		<div class="card profile-card text-center mb-4">		  <div class="card-body">			<div *ngIf="user$ | async as user; else loading">			  <h2 class="mb-3">				<span class="fw-bold">{{ user.firsname }}</span> <span class="fw-bold">{{ user.lastname }}</span>			  </h2>			  <p class="email">{{ user.email }}</p>			  <p>Complimenti grazie a Leonardo Hug hai risparmiato {{ user.saved }} euro</p>			</div>			<ng-template #loading>			  <div class="text-center">				<div class="spinner-border text-primary" role="status">				  <span class="visually-hidden">Loading...</span>				</div>			  </div>			</ng-template>		  </div>		</div>	  </div>	</div> -->  <!-- </div> --></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SidebarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SidebarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

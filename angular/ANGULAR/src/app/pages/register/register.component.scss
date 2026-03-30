@@ -1,0 +1,66 @@
+form {
+	max-width: 400px;
+	margin: auto;
+	padding: 15px;
+	text-align: center;
+
+	h1 {
+	  margin-bottom: 30px;
+	  font-weight: normal;
+	  color : black;
+	}
+
+	.form-floating {
+	  margin-bottom: 20px;
+
+	  input {
+		height: calc(3.5rem + 2px);
+	  }
+	}
+
+	.form-check {
+	  text-align: start;
+	  margin: 20px 0;
+
+	  label {
+		font-weight: normal;
+	  }
+	}
+
+	.btn-primary {
+	  height: calc(3.5rem + 2px);
+	  font-size: 1.25rem;
+	}
+
+	.btn-link
+	{
+		color: black;
+	}
+
+	.mt-5 {
+	  margin-top: 3rem;
+	}
+
+	.mb-3 {
+	  margin-bottom: 1rem;
+	}
+
+	.text-body-secondary {
+	  color: #6c757d; /* Or any other color you prefer */
+	}
+  }
+
+  .btn-transparent {
+	background-color: transparent;
+	border: none;
+	padding: 0.5rem; // Adjust padding as needed
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .btn-transparent .bi {
+	font-size: 1.25rem; // Adjust icon size as needed
+	color: #000; // Adjust icon color as needed
+  }

@@ -1,0 +1,182 @@
+<div class="modal-header">
+	<button type="button" class="btn-close" aria-label="Close" (click)="closeLoginModal()"></button>
+  </div>
+  <div class="modal-body">
+
+		<form [formGroup]="loginForm" (ngSubmit)="login()">
+			<h1 class="h3 mb-3 fw-normal">Accedi</h1>
+			<hr>
+			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+				<p *ngFor="let msg of errorMsg">{{msg}}</p>
+			</div>
+			<div class="form-floating mb-3">
+			<input
+				type="email"
+				class="form-control"
+				id="loginEmail"
+				placeholder="name@example.com"
+				formControlName="email"
+				#emailInput
+				(blur)="onEmailBlur()"
+				(focus)="onEmailFocus()">
+			<label for="loginEmail">Indirizzo Email</label>
+			 <div *ngIf="emailBlurred && emailInteracted && loginForm.get('email')?.invalid">
+				<div *ngIf="loginForm.get('email')?.hasError('required')" class="text-danger">L'indirizzo email è richiesto</div>
+				<div *ngIf="loginForm.get('email')?.hasError('pattern')" class="text-danger">Per favore inserisci un'idirizzo email valido.</div>
+			</div>
+			</div>
+
+			<div class="form-floating mb-3 position-relative">
+			<input
+				[type]="passwordVisible ? 'text' : 'password'"
+				class="form-control" id="loginPassword"
+				placeholder="Password"
+				formControlName="password"
+				(focus)="onPasswordFocus()"
+				(blur)="onPasswordBlur()">
+			<label for="loginPassword">Password</label>
+			<button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">
+				<i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+			</button>
+			<div *ngIf="passwordBlurred && passwordInteracted && loginForm.get('password')?.invalid">
+				<div *ngIf="loginForm.get('password')?.hasError('required')" class="text-danger">La password è richiesta</div>
+				<div *ngIf="loginForm.get('password')?.hasError('minlength')" class="text-danger">La password deve essere lunga almeno 8 caratteri.</div>
+				<div *ngIf="hasPatternError('password', specialCharPattern)" class="text-danger">La password deve contenere almeno un carattere speciale.</div>
+				<div *ngIf="hasPatternError('password', digitPattern)" class="text-danger">La password deve contenere almeno una cifra.</div>
+				<div *ngIf="hasPatternError('password', lowerCasePattern)" class="text-danger">La password deve contenere almeno una lettera minuscola.</div>
+				<div *ngIf="hasPatternError('password', upperCasePattern)" class="text-danger">La password deve contenere almeno una lettera maiuscola.</div>
+			</div>
+			</div>
+
+
+
+		<button class="btn btn-custom w-100 py-2" type="submit" [disabled]="loginForm.invalid">
+			 Accedi
+		</button>
+
+	<div class ="mt-3">
+		Non hai un account?&nbsp;
+		<button (click)="openRegisterModal()" type="button" class="btn btn-link">
+		Registrati qui!
+		</button>
+	</div>
+	<hr>
+	<div><button type="button" class="btn btn-custom" onclick="window.location.href='http://localhost:8088/api/v1/oauth2/authorization/google'">
+			Accedi con Google
+		</button>
+
+	</div>
+</form>
+
+</div>
+
+<!--
+	</div>
+</div>
+</div>
+</div> -->
+
+
+<!-- <form [formGroup]="loginForm" (ngSubmit)="login()">
+	<h1 class="h3 mb-3 fw-normal">Login</h1>
+	<hr>
+	<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+		<p *ngFor="let msg of errorMsg">{{msg}}</p>
+	</div>
+	<div class="form-floating mb-3">
+	  <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+	  <label for="email">Email address</label>
+	  <div *ngIf="loginForm.get('email')?.touched && (loginForm.get('email')?.invalid)">
+		<div *ngIf="loginForm.get('email')?.hasError('required')" class="text-danger">Email is required.</div>
+		<div *ngIf="loginForm.get('email')?.hasError('pattern')" class="text-danger">Please enter a valid email address.</div>
+	  </div>
+	</div>
+
+	<div class="form-floating mb-3 position-relative">
+	  <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="password" placeholder="Password" formControlName="password">
+	  <label for="password">Password</label>
+	  <button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">
+		<i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+	  </button>
+	  <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+		<div *ngIf="loginForm.get('password')?.hasError('required')" class="text-danger">Password is required.</div>
+		<div *ngIf="loginForm.get('password')?.hasError('minlength')" class="text-danger">Password must be at least 8 characters long.</div>
+		<div *ngIf="hasPatternError('password', specialCharPattern)" class="text-danger">Password must contain at least one special character.</div>
+		<div *ngIf="hasPatternError('password', digitPattern)" class="text-danger">Password must contain at least one digit.</div>
+		<div *ngIf="hasPatternError('password', lowerCasePattern)" class="text-danger">Password must contain at least one lowercase letter.</div>
+		<div *ngIf="hasPatternError('password', upperCasePattern)" class="text-danger">Password must contain at least one uppercase letter.</div>
+	  </div>
+	</div> -->
+
+
+	<!--
+	<div class="form-check text-start my-3 form-switch">
+	  <input class="form-check-input" role="switch" type="checkbox" id="rememberMe" formControlName="rememberMe">
+	  <label class="form-check-label" for="rememberMe">Ricordami</label>
+	</div>
+	-->
+
+	<!-- <button class="btn btn-dark w-100 py-2" type="submit" [disabled]="loginForm.invalid">
+		<em class="fas fa-sign-in-alt">&nbsp;Sign in</em>
+	</button>
+
+
+	<div class ="mt-3">
+		Don't have an account?&nbsp;
+		<button (click)="register()" type="button" class="btn btn-link">
+		  Register now
+		</button>
+	</div>
+	<hr>
+	<div>
+		<button type="button" class="btn btn-dark" onclick="window.location.href='api/v1/oauth2/authorization/google'">
+			<a class="forgot-password-link" [routerLink]="['/reset-password']">Hai dimenticato la password?</a>
+			Sign In with Google
+		</button>
+	</div>
+  </form> -->
+
+
+
+<!--
+<div class="container-fluid card login-container">
+	<h3 class="text-center">Login</h3>
+	<hr>
+	<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">
+	  <p *ngFor="let msg of errorMsg">{{msg}}</p>
+	</div>
+	<form [formGroup]="loginForm" (ngSubmit)="login()">
+	  <div class="mb-3">
+		<label for="login" class="form-label">Email address</label>
+		<input formControlName="email" type="email" class="form-control" id="login" placeholder="name@example.com">
+		<div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="text-danger">
+		  <div *ngIf="loginForm.controls['email'].hasError('email')">Email is required.</div>
+		  <div *ngIf="loginForm.controls['email'].hasError('required')">Invalid email address.</div>
+		</div>
+	  </div>
+	  <div class="mb-3">
+		<label for="password" class="form-label">Password</label>
+		<input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+		<div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" class="text-danger">
+		  <div *ngIf="loginForm.controls.password.errors.required">Password is required.</div>
+		  <div *ngIf="loginForm.controls.password.errors.minlength">Password must be at least 6 characters long.</div>
+		</div>
+	  </div>
+	  <div class="d-flex justify-content-between mb-3">
+		<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+		  <em class="fas fa-sign-in-alt">&nbsp;Sign in</em>
+		</button>
+		<div>
+		  Don't have an account?&nbsp;
+		  <button (click)="register()" type="button" class="btn btn-link">
+			Register
+		  </button>
+		</div>
+	  </div>
+	</form>
+</div>
+<div class="btn btn-primary">
+  <button type="button" class="btn btn-primary" onclick="window.location.href='api/v1/oauth2/authorization/google'">
+	Sign In with Google
+  </button>
+</div> -->

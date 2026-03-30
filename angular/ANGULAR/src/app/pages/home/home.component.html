@@ -1,0 +1,73 @@
+<div class="simil-body">
+    <main>
+		 <!-- Toast Notification -->
+		 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+			<div class="toast align-items-center text-bg-primary border-0" id="savedToast" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="d-flex">
+				  <div class="toast-body">
+					<div class="toast-body">
+						Grazie a Leonardo Hug hai risparmiato <span id="savedAmount"></span> euro
+					</div>
+				  </div>
+				  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+			  </div>
+			<!-- <div class="toast" id="savedToast" role="alert" aria-live="assertive" aria-atomic="true">
+			  <div class="toast-header">
+				<strong class="me-auto">Notifica</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			  </div>
+			  <div class="toast-body">
+				Grazie a Leonardo Hug hai risparmiato <span id="savedAmount"></span> euro
+			  </div>
+			</div> -->
+		  </div>
+
+
+		  <!-- <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="d-flex">
+			  <div class="toast-body">
+				Hello, world! This is a toast message.
+			  </div>
+			  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+		  </div> -->
+
+      <section class="explore-section">
+        <div class="elementor-widget-container">
+          <h3>Esplora il meglio di LeonardoHug</h3>
+        </div>
+          <div class="explore-cards">
+              <div class="card" (click)="goToPillar(pillarOBJ.name, pillarOBJ.id)" *ngFor="let pillarOBJ of pillars">
+                  <img [src]="pillarOBJ.image" [alt]="pillarOBJ.name">
+                  <!-- <div class="card-info">
+                      <h2>{{pillarOBJ.name}}</h2>
+                      <p>{{pillarOBJ.description}}</p>
+                  </div> -->
+              </div>
+            </div>
+      </section>
+      <section class="category-section">
+        <div class="elementor-widget-container">
+			<h3>Sfoglia Categorie</h3>
+        </div>
+          <div class="category-cards">
+            <div class="category-card" (click)="goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)" *ngFor="let categoriesOBJ of categories.slice(0, visibleCategoriesCount)">
+                <img [src]="categoriesOBJ.cover" [alt]="categoriesOBJ.name">
+                <h3>{{categoriesOBJ.name}}</h3>
+            </div>
+          </div>
+          <button class="see-more" *ngIf="visibleCategoriesCount < categories.length" (click)="showMoreCategories('')">Vedi di più</button>
+          <div class="elementor-widget-container">
+            <h3>Sfoglia Categorie più visitate</h3>
+          </div>
+          <div class="category-cards">
+            <div class="category-card" (click)="goToCategory(categoriesOBJ.pillar, categoriesOBJ.name, categoriesOBJ.id)" *ngFor="let categoriesOBJ of categories.slice(0, visibleTrendingCategoriesCount)">
+                <img [src]="categoriesOBJ.cover" [alt]="categoriesOBJ.name">
+                <h3>{{categoriesOBJ.name}}</h3>
+            </div>
+          </div>
+          <button class="see-more" *ngIf="visibleTrendingCategoriesCount < categories.length" (click)="showMoreCategories('trending')">Vedi di più</button>
+      </section>
+    </main>
+  </div>

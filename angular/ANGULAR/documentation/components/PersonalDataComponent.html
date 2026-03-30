@@ -1,0 +1,1752 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PersonalDataComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/personal-data/personal-data.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The PersonalDataComponent is designed to provide users with a secure and intuitive interface for managing their personal information within the application.
+It features a comprehensive form where users can input and update details such as their gender, marital status, birthdate, and contact information.
+Utilizing Angular&#39;s powerful reactive forms, the component ensures real-time validation and feedback, enhancing the user experience by making data submission smooth.
+ Interaction with the backend is handled through the PersonalDataService, which facilitates the retrieval and persistence of user data.
+ Upon successful update, users are navigated back to the home page, with error handling mechanisms in place to alert users of any issues during the process.
+ This component is a key part of the user profile management system, emphasizing privacy and user control over their information.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-personal-data</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>ReactiveFormsModule</code>
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./personal-data.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./personal-data.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentYear" >currentYear</a>
+                            </li>
+                            <li>
+                                <a href="#errorMsg" >errorMsg</a>
+                            </li>
+                            <li>
+                                <a href="#isProfilePage" >isProfilePage</a>
+                            </li>
+                            <li>
+                                <a href="#personalDataForm" >personalDataForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#successModal" >successModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadPersonalData" >loadPersonalData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: FormBuilder, personalDataService: <a href="../injectables/PersonalDataService.html" target="_self">PersonalDataService</a>, router: Router, route: ActivatedRoute, modalService: NgbModal)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:84</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructs the PersonalDataComponent with necessary dependencies.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The FormBuilder service for creating the form group.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>personalDataService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PersonalDataService.html" target="_self" >PersonalDataService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The service for fetching and saving personal data.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The Angular Router for navigation.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The current activated route.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>The service for managing modals.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadPersonalData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>loadPersonalData</b></span>
+                        <a href="#loadPersonalData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadPersonalData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetches the user&#39;s personal data and updates the form values.</p>
+<p>This method calls <code>getPersonalData</code> on the <code>personalDataService</code> to asynchronously fetch the user&#39;s personal data.
+Upon successful retrieval, the method uses <code>patchValue</code> to update <code>personalDataForm</code> with the fetched data, ensuring
+the form reflects the user&#39;s current personal information. If an error occurs during data fetching, it logs the error
+message to the console.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called after Angular has initialized the component and set the input properties.</p>
+<p>In this method, <code>loadPersonalData</code> is called to fetch and populate the form with the user&#39;s existing personal data.
+This ensures that when the component is displayed, it already contains the most up-to-date information about the user.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:162</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the submission of the personal data form.</p>
+<p>This method is triggered when the user submits the personal data form. It first clears any existing error messages.
+Then, it calls <code>savePersonalData</code> on <code>personalDataService</code>, passing the form&#39;s current values wrapped in an object
+with a <code>body</code> property. It subscribes to the observable returned by <code>savePersonalData</code> to handle the response.</p>
+<p>On successful data save, it logs a success message and navigates the user to the &#39;home&#39; route. If an error occurs,
+it adds the error message to the <code>errorMsg</code> array for display and logs the error status.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentYear"></a>
+                    <span class="name">
+                        <span ><b>currentYear</b></span>
+                        <a href="#currentYear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Date().getFullYear()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Holds the current year.</p>
+<p>This property is used to store the current year, retrieved by creating a new Date instance
+and calling <code>getFullYear()</code> on it. It can be used in the component for calculations or checks
+related to the current year, such as validating birthdates.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMsg"></a>
+                    <span class="name">
+                        <span ><b>errorMsg</b></span>
+                        <a href="#errorMsg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Stores error messages for display.</p>
+<p>This array holds error messages that may occur during the operation of the component, such as
+errors in fetching or submitting personal data. These messages can be displayed to the user to
+provide feedback on any issues encountered.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isProfilePage"></a>
+                    <span class="name">
+                        <span ><b>isProfilePage</b></span>
+                        <a href="#isProfilePage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicates if the current page is the profile page.</p>
+<p>This boolean flag is used to determine if the component is being used on the profile page.
+It can affect how the component behaves or is displayed, tailoring the experience to the
+context in which the personal data form is presented.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="personalDataForm"></a>
+                    <span class="name">
+                        <span ><b>personalDataForm</b></span>
+                        <a href="#personalDataForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>FormGroup instance for managing the personal data form.</p>
+<p>This property holds the form group for the personal data form, which includes form controls
+for fields such as gender, marital status, birthdate, and contact details. It is used to track
+the value and validation status of the form and its controls.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="successModal"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>successModal</b></span>
+                        <a href="#successModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;successModal&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/personal-data/personal-data.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A reference to the &#39;successModal&#39; template in the component&#39;s view.</p>
+<p>This property is decorated with <code>@ViewChild</code>, allowing the component class to access
+the modal template defined in the component&#39;s HTML. It is used to dynamically interact
+with the success modal, such as opening or closing it upon successful form submission.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild, TemplateRef  } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl,ValidationErrors} from &#x27;@angular/forms&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { PersonalDataResponse } from &#x27;../../services/models&#x27;;
+import { PersonalDataService } from &#x27;../../services/services/personal-data.service&#x27;;
+import { Router,ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+
+/**
+ * The PersonalDataComponent is designed to provide users with a secure and intuitive interface for managing their personal information within the application.
+ * It features a comprehensive form where users can input and update details such as their gender, marital status, birthdate, and contact information.
+ * Utilizing Angular&#x27;s powerful reactive forms, the component ensures real-time validation and feedback, enhancing the user experience by making data submission smooth.
+ *  Interaction with the backend is handled through the PersonalDataService, which facilitates the retrieval and persistence of user data.
+ *  Upon successful update, users are navigated back to the home page, with error handling mechanisms in place to alert users of any issues during the process.
+ *  This component is a key part of the user profile management system, emphasizing privacy and user control over their information.
+ */
+
+@Component({
+  selector: &#x27;app-personal-data&#x27;,
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: &#x27;./personal-data.component.html&#x27;,
+  styleUrls: [&#x27;./personal-data.component.scss&#x27;]
+})
+export class PersonalDataComponent implements OnInit {
+
+		/**
+	 * A reference to the &#x27;successModal&#x27; template in the component&#x27;s view.
+	 *
+	 * This property is decorated with &#x60;@ViewChild&#x60;, allowing the component class to access
+	 * the modal template defined in the component&#x27;s HTML. It is used to dynamically interact
+	 * with the success modal, such as opening or closing it upon successful form submission.
+	 *
+	 */
+	@ViewChild(&#x27;successModal&#x27;) successModal!: TemplateRef&lt;any&gt;;
+
+/**
+ * FormGroup instance for managing the personal data form.
+ *
+ * This property holds the form group for the personal data form, which includes form controls
+ * for fields such as gender, marital status, birthdate, and contact details. It is used to track
+ * the value and validation status of the form and its controls.
+ *
+ */
+  personalDataForm: FormGroup;
+
+/**
+ * Holds the current year.
+ *
+ * This property is used to store the current year, retrieved by creating a new Date instance
+ * and calling &#x60;getFullYear()&#x60; on it. It can be used in the component for calculations or checks
+ * related to the current year, such as validating birthdates.
+ *
+ */
+  currentYear &#x3D; new Date().getFullYear();
+
+
+  /**
+ * Indicates if the current page is the profile page.
+ *
+ * This boolean flag is used to determine if the component is being used on the profile page.
+ * It can affect how the component behaves or is displayed, tailoring the experience to the
+ * context in which the personal data form is presented.
+ *
+ */
+  isProfilePage: boolean &#x3D; false;
+
+  /**
+ * Stores error messages for display.
+ *
+ * This array holds error messages that may occur during the operation of the component, such as
+ * errors in fetching or submitting personal data. These messages can be displayed to the user to
+ * provide feedback on any issues encountered.
+ *
+ */
+  errorMsg: string[] &#x3D; [];
+
+  /**
+   * Constructs the PersonalDataComponent with necessary dependencies.
+   *
+   * @param {FormBuilder} formBuilder - The FormBuilder service for creating the form group.
+   * @param {PersonalDataService} personalDataService - The service for fetching and saving personal data.
+   * @param {Router} router - The Angular Router for navigation.
+   * @param {ActivatedRoute} route - The current activated route.
+   * @param {NgbModal} modalService - The service for managing modals.
+   */
+  constructor(
+    private formBuilder: FormBuilder,
+    private personalDataService: PersonalDataService,
+    private router: Router,
+    private route: ActivatedRoute,
+	private modalService: NgbModal,
+  ) {
+
+	/**
+ * Initializes the personalDataForm FormGroup with form controls.
+ *
+ * This code snippet creates a new FormGroup instance, &#x60;personalDataForm&#x60;, using the FormBuilder&#x27;s &#x60;group&#x60; method.
+ * It defines form controls for gender, marital status, birthdate, whether the user has elderly parents or children,
+ * mobile number, and work-related fields like &#x27;sede&#x27; (location) and &#x27;reparto&#x27; (department). Each form control is
+ * initialized with a default value, indicating the type of data expected (e.g., boolean for married, string for gender).
+ */
+    this.personalDataForm &#x3D; this.formBuilder.group({
+      gender: [&#x27;&#x27;],
+      married: [false],
+      birthdate: [&#x27;&#x27;],
+      elderlyParents: [false],
+      children: [false],
+      mobileNumber: [&#x27;&#x27;],
+      sede: [&#x27;&#x27;],
+      reparto: [&#x27;&#x27;],
+    });
+  }
+
+  /**
+ * Lifecycle hook that is called after Angular has initialized the component and set the input properties.
+ *
+ * In this method, &#x60;loadPersonalData&#x60; is called to fetch and populate the form with the user&#x27;s existing personal data.
+ * This ensures that when the component is displayed, it already contains the most up-to-date information about the user.
+ */
+  ngOnInit(): void {
+    this.loadPersonalData();
+  }
+
+  /**
+ * Fetches the user&#x27;s personal data and updates the form values.
+ *
+ * This method calls &#x60;getPersonalData&#x60; on the &#x60;personalDataService&#x60; to asynchronously fetch the user&#x27;s personal data.
+ * Upon successful retrieval, the method uses &#x60;patchValue&#x60; to update &#x60;personalDataForm&#x60; with the fetched data, ensuring
+ * the form reflects the user&#x27;s current personal information. If an error occurs during data fetching, it logs the error
+ * message to the console.
+ */
+  private loadPersonalData(): void {
+    this.personalDataService.getPersonalData().subscribe({
+      next: (data: PersonalDataResponse) &#x3D;&gt; {
+        this.personalDataForm.patchValue(data);
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error fetching personal data:&#x27;, error);
+      }
+    });
+  }
+
+  /**
+ * Handles the submission of the personal data form.
+ *
+ * This method is triggered when the user submits the personal data form. It first clears any existing error messages.
+ * Then, it calls &#x60;savePersonalData&#x60; on &#x60;personalDataService&#x60;, passing the form&#x27;s current values wrapped in an object
+ * with a &#x60;body&#x60; property. It subscribes to the observable returned by &#x60;savePersonalData&#x60; to handle the response.
+ *
+ * On successful data save, it logs a success message and navigates the user to the &#x27;home&#x27; route. If an error occurs,
+ * it adds the error message to the &#x60;errorMsg&#x60; array for display and logs the error status.
+ */
+  onSubmit(): void {
+    this.errorMsg &#x3D; [];
+
+    this.personalDataService.savePersonalData({ body: this.personalDataForm.value }).subscribe({
+      next: (response) &#x3D;&gt; {
+        console.log(&#x27;Personal data saved successfully:&#x27;, response);
+		this.router.navigate([&#x27;home&#x27;]);
+      },
+      error: (error) &#x3D;&gt; {
+        this.errorMsg.push(error.error.error || &#x27;Si è verificato un errore. Si prega di riprovare.&#x27;);
+        console.log(error.status);
+      }
+    });
+  }
+
+}
+// import { Component, OnInit } from &#x27;@angular/core&#x27;;
+// import { FormBuilder, FormGroup, Validators, AbstractControl,ValidationErrors , ReactiveFormsModule} from &#x27;@angular/forms&#x27;;
+// import { CommonModule } from &#x27;@angular/common&#x27;;
+// import { PersonalDataResponse } from &#x27;../../services/models&#x27;;
+// import { PersonalDataService } from &#x27;../../services/services/personal-data.service&#x27;;
+// import { Router,ActivatedRoute } from &#x27;@angular/router&#x27;;
+
+
+// @Component({
+//   selector: &#x27;app-personal-data&#x27;,
+//   standalone: true,
+//   imports: [ReactiveFormsModule,CommonModule],
+//   templateUrl: &#x27;./personal-data.component.html&#x27;,
+//   styleUrls: [&#x27;./personal-data.component.scss&#x27;]
+// })
+// export class PersonalDataComponent implements OnInit {
+// 	personalDataForm: FormGroup;
+// 	currentYear &#x3D; new Date().getFullYear();
+// 	isProfilePage: boolean &#x3D; false;
+// 	errorMsg: string[] &#x3D; [];
+
+// 	constructor(
+// 		private formBuilder: FormBuilder,
+// 		private personalDataService: PersonalDataService,
+// 		private router: Router,
+// 		private route: ActivatedRoute
+// 	) {
+// 		this.personalDataForm &#x3D; this.formBuilder.group({
+// 		gender: [&#x27;&#x27;],
+// 		married: [false],
+// 		birthdate: [&#x27;&#x27;],
+// 		elderlyParents: [false],
+// 		children: [false],
+// 		//   mobileNumber: [&#x27;&#x27;, [Validators.required,Validators.pattern(/^\+\d{1,3}\d{4,14}$/)]]],
+// 		mobileNumber: [&#x27;&#x27;, [ Validators.pattern(/^\d{4,14}$/)]],
+// 		sede: [&#x27;&#x27;,],
+// 		reparto: [&#x27;&#x27;],
+// 		});
+// 	}
+
+// 	ngOnInit(): void {
+// 			this.loadPersonalData();
+// 	}
+
+
+// 	private loadPersonalData(): void {
+// 		this.personalDataService.getPersonalData().subscribe({
+// 		next: (data: PersonalDataResponse) &#x3D;&gt; {
+// 			this.personalDataForm.patchValue(data);
+// 		},
+// 		error: (error) &#x3D;&gt; {
+// 			console.error(&#x27;Error fetching personal data:&#x27;, error);
+// 		}
+// 		});
+// 	}
+
+
+// 	onSubmit(): void {
+// 		this.personalDataService.savePersonalData({ body: this.personalDataForm.value }).subscribe({
+// 			next: (response) &#x3D;&gt; {
+// 			console.log(&#x27;Personal data saved successfully:&#x27;, response);
+// 			//open a modal that show the success message
+
+// 			},
+// 			error: (error) &#x3D;&gt; {
+// 			this.errorMsg.push(error.error.error || &#x27;Si è verificato un errore. Si prega di riprovare.&#x27;);
+// 			console.log(error.status)
+// 			}
+// 		});
+
+// 	}
+
+// }
+	// skip() {
+	// 	this.router.navigate([&#x27;home&#x27;]);
+	//   }
+
+// }
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+	&lt;h2&gt;Dati personali&lt;/h2&gt;
+	&lt;form [formGroup]&#x3D;&quot;personalDataForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;hr&gt;
+			&lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;errorMsg.length&quot;&gt;
+				&lt;p *ngFor&#x3D;&quot;let msg of errorMsg&quot;&gt;{{msg}}&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;label for&#x3D;&quot;gender&quot;&gt;Genere&lt;/label&gt;
+		&lt;select id&#x3D;&quot;gender&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;gender&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;UOMO&quot;&gt;Uomo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;DONNA&quot;&gt;Donna&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;ALTRO&quot;&gt;Altro&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;NON_SPECIFICATO&quot;&gt;Non specificato&lt;/option&gt;
+		&lt;/select&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Birthdate Input --&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;birthdate&quot;&gt;Data di nascita&lt;/label&gt;
+		&lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;birthdate&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthdate&quot;&gt;
+	  &lt;/div&gt;
+	  &lt;!-- &lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;birthdate&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;birthdate&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		Data di nascita non valida. L&#x27;anno deve essere di 4 cifre.
+	&lt;/div&gt; --&gt;
+
+	  &lt;!-- Mobile Number Input --&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;mobileNumber&quot;&gt;Numero di cellulare&lt;/label&gt;
+		&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;mobileNumber&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;mobileNumber&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;mobileNumber&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;mobileNumber&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  Numero di cellulare non valido.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Sede Input --&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;sede&quot;&gt;Sede&lt;/label&gt;
+		&lt;select id&#x3D;&quot;sede&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;sede&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Anagni&quot;&gt;Anagni&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aprilia&quot;&gt;Aprilia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Brindisi&quot;&gt;Brindisi&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Foggia&quot;&gt;Foggia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Frosinone&quot;&gt;Frosinone&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Livorno&quot;&gt;Livorno&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Laurentina&quot;&gt;Roma-Laurentina&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Pastrengo&quot;&gt;Roma-Pastrengo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Pomezia&quot;&gt;Pomezia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Torino&quot;&gt;Torino&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;sede&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;sede&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione della sede è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Reparto Input --&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;reparto&quot;&gt;Reparto&lt;/label&gt;
+		&lt;select id&#x3D;&quot;reparto&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;reparto&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elettronica&quot;&gt;Elettronica&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elicotteri&quot;&gt;Elicotteri&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerei&quot;&gt;Aerei&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Cyber &amp; Security&quot;&gt;Cyber &amp; Security&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Spazio&quot;&gt;Spazio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Sistemi senza equipaggio&quot;&gt;Sistemi senza equipaggio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerostrutture&quot;&gt;Aerostrutture&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Automazione&quot;&gt;Automazione&lt;/option&gt;
+		&lt;/select&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Married Checkbox --&gt;
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;married&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;married&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;married&quot;&gt;Sposato/a&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Children Checkbox --&gt;
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;children&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;children&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;children&quot;&gt;Figli&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;!-- Elderly Parents Checkbox --&gt;
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;elderlyParents&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;elderlyParents&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;elderlyParents&quot;&gt;Parenti anziani&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;button class&#x3D;&quot;btn btn-dark mt-3&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;personalDataForm.invalid&quot;&gt;Modifica&lt;/button&gt;
+	  &lt;/div&gt;
+	&lt;/form&gt;
+
+&lt;/div&gt;
+
+
+
+&lt;!-- &lt;div class&#x3D;&quot;container&quot;&gt;
+	&lt;h2&gt;Dati personali&lt;/h2&gt;
+	&lt;form [formGroup]&#x3D;&quot;personalDataForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;hr&gt;
+			&lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;errorMsg.length&quot;&gt;
+				&lt;p *ngFor&#x3D;&quot;let msg of errorMsg&quot;&gt;{{msg}}&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;label for&#x3D;&quot;gender&quot;&gt;Gender&lt;/label&gt;
+		&lt;select id&#x3D;&quot;gender&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;gender&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;UOMO&quot;&gt;Uomo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;DONNA&quot;&gt;Donna&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;ALTRO&quot;&gt;Altro&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;NON_SPECIFICATO&quot;&gt;Non specificato&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;gender&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;gender&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione del genere è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;birthdate&quot;&gt;Data di nascita&lt;/label&gt;
+		&lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;birthdate&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthdate&quot;&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;mobileNumber&quot;&gt;Numero di cellulare&lt;/label&gt;
+		&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;mobileNumber&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;mobileNumber&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;mobileNumber&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;mobileNumber&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  Numero di cellulare non valido.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;sede&quot;&gt;Sede&lt;/label&gt;
+		&lt;select id&#x3D;&quot;sede&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;sede&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Anagni&quot;&gt;Anagni&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aprilia&quot;&gt;Aprilia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Brindisi&quot;&gt;Brindisi&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Foggia&quot;&gt;Foggia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Frosinone&quot;&gt;Frosinone&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Livorno&quot;&gt;Livorno&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Laurentina&quot;&gt;Roma-Laurentina&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Pastrengo&quot;&gt;Roma-Pastrengo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Pomezia&quot;&gt;Pomezia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Torino&quot;&gt;Torino&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;sede&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;sede&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione della sede è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;reparto&quot;&gt;reparto&lt;/label&gt;
+		&lt;select id&#x3D;&quot;reparto&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;reparto&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elettronica&quot;&gt;Elettronica&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elicotteri&quot;&gt;Elicotteri&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerei&quot;&gt;Aerei&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Cyber &amp; Security&quot;&gt;Cyber &amp; Security&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Spazio&quot;&gt;Spazio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Sistemi senza equipaggio&quot;&gt;Sistemi senza equipaggio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerostrutture&quot;&gt;Aerostrutture&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Automazione&quot;&gt;Automazione&lt;/option&gt;
+		&lt;/select&gt;
+
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;married&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;married&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;married&quot;&gt;Sposato&lt;/label&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;children&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;children&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;children&quot;&gt;Figli&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;elderlyParents&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;elderlyParents&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;elderlyParents&quot;&gt;Parenti anziani&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;button class&#x3D;&quot;btn btn-dark mt-3&quot; type&#x3D;&quot;submit&quot; &gt;Modifica&lt;/button&gt;
+
+	  &lt;/div&gt;
+
+	&lt;/form&gt;
+  &lt;/div&gt; --&gt;
+
+&lt;!-- &lt;div class&#x3D;&quot;container&quot;&gt;
+	&lt;h2&gt;Dati personali&lt;/h2&gt;
+	&lt;form [formGroup]&#x3D;&quot;personalDataForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;birthdate&quot;&gt;Data di nascita&lt;/label&gt;
+		&lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;birthdate&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthdate&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;birthdate&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;birthdate&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  &lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;birthdate&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;
+			La data di nascita è obbligatoria.
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;gender&quot;&gt;Genere&lt;/label&gt;
+		&lt;select id&#x3D;&quot;gender&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;gender&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;UOMO&quot;&gt;Uomo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;DONNA&quot;&gt;Donna&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;ALTRO&quot;&gt;Altro&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;NON_SPECIFICATO&quot;&gt;Non specificato&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;gender&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;gender&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione del genere è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;married&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;married&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;married&quot;&gt;Sposato&lt;/label&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;children&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;children&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;children&quot;&gt;Figli&lt;/label&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;elderlyParents&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;elderlyParents&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;elderlyParents&quot;&gt;Parenti anziani&lt;/label&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;mobileNumber&quot;&gt;Numero di Telefono&lt;/label&gt;
+		&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;mobileNumber&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;mobileNumber&quot; /&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;mobileNumber&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;mobileNumber&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  &lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;mobileNumber&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;
+			Il numero di telefono è obbligatorio.
+		  &lt;/div&gt;
+		  &lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;mobileNumber&#x27;)?.errors?.[&#x27;pattern&#x27;]&quot;&gt;
+			Il numero di telefono non è valido.
+		  &lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;sede&quot;&gt;Sede&lt;/label&gt;
+		&lt;select id&#x3D;&quot;sede&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;sede&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Anagni&quot;&gt;Anagni&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aprilia&quot;&gt;Aprilia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Brindisi&quot;&gt;Brindisi&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Foggia&quot;&gt;Foggia&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Frosinone&quot;&gt;Frosinone&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Livorno&quot;&gt;Livorno&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Laurentina&quot;&gt;Roma-Laurentina&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Roma-Pastrengo&quot;&gt;Roma-Pastrengo&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Pomezia&quot;&gt;Pomezia&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;sede&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;sede&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione della sede è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;reparto&quot;&gt;reparto&lt;/label&gt;
+		&lt;select id&#x3D;&quot;reparto&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;reparto&quot;&gt;
+		  &lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elettronica&quot;&gt;Elettronica&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Elicotteri&quot;&gt;Elicotteri&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerei&quot;&gt;Aerei&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Cyber &amp; Security&quot;&gt;Cyber &amp; Security&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Spazio&quot;&gt;Spazio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Sistemi senza equipaggio&quot;&gt;Sistemi senza equipaggio&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Aerostrutture&quot;&gt;Aerostrutture&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Automazione&quot;&gt;Automazione&lt;/option&gt;
+		  &lt;option value&#x3D;&quot;Torino&quot;&gt;Torino&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;reparto&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;reparto&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  La selezione del reparto è obbligatoria.
+		&lt;/div&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;button class&#x3D;&quot;btn btn-dark mt-3&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;personalDataForm.invalid&quot;&gt;Invia&lt;/button&gt;
+	  &lt;/div&gt;
+
+	&lt;/form&gt;
+  &lt;/div&gt; --&gt;
+
+
+&lt;!-- &lt;div class&#x3D;&quot;container&quot;&gt;
+	&lt;h2&gt;Dati personali&lt;/h2&gt;
+	&lt;form [formGroup]&#x3D;&quot;personalDataForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+
+	 &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;div class&#x3D;&quot;row&quot;&gt;
+			&lt;div class&#x3D;&quot;col&quot;&gt;
+				&lt;label for&#x3D;&quot;day&quot;&gt;Giorno&lt;/label&gt;
+				&lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;day&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;GG&quot; formControlName&#x3D;&quot;day&quot; min&#x3D;&quot;1&quot; max&#x3D;&quot;31&quot;&gt;
+				&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;day&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;day&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+					&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;day&#x27;)?.errors?.[&#x27;required&#x27;] || personalDataForm.get(&#x27;day&#x27;)?.errors?.[&#x27;min&#x27;] || personalDataForm.get(&#x27;day&#x27;)?.errors?.[&#x27;max&#x27;]&quot;   &gt;
+						Errore nell&#x27;inserimento del giorno.
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		  &lt;div class&#x3D;&quot;col&quot;&gt;
+			&lt;label for&#x3D;&quot;day&quot;&gt;Mese&lt;/label&gt;
+			&lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;month&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;MM&quot; formControlName&#x3D;&quot;month&quot; min&#x3D;&quot;1&quot; max&#x3D;&quot;12&quot;&gt;
+			&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;month&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;month&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+				&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;month&#x27;)?.errors?.[&#x27;required&#x27;] || personalDataForm.get(&#x27;month&#x27;)?.errors?.[&#x27;min&#x27;] || personalDataForm.get(&#x27;month&#x27;)?.errors?.[&#x27;max&#x27;]&quot;   &gt;
+					Erorre nell&#x27;inserimento del mese.
+				&lt;/div&gt;
+			&lt;/div&gt;
+		  &lt;/div&gt;
+		  &lt;div class&#x3D;&quot;col&quot;&gt;
+			&lt;label for&#x3D;&quot;day&quot;&gt;Anno&lt;/label&gt;
+			&lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;year&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;AAAA&quot; formControlName&#x3D;&quot;year&quot; min&#x3D;&quot;1900&quot; [max]&#x3D;&quot;currentYear&quot;&gt;
+			&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;year&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;year&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+				&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;year&#x27;)?.errors?.[&#x27;required&#x27;] || personalDataForm.get(&#x27;year&#x27;)?.errors?.[&#x27;min&#x27;] || personalDataForm.get(&#x27;year&#x27;)?.errors?.[&#x27;max&#x27;]&quot;   &gt;
+					Errore nell&#x27;inserimento dell&#x27;anno.
+				&lt;/div&gt;
+			&lt;/div&gt;
+		  &lt;/div&gt;
+		&lt;/div&gt;
+
+	  &lt;/div&gt;
+
+
+    &lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;label for&#x3D;&quot;gender&quot;&gt;Gender&lt;/label&gt;
+		&lt;select id&#x3D;&quot;gender&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;gender&quot;&gt;
+		&lt;option value&#x3D;&quot;&quot;&gt;Seleziona&lt;/option&gt;
+		&lt;option value&#x3D;&quot;male&quot;&gt;Uomo&lt;/option&gt;
+		&lt;option value&#x3D;&quot;married&quot;&gt;Donna&lt;/option&gt;
+		&lt;option value&#x3D;&quot;altro&quot;&gt;altro&lt;/option&gt;
+		&lt;option value&#x3D;&quot;altro&quot;&gt;non specificato&lt;/option&gt;
+
+
+		&lt;/select&gt;
+		&lt;div *ngIf&#x3D;&quot;personalDataForm.get(&#x27;gender&#x27;)?.touched &amp;&amp; personalDataForm.get(&#x27;gender&#x27;)?.invalid&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		La selezione del genere è obbligatoria.
+	  &lt;/div&gt;
+	&lt;/div&gt;
+
+
+
+
+    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;children&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;married&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;married&quot;&gt;sposato&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;children&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;children&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;children&quot;&gt;Figli&lt;/label&gt;
+	  &lt;/div&gt;
+
+	  &lt;div class&#x3D;&quot;form-check&quot;&gt;
+		&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;elderlyParents&quot; class&#x3D;&quot;form-check-input&quot; formControlName&#x3D;&quot;elderlyParents&quot;&gt;
+		&lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;elderlyParents&quot;&gt;Parenti anziani&lt;/label&gt;
+	  &lt;/div&gt;
+
+
+	&lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;button class&#x3D;&quot;btn btn-dark mt-3&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;personalDataForm.invalid&quot;&gt;Invia&lt;/button&gt;
+	  &lt;/div&gt;
+
+	&lt;/form&gt;
+&lt;/div&gt;
+ --&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./personal-data.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.container {
+	max-width: 600px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+	h2 {
+	  margin-bottom: 1rem;
+	  color: #333;
+	}
+
+	.form-group {
+	  margin-bottom: 1.5rem;
+
+	  label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+	  }
+
+	  .form-control {
+		width: 100%;
+		padding: 0.5rem;
+		font-size: 1rem;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		transition: border-color 0.3s;
+
+		&amp;:focus {
+		  border-color: #007bff;
+		  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+		}
+	  }
+
+	  .text-danger {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		color: #dc3545;
+	  }
+	}
+
+	.form-check {
+	  margin-bottom: 1rem;
+
+	  .form-check-input {
+		margin-right: 0.5rem;
+	  }
+
+	  .form-check-label {
+		font-size: 1rem;
+	  }
+	}
+
+	.btn {
+	  display: inline-block;
+	  padding: 0.5rem 1rem;
+	  font-size: 1rem;
+	  font-weight: bold;
+	  text-align: center;
+	  white-space: nowrap;
+	  vertical-align: middle;
+	  cursor: pointer;
+	  border: 1px solid transparent;
+	  border-radius: 4px;
+	  color: #fff;
+	  background-color: #343a40;
+	  transition: background-color 0.3s;
+
+	  &amp;:hover {
+		background-color: #23272b;
+	  }
+
+	  &amp;:disabled {
+		background-color: #ccc;
+		cursor: not-allowed;
+	  }
+	}
+  }
+
+
+// .container {
+// 	max-width: 600px;
+// 	margin: 0 auto;
+// 	padding: 2rem;
+// 	background-color: #f9f9f9;
+// 	border-radius: 8px;
+// 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+// 	h2, h3 {
+// 	  margin-bottom: 1rem;
+// 	  color: #333;
+// 	  text-align: center;
+// 	}
+
+// 	.form-group {
+// 	  margin-bottom: 1.5rem;
+
+// 	  label {
+// 		display: block;
+// 		margin-bottom: 0.5rem;
+// 		font-weight: bold;
+// 	  }
+
+// 	  .form-control {
+// 		width: 100%;
+// 		padding: 0.5rem;
+// 		font-size: 1rem;
+// 		border: 1px solid #ddd;
+// 		border-radius: 4px;
+// 		transition: border-color 0.3s;
+
+// 		&amp;:focus {
+// 		  border-color: #007bff;
+// 		  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+// 		}
+// 	  }
+
+// 	  .text-danger {
+// 		margin-top: 0.5rem;
+// 		font-size: 0.875rem;
+// 		color: #dc3545;
+// 	  }
+// 	}
+
+// 	.form-check {
+// 	  margin-bottom: 1rem;
+
+// 	  .form-check-input {
+// 		margin-right: 0.5rem;
+// 	  }
+
+// 	  .form-check-label {
+// 		font-size: 1rem;
+// 	  }
+// 	}
+
+// 	.btn {
+// 	  display: inline-block;
+// 	  padding: 0.5rem 1rem;
+// 	  font-size: 1rem;
+// 	  font-weight: bold;
+// 	  text-align: center;
+// 	  white-space: nowrap;
+// 	  vertical-align: middle;
+// 	  cursor: pointer;
+// 	  border: 1px solid transparent;
+// 	  border-radius: 4px;
+// 	  background-color: #007bff;
+// 	  color: #fff;
+// 	  transition: background-color 0.3s;
+
+// 	  &amp;:hover {
+// 		background-color: #0056b3;
+// 	  }
+
+// 	  &amp;:disabled {
+// 		background-color: #ccc;
+// 		cursor: not-allowed;
+// 	  }
+// 	}
+//   }
+
+
+// .container {
+// 	max-width: 600px;
+// 	margin: 0 auto;
+// 	padding: 2rem;
+// 	background-color: #f9f9f9;
+// 	border-radius: 8px;
+// 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+// 	h2, h3 {
+// 	  margin-bottom: 1rem;
+// 	  color: #333;
+// 	}
+
+// 	.form-group {
+// 	  margin-bottom: 1.5rem;
+
+// 	  label {
+// 		display: block;
+// 		margin-bottom: 0.5rem;
+// 		font-weight: bold;
+// 	  }
+
+// 	  .form-control {
+// 		width: 100%;
+// 		padding: 0.5rem;
+// 		font-size: 1rem;
+// 		border: 1px solid #ddd;
+// 		border-radius: 4px;
+// 		transition: border-color 0.3s;
+
+// 		&amp;:focus {
+// 		  border-color: #007bff;
+// 		  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+// 		}
+// 	  }
+
+// 	  .text-danger {
+// 		margin-top: 0.5rem;
+// 		font-size: 0.875rem;
+// 		color: #dc3545;
+// 	  }
+// 	}
+
+// 	.form-check {
+// 	  margin-bottom: 1rem;
+
+// 	  .form-check-input {
+// 		margin-right: 0.5rem;
+// 	  }
+
+// 	  .form-check-label {
+// 		font-size: 1rem;
+// 	  }
+// 	}
+
+// 	.btn {
+// 	  display: inline-block;
+// 	  padding: 0.5rem 1rem;
+// 	  font-size: 1rem;
+// 	  font-weight: bold;
+// 	  text-align: center;
+// 	  white-space: nowrap;
+// 	  vertical-align: middle;
+// 	  cursor: pointer;
+// 	  border: 1px solid transparent;
+// 	  border-radius: 4px;
+// 	//   background-color: #007bff;
+// 	  color: #fff;
+// 	  transition: background-color 0.3s;
+// 	//   &amp;:hover {
+// 	// 	 background-color: #0056b3;
+// 	//   }
+
+// 	  &amp;:disabled {
+// 		background-color: #ccc;
+// 		cursor: not-allowed;
+// 	  }
+// 	}
+//   }
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">	<h2>Dati personali</h2>	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">	  <div class="form-group">		<hr>			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">				<p *ngFor="let msg of errorMsg">{{msg}}</p>			</div>		<label for="gender">Genere</label>		<select id="gender" class="form-control" formControlName="gender">		  <option value="">Seleziona</option>		  <option value="UOMO">Uomo</option>		  <option value="DONNA">Donna</option>		  <option value="ALTRO">Altro</option>		  <option value="NON_SPECIFICATO">Non specificato</option>		</select>	  </div>	  <!-- Birthdate Input -->	  <div class="form-group">		<label for="birthdate">Data di nascita</label>		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">	  </div>	  <!-- <div *ngIf="personalDataForm.get(\'birthdate\')?.touched && personalDataForm.get(\'birthdate\')?.invalid" class="text-danger">		Data di nascita non valida. L\'anno deve essere di 4 cifre.	</div> -->	  <!-- Mobile Number Input -->	  <div class="form-group">		<label for="mobileNumber">Numero di cellulare</label>		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">		<div *ngIf="personalDataForm.get(\'mobileNumber\')?.touched && personalDataForm.get(\'mobileNumber\')?.invalid" class="text-danger">		  Numero di cellulare non valido.		</div>	  </div>	  <!-- Sede Input -->	  <div class="form-group">		<label for="sede">Sede</label>		<select id="sede" class="form-control" formControlName="sede">		  <option value="">Seleziona</option>		  <option value="Anagni">Anagni</option>		  <option value="Aprilia">Aprilia</option>		  <option value="Brindisi">Brindisi</option>		  <option value="Foggia">Foggia</option>		  <option value="Frosinone">Frosinone</option>		  <option value="Livorno">Livorno</option>		  <option value="Roma-Laurentina">Roma-Laurentina</option>		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>		  <option value="Pomezia">Pomezia</option>		  <option value="Torino">Torino</option>		</select>		<div *ngIf="personalDataForm.get(\'sede\')?.touched && personalDataForm.get(\'sede\')?.invalid" class="text-danger">		  La selezione della sede è obbligatoria.		</div>	  </div>	  <!-- Reparto Input -->	  <div class="form-group">		<label for="reparto">Reparto</label>		<select id="reparto" class="form-control" formControlName="reparto">		  <option value="">Seleziona</option>		  <option value="Elettronica">Elettronica</option>		  <option value="Elicotteri">Elicotteri</option>		  <option value="Aerei">Aerei</option>		  <option value="Cyber & Security">Cyber & Security</option>		  <option value="Spazio">Spazio</option>		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>		  <option value="Aerostrutture">Aerostrutture</option>		  <option value="Automazione">Automazione</option>		</select>	  </div>	  <!-- Married Checkbox -->	  <div class="form-check">		<input type="checkbox" id="married" class="form-check-input" formControlName="married">		<label class="form-check-label" for="married">Sposato/a</label>	  </div>	  <!-- Children Checkbox -->	  <div class="form-check">		<input type="checkbox" id="children" class="form-check-input" formControlName="children">		<label class="form-check-label" for="children">Figli</label>	  </div>	  <!-- Elderly Parents Checkbox -->	  <div class="form-check">		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>	  </div>	  <div class="form-group">		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Modifica</button>	  </div>	</form></div><!-- <div class="container">	<h2>Dati personali</h2>	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">	  <div class="form-group">		<hr>			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">				<p *ngFor="let msg of errorMsg">{{msg}}</p>			</div>		<label for="gender">Gender</label>		<select id="gender" class="form-control" formControlName="gender">		  <option value="">Seleziona</option>		  <option value="UOMO">Uomo</option>		  <option value="DONNA">Donna</option>		  <option value="ALTRO">Altro</option>		  <option value="NON_SPECIFICATO">Non specificato</option>		</select>		<div *ngIf="personalDataForm.get(\'gender\')?.touched && personalDataForm.get(\'gender\')?.invalid" class="text-danger">		  La selezione del genere è obbligatoria.		</div>	  </div>	  <div class="form-group">		<label for="birthdate">Data di nascita</label>		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">	  </div>	  <div class="form-group">		<label for="mobileNumber">Numero di cellulare</label>		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber">		<div *ngIf="personalDataForm.get(\'mobileNumber\')?.touched && personalDataForm.get(\'mobileNumber\')?.invalid" class="text-danger">		  Numero di cellulare non valido.		</div>	  </div>	  <div class="form-group">		<label for="sede">Sede</label>		<select id="sede" class="form-control" formControlName="sede">		  <option value="">Seleziona</option>		  <option value="Anagni">Anagni</option>		  <option value="Aprilia">Aprilia</option>		  <option value="Brindisi">Brindisi</option>		  <option value="Foggia">Foggia</option>		  <option value="Frosinone">Frosinone</option>		  <option value="Livorno">Livorno</option>		  <option value="Roma-Laurentina">Roma-Laurentina</option>		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>		  <option value="Pomezia">Pomezia</option>		  <option value="Torino">Torino</option>		</select>		<div *ngIf="personalDataForm.get(\'sede\')?.touched && personalDataForm.get(\'sede\')?.invalid" class="text-danger">		  La selezione della sede è obbligatoria.		</div>	  </div>	  <div class="form-group">		<label for="reparto">reparto</label>		<select id="reparto" class="form-control" formControlName="reparto">		  <option value="">Seleziona</option>		  <option value="Elettronica">Elettronica</option>		  <option value="Elicotteri">Elicotteri</option>		  <option value="Aerei">Aerei</option>		  <option value="Cyber & Security">Cyber & Security</option>		  <option value="Spazio">Spazio</option>		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>		  <option value="Aerostrutture">Aerostrutture</option>		  <option value="Automazione">Automazione</option>		</select>	  </div>	  <div class="form-check">		<input type="checkbox" id="married" class="form-check-input" formControlName="married">		<label class="form-check-label" for="married">Sposato</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="children" class="form-check-input" formControlName="children">		<label class="form-check-label" for="children">Figli</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>	  </div>	  <div class="form-group">		<button class="btn btn-dark mt-3" type="submit" >Modifica</button>	  </div>	</form>  </div> --><!-- <div class="container">	<h2>Dati personali</h2>	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">	  <div class="form-group">		<label for="birthdate">Data di nascita</label>		<input type="date" id="birthdate" class="form-control" formControlName="birthdate">		<div *ngIf="personalDataForm.get(\'birthdate\')?.touched && personalDataForm.get(\'birthdate\')?.invalid" class="text-danger">		  <div *ngIf="personalDataForm.get(\'birthdate\')?.errors?.[\'required\']">			La data di nascita è obbligatoria.		  </div>		</div>	  </div>	  <div class="form-group">		<label for="gender">Genere</label>		<select id="gender" class="form-control" formControlName="gender">		  <option value="">Seleziona</option>		  <option value="UOMO">Uomo</option>		  <option value="DONNA">Donna</option>		  <option value="ALTRO">Altro</option>		  <option value="NON_SPECIFICATO">Non specificato</option>		</select>		<div *ngIf="personalDataForm.get(\'gender\')?.touched && personalDataForm.get(\'gender\')?.invalid" class="text-danger">		  La selezione del genere è obbligatoria.		</div>	  </div>	  <div class="form-check">		<input type="checkbox" id="married" class="form-check-input" formControlName="married">		<label class="form-check-label" for="married">Sposato</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="children" class="form-check-input" formControlName="children">		<label class="form-check-label" for="children">Figli</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>	  </div>	  <div class="form-group">		<label for="mobileNumber">Numero di Telefono</label>		<input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber" />		<div *ngIf="personalDataForm.get(\'mobileNumber\')?.touched && personalDataForm.get(\'mobileNumber\')?.invalid" class="text-danger">		  <div *ngIf="personalDataForm.get(\'mobileNumber\')?.errors?.[\'required\']">			Il numero di telefono è obbligatorio.		  </div>		  <div *ngIf="personalDataForm.get(\'mobileNumber\')?.errors?.[\'pattern\']">			Il numero di telefono non è valido.		  </div>		</div>	  </div>	  <div class="form-group">		<label for="sede">Sede</label>		<select id="sede" class="form-control" formControlName="sede">		  <option value="">Seleziona</option>		  <option value="Anagni">Anagni</option>		  <option value="Aprilia">Aprilia</option>		  <option value="Brindisi">Brindisi</option>		  <option value="Foggia">Foggia</option>		  <option value="Frosinone">Frosinone</option>		  <option value="Livorno">Livorno</option>		  <option value="Roma-Laurentina">Roma-Laurentina</option>		  <option value="Roma-Pastrengo">Roma-Pastrengo</option>		  <option value="Pomezia">Pomezia</option>		</select>		<div *ngIf="personalDataForm.get(\'sede\')?.touched && personalDataForm.get(\'sede\')?.invalid" class="text-danger">		  La selezione della sede è obbligatoria.		</div>	  </div>	  <div class="form-group">		<label for="reparto">reparto</label>		<select id="reparto" class="form-control" formControlName="reparto">		  <option value="">Seleziona</option>		  <option value="Elettronica">Elettronica</option>		  <option value="Elicotteri">Elicotteri</option>		  <option value="Aerei">Aerei</option>		  <option value="Cyber & Security">Cyber & Security</option>		  <option value="Spazio">Spazio</option>		  <option value="Sistemi senza equipaggio">Sistemi senza equipaggio</option>		  <option value="Aerostrutture">Aerostrutture</option>		  <option value="Automazione">Automazione</option>		  <option value="Torino">Torino</option>		</select>		<div *ngIf="personalDataForm.get(\'reparto\')?.touched && personalDataForm.get(\'reparto\')?.invalid" class="text-danger">		  La selezione del reparto è obbligatoria.		</div>	  </div>	  <div class="form-group">		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Invia</button>	  </div>	</form>  </div> --><!-- <div class="container">	<h2>Dati personali</h2>	<form [formGroup]="personalDataForm" (ngSubmit)="onSubmit()">	 <div class="form-group">		<div class="row">			<div class="col">				<label for="day">Giorno</label>				<input type="number" id="day" class="form-control" placeholder="GG" formControlName="day" min="1" max="31">				<div *ngIf="personalDataForm.get(\'day\')?.touched && personalDataForm.get(\'day\')?.invalid" class="text-danger">					<div *ngIf="personalDataForm.get(\'day\')?.errors?.[\'required\'] || personalDataForm.get(\'day\')?.errors?.[\'min\'] || personalDataForm.get(\'day\')?.errors?.[\'max\']"   >						Errore nell\'inserimento del giorno.					</div>				</div>			</div>		  <div class="col">			<label for="day">Mese</label>			<input type="number" id="month" class="form-control" placeholder="MM" formControlName="month" min="1" max="12">			<div *ngIf="personalDataForm.get(\'month\')?.touched && personalDataForm.get(\'month\')?.invalid" class="text-danger">				<div *ngIf="personalDataForm.get(\'month\')?.errors?.[\'required\'] || personalDataForm.get(\'month\')?.errors?.[\'min\'] || personalDataForm.get(\'month\')?.errors?.[\'max\']"   >					Erorre nell\'inserimento del mese.				</div>			</div>		  </div>		  <div class="col">			<label for="day">Anno</label>			<input type="number" id="year" class="form-control" placeholder="AAAA" formControlName="year" min="1900" [max]="currentYear">			<div *ngIf="personalDataForm.get(\'year\')?.touched && personalDataForm.get(\'year\')?.invalid" class="text-danger">				<div *ngIf="personalDataForm.get(\'year\')?.errors?.[\'required\'] || personalDataForm.get(\'year\')?.errors?.[\'min\'] || personalDataForm.get(\'year\')?.errors?.[\'max\']"   >					Errore nell\'inserimento dell\'anno.				</div>			</div>		  </div>		</div>	  </div>    <div class="form-group">		<label for="gender">Gender</label>		<select id="gender" class="form-control" formControlName="gender">		<option value="">Seleziona</option>		<option value="male">Uomo</option>		<option value="married">Donna</option>		<option value="altro">altro</option>		<option value="altro">non specificato</option>		</select>		<div *ngIf="personalDataForm.get(\'gender\')?.touched && personalDataForm.get(\'gender\')?.invalid" class="text-danger">		La selezione del genere è obbligatoria.	  </div>	</div>    <div class="form-check">		<input type="checkbox" id="children" class="form-check-input" formControlName="married">		<label class="form-check-label" for="married">sposato</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="children" class="form-check-input" formControlName="children">		<label class="form-check-label" for="children">Figli</label>	  </div>	  <div class="form-check">		<input type="checkbox" id="elderlyParents" class="form-check-input" formControlName="elderlyParents">		<label class="form-check-label" for="elderlyParents">Parenti anziani</label>	  </div>	<div class="form-group">		<button class="btn btn-dark mt-3" type="submit" [disabled]="personalDataForm.invalid">Invia</button>	  </div>	</form></div> --></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PersonalDataComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PersonalDataComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

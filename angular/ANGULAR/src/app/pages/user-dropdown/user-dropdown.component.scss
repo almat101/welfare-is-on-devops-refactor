@@ -1,0 +1,25 @@
+@import "../../../styles/colors.scss";
+
+.btn-user {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: $leonardo-orange;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+	font-weight: bold;
+	border: none;
+	outline: none;
+
+	&:focus {
+	  box-shadow: 0 0 0 0.25rem $leonardo-darkorange;
+	}
+  }
+
+  .dropdown-menu-end {
+	right: 0;
+	left: auto;
+  }

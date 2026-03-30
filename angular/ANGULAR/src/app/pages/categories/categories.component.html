@@ -1,0 +1,82 @@
+
+<div class="basic-container">
+    <main>
+        <section class="hero" [ngClass]="pillarClass">
+            <div class="hero-content">
+                <h1>{{category?.name}}</h1>
+                <p *ngIf="category.description">{{category?.description}}</p>
+                <img [src]="category.cover" alt="Immagine della categoria" class="hero-image">
+            </div>
+        </section>
+
+        <section class="explore-section">
+            <h2>Più popolari</h2>
+
+            <section class="articles container">
+                <div class="row test">
+                <ng-container *ngFor="let product of top_products?.content">
+                        <div class="col-12 col-md-3 m-5">
+                            <div class="card ">
+                                <img [src]="product.image_url ? product.image_url : 'https://static1.squarespace.com/static/530cd931e4b0e49b19b254ec/t/63c6068bcdde5a79958619df/1673922187854/final+logo++copy-1+%281%29.png?format=1500w'" class="custom-img" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.name}}</h5>
+                                    <p class="card-text"> {{product.Descrizione}} </p>
+                                    <p class="card-text"> {{product.price}} </p>
+                                    <button class="btn btn-primary show-prodotto" (click)="goToProduct(product.name, product.id)">Mostra prodotto</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </section>
+
+        </section>
+
+        <section class="explore-section">
+            <h2>Novità</h2>
+
+            <section class="articles container">
+                <div class="row test">
+                <ng-container *ngFor="let product of new_products?.content">
+                    <div class="col-12 col-md-3 m-2">
+                        <div class="card ">
+                            <img [src]="product.image_url ? product.image_url : 'https://static1.squarespace.com/static/530cd931e4b0e49b19b254ec/t/63c6068bcdde5a79958619df/1673922187854/final+logo++copy-1+%281%29.png?format=1500w'" class="custom-img" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.name}}</h5>
+                                <p class="card-text"> {{product.Descrizione}} </p>
+                                <p class="card-text"> {{product.price}} </p>
+                                <button class="btn btn-primary show-prodotto" (click)="goToProduct(product.name, product.id)">Mostra prodotto</button>
+                            </div>
+                        </div>
+                    </div>
+                    </ng-container>
+                </div>
+            </section>
+
+        </section>
+
+        <section class="explore-section">
+            <h2>In Sconto</h2>
+
+            <section class="articles container">
+                <div class="row test">
+                <ng-container *ngFor="let product of discounted_products?.content">
+                    <div class="col-12 col-md-3 m-2">
+                        <div class="card ">
+                            <img [src]="product.image_url ? product.image_url : 'https://static1.squarespace.com/static/530cd931e4b0e49b19b254ec/t/63c6068bcdde5a79958619df/1673922187854/final+logo++copy-1+%281%29.png?format=1500w'" class="custom-img" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.name}}</h5>
+                                <p class="card-text"> {{product.Descrizione}} </p>
+                                <p class="card-text"> {{product.price}} </p>
+                                <button class="btn btn-primary show-prodotto" (click)="goToProduct(product.name, product.id)">Mostra prodotto</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </section>
+
+    </section>
+</main>
+
+</div>

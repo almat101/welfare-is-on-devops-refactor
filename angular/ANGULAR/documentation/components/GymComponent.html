@@ -1,0 +1,858 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GymComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/gym/gym.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The GymComponent serves as the primary interface for users interested in gym-related products and services.
+It dynamically displays a curated list of gym products based on the user&#39;s current location, enhancing the user experience by providing personalized options.
+The component leverages the GymService for fetching the product data and the GeolocationService to accurately determine the user&#39;s location.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gym</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gym.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./gym.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#gym_products" >gym_products</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getNearestGym" >getNearestGym</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#requestAndUpdateLocation" >requestAndUpdateLocation</a>
+                            </li>
+                            <li>
+                                <a href="#updateMyLocation" >updateMyLocation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(gym: <a href="../injectables/GymService.html" target="_self">GymService</a>, geolocationService: <a href="../injectables/GeolocationService.html" target="_self">GeolocationService</a>, http: HttpClient)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/gym/gym.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with required services:</p>
+<ul>
+<li><code>gym</code>: GymService to fetch gym products.</li>
+<li><code>geolocationService</code>: GeolocationService to obtain the user&#39;s current location.</li>
+<li><code>http</code>: HttpClient for making HTTP requests.</li>
+</ul>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>gym</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GymService.html" target="_self" >GymService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>geolocationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GeolocationService.html" target="_self" >GeolocationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNearestGym"></a>
+                    <span class="name">
+                        <span ><b>getNearestGym</b></span>
+                        <a href="#getNearestGym"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNearestGym()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/pages/gym/gym.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetches the nearest gym information from the gym service.
+Upon successful fetching, the response object containing gym information is assigned to <code>gym_products</code>.
+This method subscribes to the observable returned by <code>getNearestGym</code> method of the gym service,
+and updates the <code>gym_products</code> property with the received data.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/pages/gym/gym.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+In this method, two primary operations are performed:</p>
+<ol>
+<li><code>getNearestGym</code> is called to fetch the nearest gym information.</li>
+<li><code>requestAndUpdateLocation</code> is called to request the user&#39;s current location and update it accordingly.</li>
+</ol>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requestAndUpdateLocation"></a>
+                    <span class="name">
+                        <span ><b>requestAndUpdateLocation</b></span>
+                        <a href="#requestAndUpdateLocation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>requestAndUpdateLocation()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/pages/gym/gym.component.ts:86</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Requests the user&#39;s current location and updates it using the <code>updateMyLocation</code> method.
+This method utilizes the <code>geolocationService</code> to obtain the user&#39;s current geographical position.
+If the location is successfully obtained, it proceeds to call <code>updateMyLocation</code> to handle the location data.
+In case of an error (e.g., permission denied, location services turned off), it logs the error to the console.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateMyLocation"></a>
+                    <span class="name">
+                        <span ><b>updateMyLocation</b></span>
+                        <a href="#updateMyLocation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateMyLocation()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/pages/gym/gym.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates the user&#39;s current location in the application&#39;s backend.
+This method is crucial for providing personalized gym recommendations based on the user&#39;s geographical location.
+It leverages the <code>geolocationService</code> to accurately obtain the user&#39;s current position and communicates this information to the backend.</p>
+<p>Workflow:</p>
+<ol>
+<li><strong>Obtain User Location</strong>: Utilizes the <code>getCurrentPosition</code> method from the <code>geolocationService</code>. This method is asynchronous and returns a promise that resolves with the user&#39;s current geographical coordinates (latitude and longitude).</li>
+<li><strong>Prepare Location Data</strong>: Constructs an object of type <code>UpdateLocation$Params</code>, encapsulating the latitude and longitude. This object adheres to the expected format of the backend service for location updates.</li>
+<li><strong>Update Backend</strong>: Invokes the <code>updateLocation</code> function, passing it the necessary parameters including the <code>HttpClient</code> instance for making HTTP requests, the base URL of the gym service, and the location parameters. This function is designed to make a POST request to the backend, updating the user&#39;s location.</li>
+<li><strong>Handle Response</strong>: Subscribes to the observable returned by the <code>updateLocation</code> function. The subscription has two callbacks:<ul>
+<li><strong>Success</strong>: On a successful update, it logs a success message along with the server&#39;s response. This indicates that the user&#39;s location has been successfully updated in the backend.</li>
+<li><strong>Error</strong>: In case of an error (e.g., network issues, server errors), it captures and logs the error details. This is crucial for debugging and ensuring the user is aware of any issues with the location update process.</li>
+</ul>
+</li>
+</ol>
+<p>Error Handling:</p>
+<ul>
+<li><strong>Location Access Denied</strong>: If the user denies access to their location or if the <code>getCurrentPosition</code> method fails for any other reason (e.g., location services disabled), the promise is rejected. This method catches such rejections and logs an appropriate error message, ensuring the application can gracefully handle these scenarios without crashing.</li>
+</ul>
+<p>This method is a key part of the application&#39;s functionality that enhances user experience by providing location-based services. Proper error handling and logging are implemented to ensure reliability and ease of maintenance.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gym_products"></a>
+                    <span class="name">
+                        <span ><b>gym_products</b></span>
+                        <a href="#gym_products"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/GymResponse.html" target="_self" >GymResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/gym/gym.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Holds the array of gym products fetched from the server.
+This property is initialized as an empty array and is populated with the results of a call to the GymService.
+Each item in the array is of type <code>GymResponse</code>, which represents the structure of gym product data as received from the backend.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { GymService } from &#x27;../../services/services&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { GymResponse } from &#x27;../../services/models&#x27;;
+import { GeolocationService } from &#x27;../../services/geo/geolocation.service&#x27;;
+import { UpdateLocation$Params, updateLocation } from &#x27;../../services/fn/user/update-location&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Location } from &#x27;@angular/common&#x27;;
+
+/**
+ * The GymComponent serves as the primary interface for users interested in gym-related products and services.
+ * It dynamically displays a curated list of gym products based on the user&#x27;s current location, enhancing the user experience by providing personalized options.
+ * The component leverages the GymService for fetching the product data and the GeolocationService to accurately determine the user&#x27;s location.
+ */
+
+@Component({
+  selector: &#x27;app-gym&#x27;,
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: &#x27;./gym.component.html&#x27;,
+  styleUrl: &#x27;./gym.component.scss&#x27;
+})
+export class GymComponent {
+
+	/**
+	 * Holds the array of gym products fetched from the server.
+	 * This property is initialized as an empty array and is populated with the results of a call to the GymService.
+	 * Each item in the array is of type &#x60;GymResponse&#x60;, which represents the structure of gym product data as received from the backend.
+	 *
+	 * @type {GymResponse[]}
+	 */
+	gym_products: GymResponse[] &#x3D; [];
+
+/**
+ * @constructor
+ * Initializes the component with required services:
+ * - &#x60;gym&#x60;: GymService to fetch gym products.
+ * - &#x60;geolocationService&#x60;: GeolocationService to obtain the user&#x27;s current location.
+ * - &#x60;http&#x60;: HttpClient for making HTTP requests.
+ */
+	constructor(
+		private gym : GymService,
+		private geolocationService: GeolocationService,
+		private http: HttpClient,
+
+	) { }
+
+	/**
+	 * Lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+	 * In this method, two primary operations are performed:
+	 * 1. &#x60;getNearestGym&#x60; is called to fetch the nearest gym information.
+	 * 2. &#x60;requestAndUpdateLocation&#x60; is called to request the user&#x27;s current location and update it accordingly.
+	 *
+	 * @returns {void}
+	 */
+	ngOnInit():void {
+	  this.getNearestGym();
+	  this.requestAndUpdateLocation();
+	}
+
+	/**
+	 * Fetches the nearest gym information from the gym service.
+	 * Upon successful fetching, the response object containing gym information is assigned to &#x60;gym_products&#x60;.
+	 * This method subscribes to the observable returned by &#x60;getNearestGym&#x60; method of the gym service,
+	 * and updates the &#x60;gym_products&#x60; property with the received data.
+	 */
+	getNearestGym() {
+	  this.gym.getNearestGym().subscribe((gymOBJ) &#x3D;&gt; {
+		this.gym_products &#x3D; gymOBJ;
+		//console.log(this.gym_products);
+	  })
+	}
+
+	/**
+	 * Requests the user&#x27;s current location and updates it using the &#x60;updateMyLocation&#x60; method.
+	 * This method utilizes the &#x60;geolocationService&#x60; to obtain the user&#x27;s current geographical position.
+	 * If the location is successfully obtained, it proceeds to call &#x60;updateMyLocation&#x60; to handle the location data.
+	 * In case of an error (e.g., permission denied, location services turned off), it logs the error to the console.
+	 */
+	requestAndUpdateLocation() {
+		this.geolocationService.getCurrentPosition().then(() &#x3D;&gt; {
+		  this.updateMyLocation();
+		}).catch(error &#x3D;&gt; {
+		  console.error(&#x27;Error getting location&#x27;, error);
+		});
+	  }
+
+	/**
+	 * Updates the user&#x27;s current location in the application&#x27;s backend.
+	 * This method is crucial for providing personalized gym recommendations based on the user&#x27;s geographical location.
+	 * It leverages the &#x60;geolocationService&#x60; to accurately obtain the user&#x27;s current position and communicates this information to the backend.
+	 *
+	 * Workflow:
+	 * 1. **Obtain User Location**: Utilizes the &#x60;getCurrentPosition&#x60; method from the &#x60;geolocationService&#x60;. This method is asynchronous and returns a promise that resolves with the user&#x27;s current geographical coordinates (latitude and longitude).
+	 * 2. **Prepare Location Data**: Constructs an object of type &#x60;UpdateLocation$Params&#x60;, encapsulating the latitude and longitude. This object adheres to the expected format of the backend service for location updates.
+	 * 3. **Update Backend**: Invokes the &#x60;updateLocation&#x60; function, passing it the necessary parameters including the &#x60;HttpClient&#x60; instance for making HTTP requests, the base URL of the gym service, and the location parameters. This function is designed to make a POST request to the backend, updating the user&#x27;s location.
+	 * 4. **Handle Response**: Subscribes to the observable returned by the &#x60;updateLocation&#x60; function. The subscription has two callbacks:
+	 *    - **Success**: On a successful update, it logs a success message along with the server&#x27;s response. This indicates that the user&#x27;s location has been successfully updated in the backend.
+	 *    - **Error**: In case of an error (e.g., network issues, server errors), it captures and logs the error details. This is crucial for debugging and ensuring the user is aware of any issues with the location update process.
+	 *
+	 * Error Handling:
+	 * - **Location Access Denied**: If the user denies access to their location or if the &#x60;getCurrentPosition&#x60; method fails for any other reason (e.g., location services disabled), the promise is rejected. This method catches such rejections and logs an appropriate error message, ensuring the application can gracefully handle these scenarios without crashing.
+	 *
+	 * @remarks
+	 * This method is a key part of the application&#x27;s functionality that enhances user experience by providing location-based services. Proper error handling and logging are implemented to ensure reliability and ease of maintenance.
+	 *
+	 */
+	updateMyLocation() {
+			this.geolocationService.getCurrentPosition().then(position &#x3D;&gt; {
+			  const { latitude, longitude } &#x3D; position;
+			  const params: UpdateLocation$Params &#x3D; { latitude: latitude, longitude: longitude };
+			  updateLocation(this.http,this.gym.rootUrl,params).subscribe({
+				next: (response) &#x3D;&gt; {
+					console.log(&#x27;Location updated successfully&#x27;);
+					console.log(response);
+				  },
+				  error: (error) &#x3D;&gt; {
+					console.error(&#x27;Error updating location:&#x27;, error);
+				  }
+				});
+			}).catch(error &#x3D;&gt; {
+			  console.error(&#x27;Error getting location&#x27;, error);
+			});
+		  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;basic-container&quot;&gt;
+	&lt;main&gt;
+	  &lt;section class&#x3D;&quot;hero&quot;&gt;
+		&lt;div class&#x3D;&quot;hero-content&quot;&gt;
+		  &lt;h1&gt;Palestre&lt;/h1&gt;
+		  &lt;p&gt;Cerca la palestra piu vicina a te&lt;/p&gt;
+		  &lt;img src&#x3D;&quot;https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w&#x3D;500&amp;auto&#x3D;format&amp;fit&#x3D;crop&amp;q&#x3D;60&amp;ixlib&#x3D;rb-4.0.3&amp;ixid&#x3D;M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmxhY2t8ZW58MHx8MHx8fDA%3D&quot; alt&#x3D;&quot;Immagine della categoria&quot; class&#x3D;&quot;hero-image&quot;&gt;
+		&lt;/div&gt;
+	  &lt;/section&gt;
+
+	  &lt;section class&#x3D;&quot;explore-section&quot;&gt;
+		&lt;section class&#x3D;&quot;articles container&quot;&gt;
+		  &lt;div class&#x3D;&quot;row&quot;&gt;
+			&lt;div class&#x3D;&quot;form-group&quot;&gt;
+		&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-dark m-3&quot; (click)&#x3D;&quot;updateMyLocation()&quot;&gt;Aggiorna la posizione&lt;/button&gt;
+	&lt;/div&gt;
+			&lt;ng-container *ngFor&#x3D;&quot;let gym of gym_products&quot;&gt;
+			  &lt;div class&#x3D;&quot;col-12 col-md-3 mb-4&quot;&gt;
+				&lt;div class&#x3D;&quot;card&quot;&gt;
+				  &lt;img [src]&#x3D;&quot;gym.image_url&quot; class&#x3D;&quot;custom-img&quot; alt&#x3D;&quot;{{ gym.name }}&quot;&gt;
+				  &lt;div class&#x3D;&quot;card-body&quot;&gt;
+					&lt;h5 class&#x3D;&quot;card-title&quot;&gt;{{ gym.name }}&lt;/h5&gt;
+					&lt;p class&#x3D;&quot;card-text&quot;&gt;{{ gym.description }}&lt;/p&gt;
+					&lt;p class&#x3D;&quot;card-text&quot;&gt;{{ gym.distance}}  km &lt;/p&gt;
+					&lt;!-- &lt;button class&#x3D;&quot;btn btn-primary show-prodotto&quot; (click)&#x3D;&quot;goToProduct(product.id!)&quot;&gt;Mostra prodotto&lt;/button&gt; --&gt;
+				  &lt;/div&gt;
+				&lt;/div&gt;
+			  &lt;/div&gt;
+			&lt;/ng-container&gt;
+		  &lt;/div&gt;
+		&lt;/section&gt;
+	  &lt;/section&gt;
+	&lt;/main&gt;
+  &lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="basic-container">	<main>	  <section class="hero">		<div class="hero-content">		  <h1>Palestre</h1>		  <p>Cerca la palestra piu vicina a te</p>		  <img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmxhY2t8ZW58MHx8MHx8fDA%3D" alt="Immagine della categoria" class="hero-image">		</div>	  </section>	  <section class="explore-section">		<section class="articles container">		  <div class="row">			<div class="form-group">		<button type="button" class="btn btn-dark m-3" (click)="updateMyLocation()">Aggiorna la posizione</button>	</div>			<ng-container *ngFor="let gym of gym_products">			  <div class="col-12 col-md-3 mb-4">				<div class="card">				  <img [src]="gym.image_url" class="custom-img" alt="{{ gym.name }}">				  <div class="card-body">					<h5 class="card-title">{{ gym.name }}</h5>					<p class="card-text">{{ gym.description }}</p>					<p class="card-text">{{ gym.distance}}  km </p>					<!-- <button class="btn btn-primary show-prodotto" (click)="goToProduct(product.id!)">Mostra prodotto</button> -->				  </div>				</div>			  </div>			</ng-container>		  </div>		</section>	  </section>	</main>  </div></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GymComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GymComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,2605 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>leonardo-hug-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">leonardo-hug-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  LoginComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/login/login.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The LoginComponent is designed to facilitate user authentication within the application.
+It provides a user-friendly interface for logging in, featuring a form where users can enter their credentials.
+The component validates these inputs using Angular&#39;s reactive forms and, upon successful validation, submits the login request through the AuthenticationService.
+In case of successful authentication, the TokenService is employed to securely store the authentication token, and the user is redirected to the home component.
+Additionally, for new users, the LoginComponent offers navigation to the RegisterComponent, enabling easy access to account creation.
+This component integrates with various Angular modules and services, including ng-bootstrap for modal functionality, showcasing a comprehensive approach to handling user authentication in Angular applications.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>AfterViewInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-login</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/RegisterComponent.html" target="_self" >RegisterComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./login.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./login.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#activeModal" >activeModal</a>
+                            </li>
+                            <li>
+                                <a href="#authRequest" >authRequest</a>
+                            </li>
+                            <li>
+                                <a href="#digitPattern" >digitPattern</a>
+                            </li>
+                            <li>
+                                <a href="#emailBlurred" >emailBlurred</a>
+                            </li>
+                            <li>
+                                <a href="#emailFocused" >emailFocused</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#emailInput" >emailInput</a>
+                            </li>
+                            <li>
+                                <a href="#emailInteracted" >emailInteracted</a>
+                            </li>
+                            <li>
+                                <a href="#emailPattern" >emailPattern</a>
+                            </li>
+                            <li>
+                                <a href="#emailSubscription" >emailSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#errorMsg" >errorMsg</a>
+                            </li>
+                            <li>
+                                <a href="#loginForm" >loginForm</a>
+                            </li>
+                            <li>
+                                <a href="#lowerCasePattern" >lowerCasePattern</a>
+                            </li>
+                            <li>
+                                <a href="#passwordBlurred" >passwordBlurred</a>
+                            </li>
+                            <li>
+                                <a href="#passwordFocused" >passwordFocused</a>
+                            </li>
+                            <li>
+                                <a href="#passwordInteracted" >passwordInteracted</a>
+                            </li>
+                            <li>
+                                <a href="#passwordSubscription" >passwordSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#passwordVisible" >passwordVisible</a>
+                            </li>
+                            <li>
+                                <a href="#specialCharPattern" >specialCharPattern</a>
+                            </li>
+                            <li>
+                                <a href="#upperCasePattern" >upperCasePattern</a>
+                            </li>
+                            <li>
+                                <a href="#user$" >user$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#closeLoginModal" >closeLoginModal</a>
+                            </li>
+                            <li>
+                                <a href="#handleError" >handleError</a>
+                            </li>
+                            <li>
+                                <a href="#hasPatternError" >hasPatternError</a>
+                            </li>
+                            <li>
+                                <a href="#login" >login</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onEmailBlur" >onEmailBlur</a>
+                            </li>
+                            <li>
+                                <a href="#onEmailFocus" >onEmailFocus</a>
+                            </li>
+                            <li>
+                                <a href="#onPasswordBlur" >onPasswordBlur</a>
+                            </li>
+                            <li>
+                                <a href="#onPasswordFocus" >onPasswordFocus</a>
+                            </li>
+                            <li>
+                                <a href="#openRegisterModal" >openRegisterModal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetLoginForm" >resetLoginForm</a>
+                            </li>
+                            <li>
+                                <a href="#setFocus" >setFocus</a>
+                            </li>
+                            <li>
+                                <a href="#togglePasswordVisibility" >togglePasswordVisibility</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, router: Router, authService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>, activeModal: NgbActiveModal, modalService: NgbModal, userInfoService: <a href="../injectables/UserInfoService.html" target="_self">UserInfoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/app/pages/login/login.component.ts:135</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructs the LoginComponent instance.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Provides convenient methods for generating controls.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>An Angular service for navigation.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to handle authentication.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tokenService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage tokens.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>activeModal</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbActiveModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>A reference to the active modal.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to manage modal windows.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>userInfoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserInfoService.html" target="_self" >UserInfoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service to retrieve user information.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeLoginModal"></a>
+                    <span class="name">
+                        <span ><b>closeLoginModal</b></span>
+                        <a href="#closeLoginModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeLoginModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="353"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:353</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the login modal and resets the login form to its initial state.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleError"></a>
+                    <span class="name">
+                        <span ><b>handleError</b></span>
+                        <a href="#handleError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleError(error: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="333"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:333</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles errors that occur during the login process.
+Interprets HTTP status codes from failed login attempts and updates the <code>errorMsg</code> array with appropriate user-friendly messages.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>error</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The error object received from the login attempt, typically containing a status code and message.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasPatternError"></a>
+                    <span class="name">
+                        <span ><b>hasPatternError</b></span>
+                        <a href="#hasPatternError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasPatternError(controlName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, pattern: RegExp)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="380"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:380</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks if a specific form control has a pattern validation error matching the given pattern.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>controlName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The name of the form control to check for a pattern error.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>pattern</td>
+                                            <td>
+                                                        <code>RegExp</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The regular expression pattern to compare against the control&#39;s pattern error.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>True if the control has a pattern error that matches the given pattern, false otherwise.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>login()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="295"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:295</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Attempts to log in the user using the credentials provided in the login form.
+This method first checks if the login form is valid. If not, it displays an error message prompting the user to enter correct credentials.
+If the form is valid, it constructs an <code>AuthenticationRequest</code> object from the form values, which includes the user&#39;s email and password.
+This request object is then sent to the authentication service to attempt user authentication.</p>
+<p>Upon successful authentication, the method performs several actions:</p>
+<ul>
+<li>It updates the user&#39;s authentication token using the token received from the authentication response.</li>
+<li>It fetches the user&#39;s information by calling <code>updateUserInfo</code> method of the <code>userInfoService</code>.</li>
+<li>Upon successful fetching of the user&#39;s information, it navigates the user to the home page and closes the login modal.</li>
+</ul>
+<p>If there is an error during authentication or while updating the user&#39;s information, it displays an appropriate error message.</p>
+<p>This method is bound to the submit event of the login form in the component&#39;s template.
+It relies on Angular&#39;s form validation to ensure the form is valid before attempting to authenticate the user.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">// Example usage in a template
+&lt;form [formGroup]=&quot;loginForm&quot; (ngSubmit)=&quot;login()&quot;&gt;
+  &lt;!-- form fields --&gt;
+  &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;/form&gt;</code></pre></div><p>See AuthenticationRequest - This type is used to type-check the request payload for authentication.
+See AuthenticationService#authenticate - This method is called to perform the actual authentication request to the server.
+See UserInfoService#updateUserInfo - Called to fetch and update the user&#39;s information upon successful authentication.
+See Router#navigate - Used to redirect the user to the home page upon successful login.
+See NgbActiveModal#close - Closes the login modal upon successful login.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="218"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:218</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the initial focus on a specific element after the view is fully initialized.
+This method is part of Angular&#39;s lifecycle hooks, called after Angular initializes the component&#39;s views and child views.
+<code>ngAfterViewInit</code> is useful for DOM manipulations and initializing values that depend on the view&#39;s rendering.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="405"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:405</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cleans up resources and subscriptions when the component is destroyed.
+This method is part of Angular&#39;s lifecycle hooks, called just before Angular destroys the component.
+Use <code>ngOnDestroy</code> to perform any necessary cleanup, such as unsubscribing from observables and detaching event handlers,
+to prevent memory leaks.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initializes component logic on component load.
+This method is part of Angular&#39;s lifecycle hooks, called after Angular has initialized all data-bound properties.
+Sets up subscriptions to value changes for the email and password form controls.
+Marks the email and password as interacted with if they are focused when their values change.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEmailBlur"></a>
+                    <span class="name">
+                        <span ><b>onEmailBlur</b></span>
+                        <a href="#onEmailBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEmailBlur()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="234"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the blur event on the email input field.
+Sets the <code>emailBlurred</code> flag to true indicating the email field has been blurred.
+Resets the <code>emailFocused</code> flag to false indicating the email field is no longer focused.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEmailFocus"></a>
+                    <span class="name">
+                        <span ><b>onEmailFocus</b></span>
+                        <a href="#onEmailFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEmailFocus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="253"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:253</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the focus event on the email input field.
+Sets the <code>emailFocused</code> flag to true indicating the email field is focused.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPasswordBlur"></a>
+                    <span class="name">
+                        <span ><b>onPasswordBlur</b></span>
+                        <a href="#onPasswordBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPasswordBlur()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="244"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:244</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the blur event on the password input field.
+Sets the <code>passwordBlurred</code> flag to true indicating the password field has been blurred.
+Resets the <code>passwordFocused</code> flag to false indicating the password field is no longer focused.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPasswordFocus"></a>
+                    <span class="name">
+                        <span ><b>onPasswordFocus</b></span>
+                        <a href="#onPasswordFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPasswordFocus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="261"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:261</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the focus event on the password input field.
+Sets the <code>passwordFocused</code> flag to true indicating the password field is focused.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openRegisterModal"></a>
+                    <span class="name">
+                        <span ><b>openRegisterModal</b></span>
+                        <a href="#openRegisterModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openRegisterModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="363"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:363</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the current login modal and opens the registration modal.
+Sets a brief timeout before opening the registration modal to ensure the login modal has closed.
+Focuses on the email input field of the registration modal once it is opened.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetLoginForm"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetLoginForm</b></span>
+                        <a href="#resetLoginForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetLoginForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="392"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:392</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Resets the login form to its initial state.
+Clears the form values, resets the error messages, and sets the email and password blurred flags to false.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFocus"></a>
+                    <span class="name">
+                        <span ><b>setFocus</b></span>
+                        <a href="#setFocus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setFocus()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="204"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets focus on the email input element.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePasswordVisibility"></a>
+                    <span class="name">
+                        <span ><b>togglePasswordVisibility</b></span>
+                        <a href="#togglePasswordVisibility"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePasswordVisibility()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:225</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the visibility of the password input.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeModal"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>activeModal</b></span>
+                        <a href="#activeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>NgbActiveModal</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">src/app/pages/login/login.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">A reference to the active modal.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authRequest"></a>
+                    <span class="name">
+                        <span ><b>authRequest</b></span>
+                        <a href="#authRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/AuthenticationRequest.html" target="_self" >AuthenticationRequest</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ email: &#x27;&#x27;, password: &#x27;&#x27; }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/login/login.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Object to hold authentication request data.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="digitPattern"></a>
+                    <span class="name">
+                        <span ><b>digitPattern</b></span>
+                        <a href="#digitPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/(?&#x3D;.*[0-9])/</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/pages/login/login.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular expression pattern for at least one digit.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailBlurred"></a>
+                    <span class="name">
+                        <span ><b>emailBlurred</b></span>
+                        <a href="#emailBlurred"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/pages/login/login.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the email input has been blurred.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailFocused"></a>
+                    <span class="name">
+                        <span ><b>emailFocused</b></span>
+                        <a href="#emailFocused"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/pages/login/login.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the email input is focused.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailInput"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>emailInput</b></span>
+                        <a href="#emailInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;emailInput&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/login/login.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Reference to the email input element.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailInteracted"></a>
+                    <span class="name">
+                        <span ><b>emailInteracted</b></span>
+                        <a href="#emailInteracted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/pages/login/login.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the email input has been interacted with.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailPattern"></a>
+                    <span class="name">
+                        <span ><b>emailPattern</b></span>
+                        <a href="#emailPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/app/pages/login/login.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular expression pattern for email validation.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailSubscription"></a>
+                    <span class="name">
+                        <span ><b>emailSubscription</b></span>
+                        <a href="#emailSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/pages/login/login.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription for email input changes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMsg"></a>
+                    <span class="name">
+                        <span ><b>errorMsg</b></span>
+                        <a href="#errorMsg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/pages/login/login.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array to store error messages.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loginForm"></a>
+                    <span class="name">
+                        <span ><b>loginForm</b></span>
+                        <a href="#loginForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/login/login.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Form group for login form controls.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lowerCasePattern"></a>
+                    <span class="name">
+                        <span ><b>lowerCasePattern</b></span>
+                        <a href="#lowerCasePattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/(?&#x3D;.*[a-z])/</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/pages/login/login.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular expression pattern for at least one lowercase letter.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordBlurred"></a>
+                    <span class="name">
+                        <span ><b>passwordBlurred</b></span>
+                        <a href="#passwordBlurred"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/pages/login/login.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the password input has been blurred.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordFocused"></a>
+                    <span class="name">
+                        <span ><b>passwordFocused</b></span>
+                        <a href="#passwordFocused"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/pages/login/login.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the password input is focused.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordInteracted"></a>
+                    <span class="name">
+                        <span ><b>passwordInteracted</b></span>
+                        <a href="#passwordInteracted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/pages/login/login.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to indicate if the password input has been interacted with.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordSubscription"></a>
+                    <span class="name">
+                        <span ><b>passwordSubscription</b></span>
+                        <a href="#passwordSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/pages/login/login.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription for password input changes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordVisible"></a>
+                    <span class="name">
+                        <span ><b>passwordVisible</b></span>
+                        <a href="#passwordVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/pages/login/login.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Boolean flag to toggle password visibility.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="specialCharPattern"></a>
+                    <span class="name">
+                        <span ><b>specialCharPattern</b></span>
+                        <a href="#specialCharPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/(?&#x3D;.*[!@#$%^&amp;*(),.?&quot;:{}|&lt;&gt;])/</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/app/pages/login/login.component.ts:130</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular expression pattern for at least one special character.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="upperCasePattern"></a>
+                    <span class="name">
+                        <span ><b>upperCasePattern</b></span>
+                        <a href="#upperCasePattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/(?&#x3D;.*[A-Z])/</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/pages/login/login.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Regular expression pattern for at least one uppercase letter.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user$"></a>
+                    <span class="name">
+                        <span ><b>user$</b></span>
+                        <a href="#user$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UserResponse.html" target="_self" >Observable&lt;UserResponse | null&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/login/login.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable for the user response, can be null.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { Router} from &#x27;@angular/router&#x27;;
+import { AuthenticationService } from &#x27;../../services/services/authentication.service&#x27;;
+import { AuthenticationRequest } from &#x27;../../services/models/authentication-request&#x27;;
+import { TokenService } from &#x27;../../services/token/token.service&#x27;;
+import { NgbActiveModal , NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { RegisterComponent } from &#x27;../register/register.component&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { UserInfoService } from &#x27;../../services/userInfo/user-info.service&#x27;;
+import { UserResponse } from &#x27;../../services/models/user-response&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+/**
+ * The LoginComponent is designed to facilitate user authentication within the application.
+ * It provides a user-friendly interface for logging in, featuring a form where users can enter their credentials.
+ * The component validates these inputs using Angular&#x27;s reactive forms and, upon successful validation, submits the login request through the AuthenticationService.
+ * In case of successful authentication, the TokenService is employed to securely store the authentication token, and the user is redirected to the home component.
+ * Additionally, for new users, the LoginComponent offers navigation to the RegisterComponent, enabling easy access to account creation.
+ * This component integrates with various Angular modules and services, including ng-bootstrap for modal functionality, showcasing a comprehensive approach to handling user authentication in Angular applications.
+ */
+
+@Component({
+  selector: &#x27;app-login&#x27;,
+  standalone: true,
+  imports: [CommonModule,FormsModule,ReactiveFormsModule,RegisterComponent],
+  templateUrl: &#x27;./login.component.html&#x27;,
+  styleUrl: &#x27;./login.component.scss&#x27;
+})
+export class LoginComponent implements OnInit, AfterViewInit{
+	 /**
+     * Reference to the email input element.
+     */
+	@ViewChild(&#x27;emailInput&#x27;) emailInput!: ElementRef;
+
+    /**
+     * Observable for the user response, can be null.
+     */
+	user$!: Observable&lt;UserResponse | null&gt;;
+
+	/**
+     * Form group for login form controls.
+     */
+	loginForm: FormGroup;
+
+	 /**
+     * Object to hold authentication request data.
+     */
+	authRequest: AuthenticationRequest &#x3D; { email: &#x27;&#x27;, password: &#x27;&#x27; };
+
+	/**
+     * Array to store error messages.
+     */
+	errorMsg: string[] &#x3D; [];
+
+	/**
+	 * Boolean flag to toggle password visibility.
+	 */
+	passwordVisible: boolean &#x3D; false;
+
+	/**
+	 * Boolean flag to indicate if the email input has been blurred.
+	 */
+	emailBlurred &#x3D; false;
+
+	/**
+     * Subscription for email input changes.
+     */
+	emailSubscription!: Subscription | undefined;
+
+	/**
+	 * Boolean flag to indicate if the email input is focused.
+	 */
+	emailFocused &#x3D; false;
+
+	/**
+	 * Boolean flag to indicate if the email input has been interacted with.
+	 */
+	emailInteracted &#x3D; false;
+
+	/**
+	 * Subscription for password input changes.
+	 */
+	passwordSubscription!: Subscription | undefined;
+
+	/**
+	 * Boolean flag to indicate if the password input is focused.
+	 */
+	passwordFocused &#x3D; false;
+
+	/**
+	 * Boolean flag to indicate if the password input has been interacted with.
+	 */
+	passwordInteracted &#x3D; false;
+
+	/**
+	 * Boolean flag to indicate if the password input has been blurred.
+	 */
+	passwordBlurred &#x3D; false;
+
+
+	/**
+     * Regular expression pattern for at least one digit.
+     */
+	digitPattern &#x3D; /(?&#x3D;.*[0-9])/;
+
+	/**
+	 * Regular expression pattern for at least one lowercase letter.
+	 */
+	lowerCasePattern &#x3D; /(?&#x3D;.*[a-z])/;
+
+	/**
+	 * Regular expression pattern for at least one uppercase letter.
+	 */
+	upperCasePattern &#x3D; /(?&#x3D;.*[A-Z])/;
+
+	/**
+	 * Regular expression pattern for at least one special character.
+	 */
+	specialCharPattern &#x3D; /(?&#x3D;.*[!@#$%^&amp;*(),.?&quot;:{}|&lt;&gt;])/;
+
+	/**
+	 * Regular expression pattern for email validation.
+	 */
+	emailPattern &#x3D; /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+	/**
+	 * Constructs the LoginComponent instance.
+	 *
+	 * @param {FormBuilder} fb Provides convenient methods for generating controls.
+	 * @param {Router} router An Angular service for navigation.
+	 * @param {AuthenticationService} authService Service to handle authentication.
+	 * @param {TokenService} tokenService Service to manage tokens.
+	 * @param {NgbActiveModal} activeModal A reference to the active modal.
+	 * @param {NgbModal} modalService Service to manage modal windows.
+	 * @param {UserInfoService} userInfoService Service to retrieve user information.
+	 */
+	constructor(
+		private fb: FormBuilder,
+		private router: Router,
+		private authService: AuthenticationService,
+		private tokenService: TokenService,
+		public activeModal: NgbActiveModal,
+		private modalService: NgbModal,
+		private userInfoService: UserInfoService
+	) {
+		/**
+		 * Initializes the login form with form controls for email and password.
+		 * Sets up form validators for required fields, minimum length, and patterns for email and password.
+		 * Subscribes to the user information observable to keep track of the user&#x27;s authentication status.
+		 */
+		this.loginForm &#x3D; this.fb.group({
+			email: [&#x27;&#x27;,[
+				Validators.required,
+				Validators.pattern(this.emailPattern)
+			]],
+			password: [&#x27;&#x27;, [
+				Validators.required,
+				Validators.minLength(8),
+				// Validators.pattern(this.digitPattern),
+				// Validators.pattern(this.lowerCasePattern),
+				// Validators.pattern(this.upperCasePattern),
+				// Validators.pattern(this.specialCharPattern)
+			  ]],
+		  });
+		  this.user$ &#x3D; this.userInfoService.user$;
+		}
+
+
+		/**
+		 * Initializes component logic on component load.
+		 * This method is part of Angular&#x27;s lifecycle hooks, called after Angular has initialized all data-bound properties.
+		 * Sets up subscriptions to value changes for the email and password form controls.
+		 * Marks the email and password as interacted with if they are focused when their values change.
+		 */
+		ngOnInit(): void {
+			this.emailSubscription &#x3D; this.loginForm.get(&#x27;email&#x27;)?.valueChanges.subscribe(() &#x3D;&gt; {
+			  if (this.emailFocused) {
+				this.emailInteracted &#x3D; true;
+			  }
+			});
+
+			this.passwordSubscription &#x3D; this.loginForm.get(&#x27;password&#x27;)?.valueChanges.subscribe(() &#x3D;&gt; {
+			  if (this.passwordFocused) {
+				  this.passwordInteracted &#x3D; true;
+			  }
+		  });
+
+	}
+
+	/**
+	 * Sets focus on the email input element.
+	 */
+	setFocus() {
+		setTimeout(() &#x3D;&gt; {
+			if (this.emailInput) {
+				this.emailInput.nativeElement.focus();
+			}
+		}, 10);
+
+	}
+
+	/**
+	 * Sets the initial focus on a specific element after the view is fully initialized.
+	 * This method is part of Angular&#x27;s lifecycle hooks, called after Angular initializes the component&#x27;s views and child views.
+	 * &#x60;ngAfterViewInit&#x60; is useful for DOM manipulations and initializing values that depend on the view&#x27;s rendering.
+	 */
+	ngAfterViewInit(): void {
+		this.setFocus();
+	}
+
+	/**
+	 * Toggles the visibility of the password input.
+	 */
+	togglePasswordVisibility() {
+		this.passwordVisible &#x3D; !this.passwordVisible;
+	}
+
+	/**
+	 * Handles the blur event on the email input field.
+	 * Sets the &#x60;emailBlurred&#x60; flag to true indicating the email field has been blurred.
+	 * Resets the &#x60;emailFocused&#x60; flag to false indicating the email field is no longer focused.
+	 */
+	onEmailBlur() {
+		this.emailBlurred &#x3D; true;
+		this.emailFocused &#x3D; false;
+	}
+
+	/**
+	 * Handles the blur event on the password input field.
+	 * Sets the &#x60;passwordBlurred&#x60; flag to true indicating the password field has been blurred.
+	 * Resets the &#x60;passwordFocused&#x60; flag to false indicating the password field is no longer focused.
+	 */
+	onPasswordBlur() {
+		this.passwordBlurred &#x3D; true;
+		this.passwordFocused &#x3D; false;
+	}
+
+	/**
+	 * Handles the focus event on the email input field.
+	 * Sets the &#x60;emailFocused&#x60; flag to true indicating the email field is focused.
+	 */
+	onEmailFocus() {
+		this.emailFocused &#x3D; true;
+	}
+
+	/**
+	 * Handles the focus event on the password input field.
+	 * Sets the &#x60;passwordFocused&#x60; flag to true indicating the password field is focused.
+	 */
+	onPasswordFocus() {
+		this.passwordFocused &#x3D; true;
+	}
+
+	/**
+	 * Attempts to log in the user using the credentials provided in the login form.
+	 * This method first checks if the login form is valid. If not, it displays an error message prompting the user to enter correct credentials.
+	 * If the form is valid, it constructs an &#x60;AuthenticationRequest&#x60; object from the form values, which includes the user&#x27;s email and password.
+	 * This request object is then sent to the authentication service to attempt user authentication.
+	 *
+	 * Upon successful authentication, the method performs several actions:
+	 * - It updates the user&#x27;s authentication token using the token received from the authentication response.
+	 * - It fetches the user&#x27;s information by calling &#x60;updateUserInfo&#x60; method of the &#x60;userInfoService&#x60;.
+	 * - Upon successful fetching of the user&#x27;s information, it navigates the user to the home page and closes the login modal.
+	 *
+	 * If there is an error during authentication or while updating the user&#x27;s information, it displays an appropriate error message.
+	 *
+	 * @usageNotes
+	 * This method is bound to the submit event of the login form in the component&#x27;s template.
+	 * It relies on Angular&#x27;s form validation to ensure the form is valid before attempting to authenticate the user.
+	 *
+	 * @example
+	 * // Example usage in a template
+	 * &lt;form [formGroup]&#x3D;&quot;loginForm&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+	 *   &lt;!-- form fields --&gt;
+	 *   &lt;button type&#x3D;&quot;submit&quot;&gt;Login&lt;/button&gt;
+	 * &lt;/form&gt;
+	 *
+	 * @see AuthenticationRequest - This type is used to type-check the request payload for authentication.
+	 * @see AuthenticationService#authenticate - This method is called to perform the actual authentication request to the server.
+	 * @see UserInfoService#updateUserInfo - Called to fetch and update the user&#x27;s information upon successful authentication.
+	 * @see Router#navigate - Used to redirect the user to the home page upon successful login.
+	 * @see NgbActiveModal#close - Closes the login modal upon successful login.
+	 */
+	login() {
+		this.errorMsg &#x3D; [];
+
+		if (this.loginForm.invalid){
+			this.errorMsg.push(&#x27;Perfavore inserisci le credenziali corrette.&#x27;);
+			return;
+		}
+		const authRequest: AuthenticationRequest &#x3D; this.loginForm.value;
+
+		this.authService.authenticate({ body: authRequest }).subscribe({
+			next: (res) &#x3D;&gt; {
+			// console.log(&#x27;accesso &#x27;);
+			this.tokenService.token &#x3D; res.token as string;
+			this.userInfoService.updateUserInfo().subscribe({
+				next: () &#x3D;&gt; {
+				this.router.navigate([&#x27;home&#x27;]);
+				// Close the modal on successful login
+				this.activeModal.close();
+				},
+				error: (err) &#x3D;&gt; {
+				console.error(&#x27;Failed to update user info&#x27;, err);
+				this.errorMsg.push(&#x27;Failed to update user info. Please try again.&#x27;);
+				}
+			});
+			},
+		error: (err) &#x3D;&gt; {
+			this.errorMsg.push(err.error.error || &#x27;Si è verificato un errore. Si prega di riprovare.&#x27;);
+			this.handleError(err);
+		}
+		});
+	}
+
+	/**
+	 * Handles errors that occur during the login process.
+	 * Interprets HTTP status codes from failed login attempts and updates the &#x60;errorMsg&#x60; array with appropriate user-friendly messages.
+	 *
+	 * @param {any} error The error object received from the login attempt, typically containing a status code and message.
+	 */
+	handleError(error: any) {
+		this.errorMsg &#x3D; [];
+		if (error.status &#x3D;&#x3D;&#x3D; 400) {
+		  this.errorMsg.push(&#x27;Richiesta non valida. Si prega di controllare le credenziali.&#x27;);
+		} else if (error.status &#x3D;&#x3D;&#x3D; 401) {
+		  this.errorMsg.push(&#x27;Credenziali non valide. Si prega di riprovare.&#x27;);
+		} else if (error.status &#x3D;&#x3D;&#x3D; 403) {
+		  this.errorMsg.push(&#x27;Accesso vietato. Non hai i permessi necessari.&#x27;);
+		} else if (error.status &#x3D;&#x3D;&#x3D; 404) {
+		  this.errorMsg.push(&#x27;Servizio non trovato. Si prega di riprovare.&#x27;);
+		} else if (error.status &#x3D;&#x3D;&#x3D; 500) {
+		  this.errorMsg.push(&#x27;Errore interno del server. Si prega di riprovare più tardi.&#x27;);
+		} else {
+		  this.errorMsg.push(&#x27;Si è verificato un errore. Si prega di riprovare.&#x27;);
+		}
+	  }
+
+	/**
+	 * Closes the login modal and resets the login form to its initial state.
+	 */
+	closeLoginModal() {
+		this.resetLoginForm();
+		this.activeModal.dismiss();
+	}
+
+	/**
+	 * Closes the current login modal and opens the registration modal.
+	 * Sets a brief timeout before opening the registration modal to ensure the login modal has closed.
+	 * Focuses on the email input field of the registration modal once it is opened.
+	 */
+	openRegisterModal() {
+		this.closeLoginModal();
+
+		setTimeout(() &#x3D;&gt; {
+			const modalRef &#x3D; this.modalService.open(RegisterComponent, { centered: true });
+			modalRef.componentInstance.emailInput?.nativeElement?.focus();
+		  }, 10);
+	  }
+
+
+	/**
+	 * Checks if a specific form control has a pattern validation error matching the given pattern.
+	 *
+	 * @param {string} controlName The name of the form control to check for a pattern error.
+	 * @param {RegExp} pattern The regular expression pattern to compare against the control&#x27;s pattern error.
+	 * @returns {boolean} True if the control has a pattern error that matches the given pattern, false otherwise.
+	*/
+	  hasPatternError(controlName: string, pattern: RegExp): boolean {
+		  const control &#x3D; this.loginForm.get(controlName);
+		  if (!control || !control.errors || !control.errors[&#x27;pattern&#x27;]) {
+		return false;
+		}
+		return (control.errors[&#x27;pattern&#x27;].requiredPattern &#x3D;&#x3D;&#x3D; pattern.toString() );
+	}
+
+	/**
+	 * Resets the login form to its initial state.
+	 * Clears the form values, resets the error messages, and sets the email and password blurred flags to false.
+	*/
+	private resetLoginForm() {
+		this.loginForm.reset();
+		this.emailBlurred &#x3D; false;
+		this.passwordBlurred &#x3D; false;
+		this.errorMsg &#x3D; [];
+	  }
+
+	/**
+	 * Cleans up resources and subscriptions when the component is destroyed.
+	 * This method is part of Angular&#x27;s lifecycle hooks, called just before Angular destroys the component.
+	 * Use &#x60;ngOnDestroy&#x60; to perform any necessary cleanup, such as unsubscribing from observables and detaching event handlers,
+	 * to prevent memory leaks.
+	*/
+	  ngOnDestroy() {
+		if (this.emailSubscription) {
+		  this.emailSubscription.unsubscribe();
+		}
+		if (this.passwordSubscription) {
+			this.passwordSubscription.unsubscribe();
+		}
+	}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;modal-header&quot;&gt;
+	&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn-close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;closeLoginModal()&quot;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+
+		&lt;form [formGroup]&#x3D;&quot;loginForm&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+			&lt;h1 class&#x3D;&quot;h3 mb-3 fw-normal&quot;&gt;Accedi&lt;/h1&gt;
+			&lt;hr&gt;
+			&lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;errorMsg.length&quot;&gt;
+				&lt;p *ngFor&#x3D;&quot;let msg of errorMsg&quot;&gt;{{msg}}&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+			&lt;input
+				type&#x3D;&quot;email&quot;
+				class&#x3D;&quot;form-control&quot;
+				id&#x3D;&quot;loginEmail&quot;
+				placeholder&#x3D;&quot;name@example.com&quot;
+				formControlName&#x3D;&quot;email&quot;
+				#emailInput
+				(blur)&#x3D;&quot;onEmailBlur()&quot;
+				(focus)&#x3D;&quot;onEmailFocus()&quot;&gt;
+			&lt;label for&#x3D;&quot;loginEmail&quot;&gt;Indirizzo Email&lt;/label&gt;
+			 &lt;div *ngIf&#x3D;&quot;emailBlurred &amp;&amp; emailInteracted &amp;&amp; loginForm.get(&#x27;email&#x27;)?.invalid&quot;&gt;
+				&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;email&#x27;)?.hasError(&#x27;required&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;L&#x27;indirizzo email è richiesto&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;email&#x27;)?.hasError(&#x27;pattern&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;Per favore inserisci un&#x27;idirizzo email valido.&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+			&lt;div class&#x3D;&quot;form-floating mb-3 position-relative&quot;&gt;
+			&lt;input
+				[type]&#x3D;&quot;passwordVisible ? &#x27;text&#x27; : &#x27;password&#x27;&quot;
+				class&#x3D;&quot;form-control&quot; id&#x3D;&quot;loginPassword&quot;
+				placeholder&#x3D;&quot;Password&quot;
+				formControlName&#x3D;&quot;password&quot;
+				(focus)&#x3D;&quot;onPasswordFocus()&quot;
+				(blur)&#x3D;&quot;onPasswordBlur()&quot;&gt;
+			&lt;label for&#x3D;&quot;loginPassword&quot;&gt;Password&lt;/label&gt;
+			&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-transparent position-absolute end-0 top-0 mt-2 me-2&quot; (click)&#x3D;&quot;togglePasswordVisibility()&quot;&gt;
+				&lt;i [ngClass]&#x3D;&quot;passwordVisible ? &#x27;bi bi-eye-slash&#x27; : &#x27;bi bi-eye&#x27;&quot;&gt;&lt;/i&gt;
+			&lt;/button&gt;
+			&lt;div *ngIf&#x3D;&quot;passwordBlurred &amp;&amp; passwordInteracted &amp;&amp; loginForm.get(&#x27;password&#x27;)?.invalid&quot;&gt;
+				&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;required&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password è richiesta&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;minlength&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password deve essere lunga almeno 8 caratteri.&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, specialCharPattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password deve contenere almeno un carattere speciale.&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, digitPattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password deve contenere almeno una cifra.&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, lowerCasePattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password deve contenere almeno una lettera minuscola.&lt;/div&gt;
+				&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, upperCasePattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;La password deve contenere almeno una lettera maiuscola.&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+
+
+		&lt;button class&#x3D;&quot;btn btn-custom w-100 py-2&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;loginForm.invalid&quot;&gt;
+			 Accedi
+		&lt;/button&gt;
+
+	&lt;div class &#x3D;&quot;mt-3&quot;&gt;
+		Non hai un account?&amp;nbsp;
+		&lt;button (click)&#x3D;&quot;openRegisterModal()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-link&quot;&gt;
+		Registrati qui!
+		&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;hr&gt;
+	&lt;div&gt;&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-custom&quot; onclick&#x3D;&quot;window.location.href&#x3D;&#x27;http://localhost:8088/api/v1/oauth2/authorization/google&#x27;&quot;&gt;
+			Accedi con Google
+		&lt;/button&gt;
+
+	&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;/div&gt;
+
+&lt;!--
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt; --&gt;
+
+
+&lt;!-- &lt;form [formGroup]&#x3D;&quot;loginForm&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+	&lt;h1 class&#x3D;&quot;h3 mb-3 fw-normal&quot;&gt;Login&lt;/h1&gt;
+	&lt;hr&gt;
+	&lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;errorMsg.length&quot;&gt;
+		&lt;p *ngFor&#x3D;&quot;let msg of errorMsg&quot;&gt;{{msg}}&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class&#x3D;&quot;form-floating mb-3&quot;&gt;
+	  &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;email&quot; placeholder&#x3D;&quot;name@example.com&quot; formControlName&#x3D;&quot;email&quot;&gt;
+	  &lt;label for&#x3D;&quot;email&quot;&gt;Email address&lt;/label&gt;
+	  &lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;email&#x27;)?.touched &amp;&amp; (loginForm.get(&#x27;email&#x27;)?.invalid)&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;email&#x27;)?.hasError(&#x27;required&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;Email is required.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;email&#x27;)?.hasError(&#x27;pattern&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;Please enter a valid email address.&lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class&#x3D;&quot;form-floating mb-3 position-relative&quot;&gt;
+	  &lt;input [type]&#x3D;&quot;passwordVisible ? &#x27;text&#x27; : &#x27;password&#x27;&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Password&quot; formControlName&#x3D;&quot;password&quot;&gt;
+	  &lt;label for&#x3D;&quot;password&quot;&gt;Password&lt;/label&gt;
+	  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-transparent position-absolute end-0 top-0 mt-2 me-2&quot; (click)&#x3D;&quot;togglePasswordVisibility()&quot;&gt;
+		&lt;i [ngClass]&#x3D;&quot;passwordVisible ? &#x27;bi bi-eye-slash&#x27; : &#x27;bi bi-eye&#x27;&quot;&gt;&lt;/i&gt;
+	  &lt;/button&gt;
+	  &lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.touched &amp;&amp; loginForm.get(&#x27;password&#x27;)?.invalid&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;required&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password is required.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;minlength&#x27;)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password must be at least 8 characters long.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, specialCharPattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password must contain at least one special character.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, digitPattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password must contain at least one digit.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, lowerCasePattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password must contain at least one lowercase letter.&lt;/div&gt;
+		&lt;div *ngIf&#x3D;&quot;hasPatternError(&#x27;password&#x27;, upperCasePattern)&quot; class&#x3D;&quot;text-danger&quot;&gt;Password must contain at least one uppercase letter.&lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;/div&gt; --&gt;
+
+
+	&lt;!--
+	&lt;div class&#x3D;&quot;form-check text-start my-3 form-switch&quot;&gt;
+	  &lt;input class&#x3D;&quot;form-check-input&quot; role&#x3D;&quot;switch&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;rememberMe&quot; formControlName&#x3D;&quot;rememberMe&quot;&gt;
+	  &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;rememberMe&quot;&gt;Ricordami&lt;/label&gt;
+	&lt;/div&gt;
+	--&gt;
+
+	&lt;!-- &lt;button class&#x3D;&quot;btn btn-dark w-100 py-2&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;loginForm.invalid&quot;&gt;
+		&lt;em class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&amp;nbsp;Sign in&lt;/em&gt;
+	&lt;/button&gt;
+
+
+	&lt;div class &#x3D;&quot;mt-3&quot;&gt;
+		Don&#x27;t have an account?&amp;nbsp;
+		&lt;button (click)&#x3D;&quot;register()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-link&quot;&gt;
+		  Register now
+		&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;hr&gt;
+	&lt;div&gt;
+		&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-dark&quot; onclick&#x3D;&quot;window.location.href&#x3D;&#x27;api/v1/oauth2/authorization/google&#x27;&quot;&gt;
+			&lt;a class&#x3D;&quot;forgot-password-link&quot; [routerLink]&#x3D;&quot;[&#x27;/reset-password&#x27;]&quot;&gt;Hai dimenticato la password?&lt;/a&gt;
+			Sign In with Google
+		&lt;/button&gt;
+	&lt;/div&gt;
+  &lt;/form&gt; --&gt;
+
+
+
+&lt;!--
+&lt;div class&#x3D;&quot;container-fluid card login-container&quot;&gt;
+	&lt;h3 class&#x3D;&quot;text-center&quot;&gt;Login&lt;/h3&gt;
+	&lt;hr&gt;
+	&lt;div class&#x3D;&quot;alert alert-danger&quot; role&#x3D;&quot;alert&quot; *ngIf&#x3D;&quot;errorMsg.length&quot;&gt;
+	  &lt;p *ngFor&#x3D;&quot;let msg of errorMsg&quot;&gt;{{msg}}&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;form [formGroup]&#x3D;&quot;loginForm&quot; (ngSubmit)&#x3D;&quot;login()&quot;&gt;
+	  &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+		&lt;label for&#x3D;&quot;login&quot; class&#x3D;&quot;form-label&quot;&gt;Email address&lt;/label&gt;
+		&lt;input formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;login&quot; placeholder&#x3D;&quot;name@example.com&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.controls[&#x27;email&#x27;].invalid &amp;&amp; (loginForm.controls[&#x27;email&#x27;].dirty || loginForm.controls[&#x27;email&#x27;].touched)&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  &lt;div *ngIf&#x3D;&quot;loginForm.controls[&#x27;email&#x27;].hasError(&#x27;email&#x27;)&quot;&gt;Email is required.&lt;/div&gt;
+		  &lt;div *ngIf&#x3D;&quot;loginForm.controls[&#x27;email&#x27;].hasError(&#x27;required&#x27;)&quot;&gt;Invalid email address.&lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+		&lt;label for&#x3D;&quot;password&quot; class&#x3D;&quot;form-label&quot;&gt;Password&lt;/label&gt;
+		&lt;input formControlName&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Password&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;loginForm.controls.password.invalid &amp;&amp; (loginForm.controls.password.dirty || loginForm.controls.password.touched)&quot; class&#x3D;&quot;text-danger&quot;&gt;
+		  &lt;div *ngIf&#x3D;&quot;loginForm.controls.password.errors.required&quot;&gt;Password is required.&lt;/div&gt;
+		  &lt;div *ngIf&#x3D;&quot;loginForm.controls.password.errors.minlength&quot;&gt;Password must be at least 6 characters long.&lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class&#x3D;&quot;d-flex justify-content-between mb-3&quot;&gt;
+		&lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot; [disabled]&#x3D;&quot;loginForm.invalid&quot;&gt;
+		  &lt;em class&#x3D;&quot;fas fa-sign-in-alt&quot;&gt;&amp;nbsp;Sign in&lt;/em&gt;
+		&lt;/button&gt;
+		&lt;div&gt;
+		  Don&#x27;t have an account?&amp;nbsp;
+		  &lt;button (click)&#x3D;&quot;register()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-link&quot;&gt;
+			Register
+		  &lt;/button&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;btn btn-primary&quot;&gt;
+  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; onclick&#x3D;&quot;window.location.href&#x3D;&#x27;api/v1/oauth2/authorization/google&#x27;&quot;&gt;
+	Sign In with Google
+  &lt;/button&gt;
+&lt;/div&gt; --&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="modal-header">	<button type="button" class="btn-close" aria-label="Close" (click)="closeLoginModal()"></button>  </div>  <div class="modal-body">		<form [formGroup]="loginForm" (ngSubmit)="login()">			<h1 class="h3 mb-3 fw-normal">Accedi</h1>			<hr>			<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">				<p *ngFor="let msg of errorMsg">{{msg}}</p>			</div>			<div class="form-floating mb-3">			<input				type="email"				class="form-control"				id="loginEmail"				placeholder="name@example.com"				formControlName="email"				#emailInput				(blur)="onEmailBlur()"				(focus)="onEmailFocus()">			<label for="loginEmail">Indirizzo Email</label>			 <div *ngIf="emailBlurred && emailInteracted && loginForm.get(\'email\')?.invalid">				<div *ngIf="loginForm.get(\'email\')?.hasError(\'required\')" class="text-danger">L\'indirizzo email è richiesto</div>				<div *ngIf="loginForm.get(\'email\')?.hasError(\'pattern\')" class="text-danger">Per favore inserisci un\'idirizzo email valido.</div>			</div>			</div>			<div class="form-floating mb-3 position-relative">			<input				[type]="passwordVisible ? \'text\' : \'password\'"				class="form-control" id="loginPassword"				placeholder="Password"				formControlName="password"				(focus)="onPasswordFocus()"				(blur)="onPasswordBlur()">			<label for="loginPassword">Password</label>			<button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">				<i [ngClass]="passwordVisible ? \'bi bi-eye-slash\' : \'bi bi-eye\'"></i>			</button>			<div *ngIf="passwordBlurred && passwordInteracted && loginForm.get(\'password\')?.invalid">				<div *ngIf="loginForm.get(\'password\')?.hasError(\'required\')" class="text-danger">La password è richiesta</div>				<div *ngIf="loginForm.get(\'password\')?.hasError(\'minlength\')" class="text-danger">La password deve essere lunga almeno 8 caratteri.</div>				<div *ngIf="hasPatternError(\'password\', specialCharPattern)" class="text-danger">La password deve contenere almeno un carattere speciale.</div>				<div *ngIf="hasPatternError(\'password\', digitPattern)" class="text-danger">La password deve contenere almeno una cifra.</div>				<div *ngIf="hasPatternError(\'password\', lowerCasePattern)" class="text-danger">La password deve contenere almeno una lettera minuscola.</div>				<div *ngIf="hasPatternError(\'password\', upperCasePattern)" class="text-danger">La password deve contenere almeno una lettera maiuscola.</div>			</div>			</div>		<button class="btn btn-custom w-100 py-2" type="submit" [disabled]="loginForm.invalid">			 Accedi		</button>	<div class ="mt-3">		Non hai un account?&nbsp;		<button (click)="openRegisterModal()" type="button" class="btn btn-link">		Registrati qui!		</button>	</div>	<hr>	<div><button type="button" class="btn btn-custom" onclick="window.location.href=\'http://localhost:8088/api/v1/oauth2/authorization/google\'">			Accedi con Google		</button>	</div></form></div><!--	</div></div></div></div> --><!-- <form [formGroup]="loginForm" (ngSubmit)="login()">	<h1 class="h3 mb-3 fw-normal">Login</h1>	<hr>	<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">		<p *ngFor="let msg of errorMsg">{{msg}}</p>	</div>	<div class="form-floating mb-3">	  <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">	  <label for="email">Email address</label>	  <div *ngIf="loginForm.get(\'email\')?.touched && (loginForm.get(\'email\')?.invalid)">		<div *ngIf="loginForm.get(\'email\')?.hasError(\'required\')" class="text-danger">Email is required.</div>		<div *ngIf="loginForm.get(\'email\')?.hasError(\'pattern\')" class="text-danger">Please enter a valid email address.</div>	  </div>	</div>	<div class="form-floating mb-3 position-relative">	  <input [type]="passwordVisible ? \'text\' : \'password\'" class="form-control" id="password" placeholder="Password" formControlName="password">	  <label for="password">Password</label>	  <button type="button" class="btn btn-transparent position-absolute end-0 top-0 mt-2 me-2" (click)="togglePasswordVisibility()">		<i [ngClass]="passwordVisible ? \'bi bi-eye-slash\' : \'bi bi-eye\'"></i>	  </button>	  <div *ngIf="loginForm.get(\'password\')?.touched && loginForm.get(\'password\')?.invalid">		<div *ngIf="loginForm.get(\'password\')?.hasError(\'required\')" class="text-danger">Password is required.</div>		<div *ngIf="loginForm.get(\'password\')?.hasError(\'minlength\')" class="text-danger">Password must be at least 8 characters long.</div>		<div *ngIf="hasPatternError(\'password\', specialCharPattern)" class="text-danger">Password must contain at least one special character.</div>		<div *ngIf="hasPatternError(\'password\', digitPattern)" class="text-danger">Password must contain at least one digit.</div>		<div *ngIf="hasPatternError(\'password\', lowerCasePattern)" class="text-danger">Password must contain at least one lowercase letter.</div>		<div *ngIf="hasPatternError(\'password\', upperCasePattern)" class="text-danger">Password must contain at least one uppercase letter.</div>	  </div>	</div> -->	<!--	<div class="form-check text-start my-3 form-switch">	  <input class="form-check-input" role="switch" type="checkbox" id="rememberMe" formControlName="rememberMe">	  <label class="form-check-label" for="rememberMe">Ricordami</label>	</div>	-->	<!-- <button class="btn btn-dark w-100 py-2" type="submit" [disabled]="loginForm.invalid">		<em class="fas fa-sign-in-alt">&nbsp;Sign in</em>	</button>	<div class ="mt-3">		Don\'t have an account?&nbsp;		<button (click)="register()" type="button" class="btn btn-link">		  Register now		</button>	</div>	<hr>	<div>		<button type="button" class="btn btn-dark" onclick="window.location.href=\'api/v1/oauth2/authorization/google\'">			<a class="forgot-password-link" [routerLink]="[\'/reset-password\']">Hai dimenticato la password?</a>			Sign In with Google		</button>	</div>  </form> --><!--<div class="container-fluid card login-container">	<h3 class="text-center">Login</h3>	<hr>	<div class="alert alert-danger" role="alert" *ngIf="errorMsg.length">	  <p *ngFor="let msg of errorMsg">{{msg}}</p>	</div>	<form [formGroup]="loginForm" (ngSubmit)="login()">	  <div class="mb-3">		<label for="login" class="form-label">Email address</label>		<input formControlName="email" type="email" class="form-control" id="login" placeholder="name@example.com">		<div *ngIf="loginForm.controls[\'email\'].invalid && (loginForm.controls[\'email\'].dirty || loginForm.controls[\'email\'].touched)" class="text-danger">		  <div *ngIf="loginForm.controls[\'email\'].hasError(\'email\')">Email is required.</div>		  <div *ngIf="loginForm.controls[\'email\'].hasError(\'required\')">Invalid email address.</div>		</div>	  </div>	  <div class="mb-3">		<label for="password" class="form-label">Password</label>		<input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">		<div *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" class="text-danger">		  <div *ngIf="loginForm.controls.password.errors.required">Password is required.</div>		  <div *ngIf="loginForm.controls.password.errors.minlength">Password must be at least 6 characters long.</div>		</div>	  </div>	  <div class="d-flex justify-content-between mb-3">		<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">		  <em class="fas fa-sign-in-alt">&nbsp;Sign in</em>		</button>		<div>		  Don\'t have an account?&nbsp;		  <button (click)="register()" type="button" class="btn btn-link">			Register		  </button>		</div>	  </div>	</form></div><div class="btn btn-primary">  <button type="button" class="btn btn-primary" onclick="window.location.href=\'api/v1/oauth2/authorization/google\'">	Sign In with Google  </button></div> --></div>'
+    var COMPONENTS = [{'name': 'ActivateAccountComponent', 'selector': 'app-activate-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'FavouritesComponent', 'selector': 'app-favourites'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GymComponent', 'selector': 'app-gym'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PersonalDataComponent', 'selector': 'app-personal-data'},{'name': 'PillarsComponent', 'selector': 'app-pillars'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProductComponent', 'selector': 'app-product'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TokenCaptureComponent', 'selector': 'app-token-capture'},{'name': 'UserDropdownComponent', 'selector': 'app-user-dropdown'},{'name': 'WelfareCoachComponent', 'selector': 'app-welfare-coach'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

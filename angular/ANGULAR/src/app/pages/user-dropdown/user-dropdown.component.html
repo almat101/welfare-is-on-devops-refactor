@@ -1,0 +1,40 @@
+<div class="dropdown">
+	<!-- btn btn-user dropdown-toggle -->
+	<button class="btn btn-user" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+		<!-- <i class="bi bi-person"></i> -->
+		<span *ngIf="user$ | async as user;">
+			{{ user.firsname!.charAt(0).toUpperCase() }}
+		</span>
+	</button>
+	<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+
+		<li>
+			<a class="dropdown-item" (click) ="goToProfile()">
+				<i class="bi bi-person"></i>
+				profilo
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" (click) ="goToFav()">
+				<i class="bi bi-bookmark-star"></i>
+				preferiti
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-item" (click) ="goToPersonalData()">
+				<i class="bi bi-clipboard-data"></i>
+				dati
+			</a>
+		</li>
+		<li>
+			<hr class="dropdown-divider">
+		</li>
+		<li>
+			<a class="dropdown-item" (click)="logout()">
+				<i class="bi bi-box-arrow-left"></i>
+				Esci
+			</a>
+		</li>
+	</ul>
+
+  </div>

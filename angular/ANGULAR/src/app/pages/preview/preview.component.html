@@ -1,0 +1,31 @@
+<div class="container mt-5">
+	<!-- <h1 class="text-center mb-4">Benvenuti su Leonardo Hug</h1> -->
+
+	<div id="welfareCarousel" class="carousel slide" data-bs-ride="carousel">
+	  <div class="carousel-indicators">
+		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Benessere Fisico"></button>
+		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="1" aria-label="Benessere Economico"></button>
+		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="2" aria-label="Benessere Psicologico"></button>
+		<button type="button" data-bs-target="#welfareCarousel" data-bs-slide-to="3" aria-label="Benessere Familiare"></button>
+	  </div>
+	  <div class="carousel-inner">
+		<div *ngFor="let pillar of pillars; let i = index" class="carousel-item" [class.active]="i === 0">
+		  <img [src]="pillar.image" class="d-block w-100" [alt]="pillar.title">
+		  <div class="carousel-caption d-none d-md-block">
+			<h5>{{ pillar.title }}</h5>
+			<p>{{ pillar.description }}</p>
+			<!-- <a [href]="pillar.link" class="btn btn-primary">Scopri di più</a> -->
+		  </div>
+		</div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#welfareCarousel" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#welfareCarousel" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+  </div>
+

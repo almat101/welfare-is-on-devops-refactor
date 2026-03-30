@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    url: ENC(${DB_NAME_SOURCE})
+    username: ENC(${DB_USER_SOURCE})
+    password: ENC(${DB_PASSWORD_SOURCE})
+    driver-class-name: org.postgresql.Driver
+    #iniz always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    #open-in-view: false                                          # Uncomment this is to avoid LazyInitializationException
+    #database: postgresql                                         # PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect'
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: mail-dev
+    port: 1025
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ENC(${GOOGLE_ID})
+            client-secret: ENC(${GOOGLE_SECRET})
+            scope:
+              - email
+              - profile
+
+application:
+  security:
+    jwt:
+      secret-key: ENC(${JWT_SECRET})
+      expiration: 86400000 #1 giorno #300000 #5 minuti
+  mailing:
+    frontend:
+      activation-url: https://localhost:443/activate-account
+
+server:
+  port: 8088

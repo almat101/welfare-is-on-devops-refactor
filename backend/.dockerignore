@@ -1,0 +1,15 @@
+target/
+.idea/
+*.iml
+*.log
+*.md
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README*
+.trivy/
+.vscode/
+*.swp
+*.bak
+*.tmp
