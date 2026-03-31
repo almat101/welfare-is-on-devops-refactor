@@ -4,8 +4,9 @@ Questo repository nasce dal recupero di un vecchio progetto (circa due anni fa),
 
 L'obiettivo è trasformare un'applicazione legacy in una soluzione moderna, sicura e facilmente manutenibile, applicando le best practice DevOps più attuali:
 - Refactoring completo della pipeline di build e deploy (Docker, multistage, .env, secrets, .dockerignore)
-- Rimozione di hardcoding e gestione sicura delle variabili e dei segreti
-- Automazione dei controlli di sicurezza (Trivy, SCA, gestione CVE)
+- Rimozione di variabili hardcoded nelle immagini
+- Gestione sicura delle variabili d'ambiente e dei segreti
+- Automazione dei controlli di sicurezza (Trivy, gestione CVE)
 - Ottimizzazione delle immagini Docker per peso, sicurezza e velocità
 - Adozione e spiegazione delle best practice DevOps più rilevanti per la modernizzazione del progetto.
 - Introduzione di test automatici e quality gate
@@ -22,7 +23,8 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
     
 - **27 marzo 2026:**	
 	- Secondo giorno ho impostato il Dockerfile usando una build multistage per mantenere l’immagine finale minima.
-	- Nel primo stage ho usato Maven per buildare il codice Java e generare il file .jar eseguibile. 	- Nel secondo stage ho usato una versione JRE Alpine per eseguire il .jar.
+	- Nel primo stage ho usato Maven ( JDK ) per buildare il codice Java e generare il file .jar eseguibile. 	
+	- Nel secondo stage ho usato una versione JRE Alpine per eseguire il .jar.
 	- Ho aggiunto un healthcheck apposito e l'uso di un utente non root per garantire sicurezza e privilegi minimi.
 
 - **29 marzo 2026**
@@ -45,10 +47,10 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
 		- Ho adottato la policy di non "silenziare" le vulnerabilità con ignore o suppression file, ma di risolverle alla radice (aggiornamento, override ecc.).
 
 	- Ho creato il Dockerfile del frontend Angular utilizzando una multistage build ottimizzata, partendo da un Dockerfile Nginx esistente e migliorandolo secondo le best practice moderne.
-		- Ho adottato tutte le best practice: uso di utente non-root per la sicurezza, healthcheck per la robustezza, e multistage build per ottenere un'immagine finale leggera e sicura.
-		- Ho eseguito la scansione dell'immagine finale Nginx con Trivy, risolvendo tutte le vulnerabilità critiche e high rilevate sull'OS Alpine e sulle dipendenze di sistema.
-		- Ho documentato il processo di build e di scansione, specificando la differenza tra ambiente di sviluppo (dove i certificati possono essere generati e inclusi per comodità) e ambiente di produzione (dove i certificati vanno sempre gestiti tramite volume o secret manager, mai inclusi nell'immagine).
-		- Ho aggiunto esempi pratici di esclusione di file/directory sensibili dalla scansione Trivy e di esportazione dei risultati in vari formati (JSON/HTML) per una migliore integrazione in pipeline CI/CD.
+	- Ho adottato tutte le best practice: uso di utente non-root per la sicurezza, healthcheck per la robustezza, e multistage build per ottenere un'immagine finale leggera e sicura.
+	- Ho eseguito la scansione dell'immagine finale Nginx con Trivy, risolvendo tutte le vulnerabilità critiche e high rilevate sull'OS Alpine e sulle dipendenze di sistema.
+	- Ho documentato il processo di build e di scansione, specificando la differenza tra ambiente di sviluppo (dove i certificati possono essere generati e inclusi per comodità) e ambiente di produzione (dove i certificati vanno sempre gestiti tramite volume o secret manager, mai inclusi nell'immagine).
+	- Ho aggiunto esempi pratici di esclusione di file/directory sensibili dalla scansione Trivy e di esportazione dei risultati in vari formati (JSON/HTML) per una migliore integrazione in pipeline CI/CD.
 	
 	
 - **Prossimi step e automazione (trivy in pipeline):**
