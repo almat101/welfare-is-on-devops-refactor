@@ -1,5 +1,15 @@
 ## Modernizzazione DevOps welfare-is-on
 
+### Struttura rapida dei file principali
+
+- `backend/`: contiene il codice sorgente del backend Spring Boot, i Dockerfile del servizio e le credenziali montate come secret in runtime.
+- `frontend/ANGULAR/`: contiene l'app Angular, la configurazione Docker e i file di build del frontend servito da Nginx.
+- `docker-compose.yml`: definisce l'avvio locale dell'intero stack, con backend, frontend, PostgreSQL, maildev, network e secret.
+- `README.md`: documenta il percorso di modernizzazione DevOps, le scelte architetturali e i test svolti.
+- `trivy_backend.md`: contiene la guida su Trivy e le vulnerabilità rilevate nel backend, con le soluzioni adottate.
+- `trivy_frontend.md`: contiene la guida su Trivy e le vulnerabilità rilevate nel frontend, con le soluzioni adottate.
+- `backend/.dockerignore`: riduce il build context del backend ed esclude file inutili o sensibili dalla build Docker.
+
 Questo repository nasce dal recupero di un vecchio progetto (circa due anni fa), che sto ottimizzando e documentando in chiave DevOps moderna.
 
 L'obiettivo è trasformare un'applicazione legacy in una soluzione moderna, sicura e facilmente manutenibile, applicando le best practice DevOps più attuali:
@@ -42,7 +52,7 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
 	- Ho scansionato l'immagine buildata del backend java con Trivy ed ho risolto tutte le `CVE critiche` sull'OS Alpine e sulle librerie Java del progetto (file pom.xml), oltre ad alcune `CVE HIGH`.
 	- **Best practice adottate ( trivy ):**
 		- Ho eseguito la scansione sia sul Dockerfile che sull'immagine già buildata (`trivy image nome-immagine`) per identificare vulnerabilità a livello di sistema operativo e di dipendenze applicative.
-		- Ho aggiornato tutte le dipendenze vulnerabili (sia OS che Java) e documentato ogni CVE rilevante e la relativa soluzione in `trivy.md`.
+		- Ho aggiornato tutte le dipendenze vulnerabili (sia OS che Java) e documentato ogni CVE rilevante e la relativa soluzione in [trivy_backend.md](trivy_backend.md).
 		- Ho evitato di ignorare vulnerabilità critiche/high: tutte le CVE critiche sono state risolte, e le high sono state analizzate e, dove possibile, mitigate o documentate.
 		- Ho adottato la policy di non "silenziare" le vulnerabilità con ignore o suppression file, ma di risolverle alla radice (aggiornamento, override ecc.).
 
@@ -60,7 +70,7 @@ Questo progetto vuole essere un esempio pratico di come modernizzare un software
 		trivy image --exit-code 1 --severity CRITICAL,HIGH nome-immagine
 		```
 	- Questo comando blocca la pipeline se vengono trovate vulnerabilità critiche o high, garantendo che nessuna immagine vulnerabile venga rilasciata in produzione.
-	- Continuerò a documentare ogni CVE rilevante e la relativa soluzione in `trivy.md` per mantenere traccia delle vulnerabilità gestite e delle scelte tecniche.
+	- Continuerò a documentare ogni CVE rilevante e la relativa soluzione in [trivy_backend.md](trivy_backend.md) per mantenere traccia delle vulnerabilità gestite e delle scelte tecniche.
 
 
 
@@ -109,25 +119,18 @@ Nelle prossime fasi questo processo verrà ottimizzato: la build manuale che ora
 
 	Questo permette di eseguire il backend come servizio, gestendo API, logica di business e interazione con il database.
 
-	**Peso del file:**
+	**Peso del file jar:**
 	Dopo la build, la cartella `target/` occupa circa **110 MB** (`du -sh target`), che è una dimensione normale per un fat jar Spring Boot con tutte le dipendenze incluse.
-   
 
-### Frontend (Angular)
-
-1. Spostarsi nella cartella del frontend Angular (es. `angular/ANGULAR`).
-2. Compilare il progetto Angular:
-	```bash
-	npm install
-	npm run build --prod
+	**Peso totale immagine:**
+	Ho buildato l'immagine vecchia(file `dockerfile.old`) con:
+	```sh
+	docker build -t myapp-dev -f backend/Dockerfile.old backend
 	```
-	I file statici compilati saranno disponibili nella cartella `dist/` o simile, da copiare poi nella cartella ( .browser ) servita da Nginx.
+	L'immagine basata su `eclipse-temurin:21`, comprensiva del file `.jar` (~110 MB), pesa circa:
 
-Solo dopo aver completato queste compilazioni è possibile avviare l’intero stack con:
-```bash
-docker-compose up --build
-```
-
+	`java-dev:latest` ≈ **562 MB**
+   
 
 ### Analisi container Java backend
 
@@ -139,7 +142,7 @@ docker-compose up --build
 **Cosa contiene?**
 - Il JDK comprende sia il compilatore (`javac`) che il runtime (`java`).
 - Permette sia di compilare codice Java che di eseguire applicazioni già compilate (come il nostro `.jar`).
-- L’immagine "full" pesa circa **500-600 MB**.
+- L’immagine "full" pesa circa **500-600 MB**. ( 562 MB nel mio caso)
 
 **JDK vs JRE**
 - **JDK (Java Development Kit):** tutto il necessario per sviluppare e compilare applicazioni Java (compilatore, debugger, strumenti di sviluppo, runtime).
@@ -160,6 +163,21 @@ docker-compose up --build
 - Ora il backend gira su un container Java "completo" (JDK, base Debian, 500-600 MB).
 - In futuro, con la multistage build, il container sarà molto più leggero e sicuro, con solo ciò che serve per eseguire il backend.
 
+
+### Frontend (Angular)
+
+1. Spostarsi nella cartella del frontend Angular (es. `angular/ANGULAR`).
+2. Compilare il progetto Angular:
+	```bash
+	npm install
+	npm run build --prod
+	```
+	I file statici compilati saranno disponibili nella cartella `dist/` o simile, da copiare poi nella cartella ( .browser ) servita da Nginx.
+
+Solo dopo aver completato queste compilazioni è possibile avviare l’intero stack con:
+```bash
+docker-compose up --build
+```
 
 ### Best practice Docker adottate (Dockerfile spring)
 
@@ -190,6 +208,26 @@ docker-compose up --build
 
 - **Immagine finale minimale:**
 	- Ho ottenuto un'immagine runtime che contiene solo ciò che serve per eseguire il jar, riducendo dimensione e superficie d'attacco.
+
+
+- **Peso totale immagine ottimizzata:**
+	- L'immagine basata su `eclipse-temurin:21-jre-alpine`, comprensiva del file `.jar` (~110 MB), pesa circa:
+
+	`welfare-is-on-devops-refactor-backend:latest` ≈ **439 MB**
+
+
+- **Vantaggi principali di un'immagine Docker ridotta:**
+	- **Minore superficie d'attacco:** meno pacchetti installati significa meno componenti potenzialmente vulnerabili.
+	- **Meno CVE da gestire:** riducendo dipendenze e tool non necessari, diminuisce il numero di vulnerabilità rilevate in scansione. ( [trivy_backend.md](trivy_backend.md) )
+	- **Pipeline CI/CD più veloci:** immagini più piccole richiedono meno tempo per build, push e pull.
+	- **Deploy più rapidi:** il trasferimento dell'immagine verso registry e cluster è più leggero e veloce.
+	- **Avvio container più efficiente:** meno layer e meno componenti possono ridurre il tempo di startup.
+	- **Minor consumo di banda e storage:** utile soprattutto con più ambienti (dev, stage, prod) e nodi multipli.
+	- **Riduzione dei costi infrastrutturali:** meno spazio occupato su registry e nodi, meno traffico di rete.
+	- **Maggiore affidabilità operativa:** immagini essenziali sono più semplici da analizzare, mantenere e aggiornare.
+	- **Hardening più semplice:** è più facile applicare il principio del minimo privilegio su un runtime minimale.
+	- **Troubleshooting più pulito:** meno componenti superflui riducono variabili e complessità in fase di debug.
+
 
 Esempio di Dockerfile adottato:
 

@@ -1,8 +1,0 @@
-FROM eclipse-temurin:21 AS builder
-
-RUN mkdir /opt/app
-COPY ../target/hug-0.0.1-SNAPSHOT.jar /opt/app/
-COPY ../scripts/set-env-vars.sh /tmp/.
-COPY ../src/main/resources/leonardo-7abf7-firebase-adminsdk-rtfdb-c22e0f1580.json /src/main/resources/leonardo-7abf7-firebase-adminsdk-rtfdb-c22e0f1580.json 
-#RUN . ./tmp/set-env-vars.sh
-CMD ["java", "-jar", "/opt/app/hug-0.0.1-SNAPSHOT.jar"]
