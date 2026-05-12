@@ -2,9 +2,9 @@ pipeline {
     agent { label 'agent1' }
 
     stages {
-        stage('Hello') {
+        stage('showing git sha') {
             steps {
-                echo 'Hello World'
+                echo "commit sha is {env.GIT_COMMIT}"
             }
         }
     }
