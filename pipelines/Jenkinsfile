@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('showing git sha') {
             steps {
-                echo "commit sha is {env.GIT_COMMIT}"
+                echo "commit sha is ${env.GIT_COMMIT}"
             }
         }
     }
