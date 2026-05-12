@@ -8,9 +8,9 @@ pipeline {
             }
         }
 
-        stage('running ll') {
+        stage('running ls') {
             steps {
-                sh "ll"
+                sh "ls -last"
             }
         }
     }
