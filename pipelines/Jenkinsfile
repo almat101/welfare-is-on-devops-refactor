@@ -1,6 +1,10 @@
 pipeline {
     agent { label 'agent1' }
 
+    environment {
+        IMAGE_NAME = 'welfare-backend'
+        IMAGE_TAG   = "${env.GIT_COMMIT}"
+    }
     stages {
         stage('showing git sha') {
             steps {
@@ -11,6 +15,16 @@ pipeline {
         stage('running ls') {
             steps {
                 sh "ls -last"
+            }
+        }
+        stage("checking docker version") {
+            steps {
+                sh "docker --version"
+            }
+        }
+        stage("Building backend image...") {
+            steps {
+                sh " docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ./backend"
             }
         }
     }
