@@ -7,5 +7,11 @@ pipeline {
                 echo "commit sha is ${env.GIT_COMMIT}"
             }
         }
+
+        stage('running ll') {
+            steps {
+                sh "ll"
+            }
+        }
     }
 }
