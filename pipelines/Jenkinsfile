@@ -73,15 +73,25 @@ pipeline {
                     -v "$WORKSPACE":/workspace \
                     -v /tmp/trivy-cache:/root/.cache/trivy \
                     aquasec/trivy:0.70.0 image \
-                    --format table --output /workspace/trivy-${BUILD_NUMBER}.txt \
-                    --severity CRITICAL \
+                    --format sarif --output /workspace/trivy-${BUILD_NUMBER}.sarif \
+                    --severity HIGH,CRITICAL \
                     --exit-code 1 \
                     ${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
             post {
                 always {
-                    archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.txt", fingerprint: true, allowEmptyArchive: true
+                    archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.sarif", fingerprint: true, allowEmptyArchive: true
+                    sh """
+                    docker run --rm \
+                        -v /var/run/docker.sock:/var/run/docker.sock \
+                        -v "$WORKSPACE":/workspace \
+                        -v /tmp/trivy-cache:/root/.cache/trivy \
+                        aquasec/trivy:0.70.0 image \
+                        --format table \
+                        --severity HIGH,CRITICAL \
+                        ${IMAGE_NAME}:${IMAGE_TAG}
+                    """
                 }
             }
         }
