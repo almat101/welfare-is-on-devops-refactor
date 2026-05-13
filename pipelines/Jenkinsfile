@@ -65,7 +65,7 @@ pipeline {
         //     }
         // }
 
-                stage("Scan image with trivy") {
+        stage("Scan image with trivy") {
             steps {
                 sh """
                 docker run --rm \
@@ -78,7 +78,11 @@ pipeline {
                     --exit-code 1 \
                     ${IMAGE_NAME}:${IMAGE_TAG}
                 """
-                archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.txt", fingerprint: true
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.txt", fingerprint: true, allowEmptyArchive: true
+                }
             }
         }
     }
