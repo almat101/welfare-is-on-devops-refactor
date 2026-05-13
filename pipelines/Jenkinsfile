@@ -34,17 +34,51 @@ pipeline {
             }
         }
 
-        stage("Scan image with trivy") {
+        // stage("Scan image with trivy") {
+        //     steps {
+        //         sh """
+        //           docker run --rm \
+        //             -v /var/run/docker.sock:/var/run/docker.sock \
+        //             -v /tmp/trivy-cache:/root/.cache/trivy \
+        //             aquasec/trivy:0.70.0 image \
+        //             --severity CRITICAL \
+        //             --exit-code 1 \
+        //             ${IMAGE_NAME}:${IMAGE_TAG}
+        //           """
+        //     }
+        // }
+
+        // stage("Scan image with trivy") {
+        //     steps {
+        //         sh """
+        //         docker run --rm \
+        //             -v /var/run/docker.sock:/var/run/docker.sock \
+        //             -v "$WORKSPACE":/workspace \
+        //             -v /tmp/trivy-cache:/root/.cache/trivy \
+        //             aquasec/trivy:0.70.0 image \
+        //             --format sarif --output /workspace/trivy-${BUILD_NUMBER}.sarif \
+        //             --severity HIGH,CRITICAL \
+        //             --exit-code 1 \
+        //             ${IMAGE_NAME}:${IMAGE_TAG}
+        //         """
+        //         archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.sarif", fingerprint: true
+        //     }
+        // }
+
+                stage("Scan image with trivy") {
             steps {
                 sh """
-                  docker run --rm \
+                docker run --rm \
                     -v /var/run/docker.sock:/var/run/docker.sock \
+                    -v "$WORKSPACE":/workspace \
                     -v /tmp/trivy-cache:/root/.cache/trivy \
                     aquasec/trivy:0.70.0 image \
+                    --format table --output /workspace/trivy-${BUILD_NUMBER}.txt \
                     --severity CRITICAL \
                     --exit-code 1 \
                     ${IMAGE_NAME}:${IMAGE_TAG}
-                  """
+                """
+                archiveArtifacts artifacts: "trivy-${BUILD_NUMBER}.txt", fingerprint: true
             }
         }
     }
